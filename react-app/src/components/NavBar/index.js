@@ -9,11 +9,11 @@ import './NavBar.css'
 const NavBar = () => {
   const sessionUser = useSelector((state) => state.session.user);
     const dispatch = useDispatch();
-    let sessionLinks;
+    let topRight;
     if (sessionUser) {
-        sessionLinks = <ProfileButton user={sessionUser} />;
+        topRight = <ProfileButton user={sessionUser} />;
     } else {
-        sessionLinks = (
+        topRight = (
             <>
                 <NavLink className="nav-btn" activeClassName='active' to="/login">
                     Sign In
@@ -29,7 +29,7 @@ const NavBar = () => {
                 <img src={logo} className='home-icon' alt='rflix logo' />
                 </NavLink>
             </div>
-            <div className="home-top-right">{sessionLinks}</div>
+            <div className="home-top-right">{topRight}</div>
         </ul>
     );
 }

@@ -1,3 +1,5 @@
+import './ProfileButton.css'
+
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
@@ -65,7 +67,7 @@ function ProfileButton({ user }) {
                   className='nav-user-dropdown-manage-profiles'
                   to={`/browse`}
                 >
-                  <div>Manage Profiles</div>
+                  <div className='nav-user-dropdown-text'>Manage Profiles</div>
                 </Link>
 
               <div className='nav-user-logout'>

@@ -34,7 +34,7 @@ const LoginFormPage = () => {
   };
 
   if (user) {
-    return <Redirect to='/browse' />;
+    return <Redirect to='/profile' />;
   }
 
   return (
