@@ -9,12 +9,13 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import Error404Page from './components/Error404Page';
 import BrowsePage from './components/BrowsePage';
 import NavBar from './components/NavBar/index.js';
+import ProfileSelectPage from './components/ProfileSelectPage';
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
-  const sessionUser = useSelector((state) => state.session.user)
+  const sessionUser = useSelector((state) => state.session.user);
   useEffect(() => {
-    (async() => {
+    (async () => {
       await dispatch(authenticate());
       setLoaded(true);
     })();
@@ -24,33 +25,35 @@ function App() {
     return null;
   }
 
-return (
-
-  <BrowserRouter>
-      <NavBar />
-      <Switch>
-        <Route path='/' exact>
-          {sessionUser ? <Redirect to="/browse" /> : <Redirect to="/login" />}
-        </Route>
-        <Route path="/login" exact={true}>
-        {sessionUser ? <Redirect to="/browse" /> : <LoginFormPage />}
-          {/* <LoginFormPage /> */}
-        </Route>
-        <Route path="/sign-up" exact={true}>
-        {sessionUser ? <Redirect to="/browse" /> : <SignUpFormPage />}
-
-        </Route>
-        <ProtectedRoute path='/browse' exact>
-          <BrowsePage />
-        </ProtectedRoute>
-        <Route path=''>
-          <Error404Page />
-        </Route>
-      </Switch>
+  return (
+    <BrowserRouter>
+      {/* <div className='content-wrap'> */}
+        <NavBar />
+        <Switch>
+          <Route path='/' exact>
+            {sessionUser ? <Redirect to='/browse' /> : <Redirect to='/login' />}
+          </Route>
+          <Route path='/login' exact={true}>
+            {sessionUser ? <Redirect to='/browse' /> : <LoginFormPage />}
+            {/* <LoginFormPage /> */}
+          </Route>
+          <Route path='/sign-up' exact={true}>
+            {sessionUser ? <Redirect to='/browse' /> : <SignUpFormPage />}
+          </Route>
+          <ProtectedRoute path='/profile' exact>
+            <ProfileSelectPage user={sessionUser} />
+          </ProtectedRoute>
+          <ProtectedRoute path='/browse' exact>
+            <BrowsePage />
+          </ProtectedRoute>
+          <Route path=''>
+            <Error404Page />
+          </Route>
+        </Switch>
+      {/* </div> */}
       <Footer />
     </BrowserRouter>
-)
-
+  );
 }
 
 export default App;
