@@ -1,0 +1,46 @@
+
+.home-nav-splash {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 50px;
+  font-size: 14px;
+  list-style: none;
+}
+
+.home-icon {
+  height: 48px;
+}
+
+a.nav-btn, button.nav-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  text-decoration: none;
+  color: white;
+  background-color: #1A1A1A;
+  border: none;
+  cursor: pointer;
+}
+
+ul.home-nav {
+  margin: 0px;
+  padding: 0px;
+  background-color: #1A1A1A;
+
+}
+
+.home-top-right {
+  display: flex;
+}
+.home-top-left {
+  display: flex;
+}
+.home-icon {
+  width: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
+}
