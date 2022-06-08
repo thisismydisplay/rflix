@@ -8,10 +8,11 @@ import { login } from '../../store/session';
 import Profile from '../Profile';
 
 const ProfileSelectPage = ({user}) => {
-  
+
 
   return (
     <div className='profile-page-div'>
+      <div className='profile-select-wrap'>
     <div className='profile-watching-text'>Who's watching?</div>
     <div className='profile-select-div'>
       {/* {profiles?.map((profile) => (
@@ -25,9 +26,10 @@ const ProfileSelectPage = ({user}) => {
         <span class='material-symbols-outlined'>add_circle</span>
         <span className='add-profile-text'>Add Profile</span>
       </div>
-    </div>
     <div className='manage-profile-btn-div'>
       <div className='manage-profile-btn'>Manage Profiles</div>
+    </div>
+    </div>
     </div>
   </div>
   );

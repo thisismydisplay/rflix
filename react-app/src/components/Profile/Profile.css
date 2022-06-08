@@ -1,0 +1,14 @@
+.profile-div {
+ display: flex;
+ flex-direction: column;
+}
+
+.profile-select-div {
+  display:flex;
+  flex-direction: column;
+
+}
+
+.profile-select-image {
+  height: 200px;
+}

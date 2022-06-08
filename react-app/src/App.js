@@ -34,11 +34,11 @@ function App() {
             {sessionUser ? <Redirect to='/browse' /> : <Redirect to='/login' />}
           </Route>
           <Route path='/login' exact={true}>
-            {sessionUser ? <Redirect to='/browse' /> : <LoginFormPage />}
+            {sessionUser ? <Redirect to='/profile' /> : <LoginFormPage />}
             {/* <LoginFormPage /> */}
           </Route>
           <Route path='/sign-up' exact={true}>
-            {sessionUser ? <Redirect to='/browse' /> : <SignUpFormPage />}
+            {sessionUser ? <Redirect to='/profile' /> : <SignUpFormPage />}
           </Route>
           <ProtectedRoute path='/profile' exact>
             <ProfileSelectPage user={sessionUser} />
