@@ -8,7 +8,7 @@ import { login } from '../../store/session';
 
 const Profile = ({ profile }) => {
   const img = profile.profileImageUrl;
-  console.log(img);
+  // console.log(img);
   return (
     <div className='profile-div'>
       <NavLink exact to='/browse' className='profile-navlink-browse'>

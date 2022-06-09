@@ -8,7 +8,7 @@ class Profile(db.Model, DateMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     userId = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-    name = db.Column(db.String(150), nullable=False, unique=True)
+    name = db.Column(db.String(150), nullable=False)
     profileImageUrl = db.Column(db.String(1000))
     autoplayHover = db.Column(db.Boolean, nullable=False)
     autoplayNext = db.Column(db.Boolean, nullable=False)

@@ -12,25 +12,27 @@ import NavBar from './components/NavBar/index.js';
 import ProfileSelectPage from './components/ProfileSelectPage';
 import { getProfiles } from './store/profile';
 
-const getProfilesList = (profiles) => {
-  const profilesArr = Object.entries(profiles);
-  let idx;
-  for (let i = 0; i < profilesArr.length; i++) {
-    if (profilesArr[i][0] === 'currentProfile') {
-      idx = i;
-    }
-  }
-  profilesArr.splice(idx, 1);
-  console.log(profilesArr)
-  return profilesArr;
-}
+// const getProfilesList = (profiles) => {
+//   const profilesArr = Object.entries(profiles);
+//   let idx;
+//   for (let i = 0; i < profilesArr.length; i++) {
+//     if (profilesArr[i][0] === 'currentProfile') {
+//       idx = i;
+//     }
+//   }
+//   profilesArr.splice(idx, 1);
+//   console.log(profilesArr)
+//   return profilesArr;
+// }
 
 function App() {
   const [loaded, setLoaded] = useState(false);
-  const [profilesLoaded, setProfilesLoaded] = useState(false);
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
-  const profiles = useSelector((state) => state.profile);
+  // const profiles = useSelector((state) => state.profile.profiles);
+
+  // const userId = sessionUser.id cant do this here bc sessionUser is null
+
   useEffect(() => {
     (async () => {
       await dispatch(authenticate());
@@ -38,17 +40,17 @@ function App() {
     })();
   }, [dispatch]);
 
-  useEffect(() => {
-    if (loaded) {
-      (async () => {
-        await dispatch(getProfiles(sessionUser.id));
+  // useEffect(() => {
+  //   if (loaded) {
+  //     (async () => {
+  //       await dispatch(getProfiles(sessionUser.id));
 
-        setProfilesLoaded(true);
-      })();
-    }
-  }, [dispatch, loaded, sessionUser.id]);
+  //       setProfilesLoaded(true);
+  //     })();
+  //   }
+  // }, [dispatch, loaded, sessionUser]);
 
-  if (!profilesLoaded) {
+  if (!loaded) {
     return null;
   }
 
@@ -68,7 +70,7 @@ function App() {
           {sessionUser ? <Redirect to='/profile' /> : <SignUpFormPage />}
         </Route>
         <ProtectedRoute path='/profile' exact>
-          <ProfileSelectPage profiles={getProfilesList(profiles)} user={sessionUser} />
+          <ProfileSelectPage user={sessionUser}/>
         </ProtectedRoute>
         <ProtectedRoute path='/browse' exact>
           <BrowsePage />

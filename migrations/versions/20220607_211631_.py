@@ -1,7 +1,7 @@
 """empty message
 
 Revision ID: 371c632d1e4a
-Revises: 
+Revises:
 Create Date: 2022-06-07 21:16:31.227893
 
 """
@@ -47,7 +47,6 @@ def upgrade():
     sa.Column('defaultVolume', sa.Float(), nullable=True),
     sa.ForeignKeyConstraint(['userId'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id'),
-    sa.UniqueConstraint('name')
     )
     op.create_table('videos',
     sa.Column('createdAt', sa.DateTime(), server_default=sa.text('now()'), nullable=False),

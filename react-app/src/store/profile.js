@@ -108,7 +108,7 @@ export const setCurrentProfile = (id) => async (dispatch) => {
 };
 
 const initialState = {
-  list: [],
+  profiles: {},
   currentProfile: {},
 };
 
@@ -117,8 +117,9 @@ const profileReducer = (state = initialState, action) => {
     case GET_ALL:
       const profileData = {};
       profileData['currentProfile'] = {...state.currentProfile}
+      profileData['profiles'] = {}
       for (let profile of action.payload) {
-        profileData[profile.id] = profile;
+        profileData['profiles'][profile.id] = profile;
       }
       return { ...profileData };
 

@@ -5,10 +5,28 @@
 
 .profile-select-div {
   display:flex;
-  flex-direction: column;
-
+  padding: 20px;
 }
 
 .profile-select-image {
-  height: 200px;
+  padding: 20px;
+
+  display: flex;
+  height: 160px;
+  width: 160px;
+  border-radius: 50%;
+}
+
+
+.profile-name-text, .add-profile-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+.profile-name-text:hover {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: auto;
 }
