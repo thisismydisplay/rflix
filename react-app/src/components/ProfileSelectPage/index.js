@@ -8,21 +8,10 @@ import { login } from '../../store/session';
 import Profile from '../Profile';
 import { getProfiles } from '../../store/profile';
 
-const getMappableProfiles = (profiles)=> {
-  const profilesArr = Object.entries(profiles);
-  let idx;
-  for (let i = 0; i < profilesArr.length; i++) {
-    if (profilesArr[i][0] === 'currentProfile') {
-      idx = i;
-    }
-  }
-  profilesArr.splice(idx, 1);
-  console.log(profilesArr)
-  return profilesArr
-}
+
 
 const ProfileSelectPage = ({user}) => {
-  const [profilesLoaded, setProfilesLoaded] = useState(false);
+  // const [profilesLoaded, setProfilesLoaded] = useState(false);
   const profiles = useSelector((state) => state.profile.profiles)
   const dispatch = useDispatch();
 
@@ -30,20 +19,17 @@ const ProfileSelectPage = ({user}) => {
       (async () => {
         await dispatch(getProfiles(user.id));
 
-        setProfilesLoaded(true);
+        // setProfilesLoaded(true);
       })();
     }
-  , [dispatch, profilesLoaded, user.id]);
+  , [dispatch, user.id]);
 
-  if (!profilesLoaded) {
-    return null;
-  }
-// const profiles = useSelector((state) => state.profile)
 
-//   useEffect(() => {
-//     dispatch(getProfiles(user.id));
-//     console.log(profiles)
-// }, [dispatch, user.id, profiles]);
+  // this appears unnecessary
+  // if (!profilesLoaded) {
+  //   return null;
+  // }
+
 
 
 
