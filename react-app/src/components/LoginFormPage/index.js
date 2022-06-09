@@ -13,13 +13,13 @@ const LoginFormPage = () => {
   const user = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
 
-  const handleRememberMe = () => {
-    setRememberMe(!rememberMe);
+  const handleRememberMe = (e) => {
+    setRememberMe(e.target.checked);
   };
 
   const onLogin = async (e) => {
     e.preventDefault();
-    const data = await dispatch(login(email, password));
+    const data = await dispatch(login(email, password, rememberMe));
     if (data) {
       setErrors(data);
     }
@@ -84,7 +84,8 @@ const LoginFormPage = () => {
               dispatch(
                 login(
                   'demo@user.io',
-                  'password'
+                  'password',
+                  rememberMe
                 )
               )
             }

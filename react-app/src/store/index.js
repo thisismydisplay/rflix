@@ -1,5 +1,6 @@
 
 import { configureStore } from '@reduxjs/toolkit'
+import profileReducer from './profile'
 // import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 // import thunk from 'redux-thunk';
 import sessionReducer from './session'
@@ -11,7 +12,7 @@ export const store = configureStore(
   {
   reducer: {
     session: sessionReducer,
-//     posts: postsReducer,
+    profile: profileReducer
   },
 }
 )
@@ -31,5 +32,3 @@ export const store = configureStore(
 // const configureStore = (preloadedState) => {
 //   return createStore(rootReducer, preloadedState, enhancer);
 // };
-
-
