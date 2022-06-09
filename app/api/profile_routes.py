@@ -186,7 +186,7 @@ def set_profile(id):
 #     body: JSON.stringify({
 #         userId: 1,
 #         name: 'The Boss',
-        # profileImageUrl: 'https://lofidelity-bucket.s3.amazonaws.com/17498db6ef0f40f793256acd10b863b6.png',
+#         profileImageUrl: 'https://lofidelity-bucket.s3.amazonaws.com/17498db6ef0f40f793256acd10b863b6.png',
 #         autoplayHover: false,
 #         autoplayNext: false,
 #         defaultVolume: 0,
