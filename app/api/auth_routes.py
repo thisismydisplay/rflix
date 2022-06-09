@@ -32,17 +32,15 @@ def authenticate():
     """
     Authenticates a user.
     """
-    #check if current_profile_id exists on session
-      #otherwise set to None
-      # if current_user['current_profile_id']
-      #   profileId = session['current_profile_id']
-      #   user_dict = current_user.to_dict()
-      #   user_dict['current_profile_id'] = profileId
-      #   return user_dict
+    if not current_user.is_authenticated:
+        return {'errors': ['Unauthorized']}
 
-    if current_user.is_authenticated:
-        return current_user.to_dict()
-    return {'errors': ['Unauthorized']}
+    user_dict = current_user.to_dict()
+    user_dict['current_profile_id'] = session.get('current_profile_id')
+    return user_dict
+
+
+
 
 
 @auth_routes.route('/login', methods=['POST'])
@@ -65,7 +63,9 @@ def login():
         print(current_user)
         login_user(user, remember=remember)
         # login_user(user)
-        return user.to_dict()
+        user_dict = user.to_dict()
+        user_dict['current_profile_id']=None
+        return user_dict
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
@@ -105,3 +105,15 @@ def unauthorized():
     Returns unauthorized JSON when flask-login authentication fails
     """
     return {'errors': ['Unauthorized']}, 401
+
+
+@auth_routes.route('/profile', methods=['PATCH'])
+@login_required
+def set_profile():
+    id = request.json['current_profile_id']
+    session['current_profile_id'] = id
+    print(session['current_profile_id'])
+    print(current_user)
+    profile = Profile.query.get(id)
+    return profile.to_dict()
+    return {'message': 'Success'}

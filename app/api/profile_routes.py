@@ -1,5 +1,5 @@
 from enum import auto
-from flask import Blueprint, request
+from flask import Blueprint, request, session
 from flask_login import login_required, current_user
 from app.models import db, Profile, User
 from app.forms import ProfileForm
@@ -155,15 +155,15 @@ def delete_profile(id):
     return {'message': 'Success'}
 
 
-@profile_routes.route('/<int:id>/set', methods=['PATCH'])
-@login_required
-def set_profile(id):
-    current_user['current_profile_id'] = id
-    print('current user')
-    print(current_user)
-    profile = Profile.query.get(id)
-    return profile.to_dict()
-    return {'message': 'Success'}
+# @profile_routes.route('/<int:id>/set', methods=['PATCH'])
+# @login_required
+# def set_profile(id):
+#     session['current_profile_id'] = id
+#     print(session['current_profile_id'])
+#     print(current_user)
+#     profile = Profile.query.get(id)
+#     return profile.to_dict()
+#     return {'message': 'Success'}
 # TEST ROUTES
 
 

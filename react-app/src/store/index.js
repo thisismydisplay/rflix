@@ -4,7 +4,7 @@ import profileReducer from './profile'
 // import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 // import thunk from 'redux-thunk';
 import sessionReducer from './session'
-
+import logger from 'redux-logger'
 // const rootReducer = combineReducers({
 //   session,
 // });
@@ -14,6 +14,7 @@ export const store = configureStore(
     session: sessionReducer,
     profile: profileReducer
   },
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
 }
 )
 
