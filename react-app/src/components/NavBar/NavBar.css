@@ -2,7 +2,8 @@
 .home-nav-splash {
   display: flex;
   justify-content: space-between;
-  position: absolute;
+  position: fixed;
+  top: 0;
   z-index: 1;
   width: 100%;
   height: 50px;
@@ -35,6 +36,7 @@ ul.home-nav {
 
 .home-top-right {
   display: flex;
+  padding-right: 20px;
 }
 .home-top-left {
   display: flex;

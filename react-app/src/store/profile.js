@@ -1,5 +1,15 @@
 import { SET_USER, SET_CURRENT, REMOVE_USER } from './session';
 
+//helper functions
+
+export const selectProfile = (state) => {
+    const id = state.currentProfileId;
+    return state.profiles[id]
+}
+
+
+
+
 const GET_ALL = 'profiles/GET_ALL';
 // const SET_CURRENT = 'profiles/SET_CURRENT';
 const ADD_ONE = 'profiles/ADD_ONE';
@@ -44,6 +54,7 @@ const deleteOne = (profileId) => ({
 });
 
 export const getProfiles = (userId) => async (dispatch) => {
+    // getState is a function that can be passed to a thunk that returns the current store
     const res = await fetch(`/api/profiles/${userId}`);
 
     if (res.ok) {
@@ -52,6 +63,17 @@ export const getProfiles = (userId) => async (dispatch) => {
         return res;
     } else throw res;
 };
+// export const getProfiles = () => async (dispatch, getState) => {
+//     // getState is a function that can be passed to a thunk that returns the current store
+//     const store = getState();
+//     const res = await fetch(`/api/profiles/${store.session.user.id}`);
+
+//     if (res.ok) {
+//         const list = await res.json();
+//         dispatch(getAll(list.profiles));
+//         return res;
+//     } else throw res;
+// };
 
 // export const getProfile = (id) => async (dispatch) => {
 //   const res = await fetch(`/api/profiles/${id}`);
