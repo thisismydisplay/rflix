@@ -5,13 +5,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import ProfileButton from '../ProfileButton'
 
 import './NavBar.css'
+import profileReducer from '../../store/profile';
 
-const NavBar = () => {
-  const sessionUser = useSelector((state) => state.session.user);
+const NavBar = ({profile, sessionUser}) => {
+//   const sessionUser = useSelector((state) => state.session.user);
     const dispatch = useDispatch();
     let topRight;
-    if (sessionUser) {
-        topRight = <ProfileButton user={sessionUser} />;
+    if (profile) {
+        topRight = <ProfileButton profile={profile} />;
     } else {
         topRight = (
             <>

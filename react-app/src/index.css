@@ -14,13 +14,20 @@ body,
   width: 100%;
   margin: 0px;
   color: white;
+
   /* position: relative;
   min-height: 100vh; */
 }
 
 #root {
+    display: flex;
+    flex-direction: column;
 }
 
+.main-content {
+    width: 100%;
+    flex: 1 1 auto;
+}
 /* .content-wrap {
   padding-bottom: 2.5rem;
 } */
