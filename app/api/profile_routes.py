@@ -59,7 +59,7 @@ def post_new_profile():
             profileImageUrl='https://lofidelity-bucket.s3.amazonaws.com/default-profile-image.jpeg',
             autoplayHover=True,
             autoplayNext=False,
-            defaultPlayerVolume=0.5,
+            defaultVolume=0.5,
         )
 
         new_profile = Profile(**params)
@@ -92,12 +92,15 @@ def patch_profile(id):
         profile = Profile.query.get(id)
         # session_profile = profile.query.filter(profile.profileUrl == profileUrl).first()
 
+
+
+        #might need to cast to bool
         profile.name = form.data["name"]
         profile.userId = form.data["userId"]
-        profile.autoplayHover = form.data["autoplayHover"]
-        profile.autoplayNext = form.data["autoplayNext"]
-        profile.defaultPlayerVolume = form.data["defaultPlayerVolume"]
-        # profile.profileImageUrl = form.data["profileImageUrl"]
+        profile.autoplayHover = bool(form.data["autoplayHover"])
+        profile.autoplayNext = bool(form.data["autoplayNext"])
+        profile.defaultVolume = form.data["defaultVolume"]
+        profile.profileImageUrl = form.data["profileImageUrl"]
 
         db.session.commit()
 
@@ -171,7 +174,23 @@ def set_profile(id):
 #     userId: 2,
 #     autoplayHover: false,
 #     autoplayNext: false,
-#     defaultPlayerVolume: 0,
+#     defaultVolume: 0,
 #     profileImageUrl: 'https://lofidelity-bucket.s3.amazonaws.com/default-profile-image.jpeg',
 #   })
 # ).catch(async (res) => { const resBody= await res.json(); console.log(res,resBody)})
+
+
+# fetch('/api/profiles/5', {
+#     method: 'POST',
+#     headers: {'Content-Type': 'application/json'},
+#     body: JSON.stringify({
+#         userId: 1,
+#         name: 'The Boss',
+        # profileImageUrl: 'https://lofidelity-bucket.s3.amazonaws.com/17498db6ef0f40f793256acd10b863b6.png',
+#         autoplayHover: false,
+#         autoplayNext: false,
+#         defaultVolume: 0,
+#     }),
+# })
+# .then((res)=> res.json())
+# .then((data)=> console.log(data))
