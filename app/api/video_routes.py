@@ -12,8 +12,8 @@ video_routes = Blueprint('videos', __name__)
 
 
 # GET ALL videoS
-@video_routes.route('/')
-# @login_required
+@video_routes.route('', methods=['GET'])
+@login_required
 def get_all_videos():
     # user = User.query.get(id)
     # if user.id != current_user.id:
@@ -30,7 +30,7 @@ def get_all_videos():
 
 # GET ONE video BY video Id
 @video_routes.route('/<int:id>')
-# @login_required
+@login_required
 def get_one_video(id):
     video = Video.query.get(id)
     return video.to_dict()
