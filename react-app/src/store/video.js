@@ -1,9 +1,12 @@
+import { getDefaultMiddleware } from '@reduxjs/toolkit';
+import { SET_USER, SET_CURRENT, REMOVE_USER } from './session';
+
 //helper functions
 
-// export const selectProfile = (state) => {
-//     const id = state.currentProfileId;
-//     return state.profiles[id];
-// };
+export const selectProfile = (state) => {
+    const id = state.currentProfileId;
+    return state.profiles[id];
+};
 
 const GET_ALL = 'videos/GET_ALL';
 // const SET_CURRENT = 'videos/SET_CURRENT';
@@ -23,7 +26,7 @@ const getOne = (video) => ({
 
 export const getVideos = () => async (dispatch) => {
     // getState is a function that can be passed to a thunk that returns the current store
-    const res = await fetch('/api/videos');
+    const res = await fetch(`/api/videos`);
 
     if (res.ok) {
         const list = await res.json();
@@ -36,7 +39,7 @@ export const getVideo = (id) => async (dispatch) => {
 
     if (res.ok) {
         const video = await res.json();
-        dispatch(getOne(video));
+        dispatch(getVideo(video));
         return res;
     } else throw res;
 };
