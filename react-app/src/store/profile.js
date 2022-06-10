@@ -1,20 +1,20 @@
+import { getDefaultMiddleware } from '@reduxjs/toolkit';
 import { SET_USER, SET_CURRENT, REMOVE_USER } from './session';
 
 //helper functions
 
 export const selectProfile = (state) => {
     const id = state.currentProfileId;
-    return state.profiles[id]
-}
-
-
-
+    return state.profiles[id];
+};
 
 const GET_ALL = 'profiles/GET_ALL';
 // const SET_CURRENT = 'profiles/SET_CURRENT';
 const ADD_ONE = 'profiles/ADD_ONE';
 // const UPDATE = 'profiles/UPDATE';
+const UPDATE_IMAGE = 'profiles/UPDATE_IMAGE'
 const DELETE = 'profiles/DELETE';
+
 
 //helper selectors
 // const selectMappableProfiles = (profiles)=> {
@@ -36,6 +36,10 @@ const getAll = (profiles) => ({
     type: GET_ALL,
     payload: profiles,
 });
+const updateImage = (url, profileId) => ({
+    type: UPDATE_IMAGE,
+    payload: {url, profileId},
+})
 // const setCurrent = (profile) => ({
 //     type: SET_CURRENT,
 //     payload: profile,
@@ -85,10 +89,16 @@ export const getProfiles = (userId) => async (dispatch) => {
 //   } else throw res;
 // };
 export const addProfile = (formData) => async (dispatch) => {
+    console.log(formData);
     const res = await fetch(`/api/profiles/`, {
         method: 'POST',
-        // headers: { 'Content-Type': 'application/json' }, //S3 makes own header
-        body: formData,
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            name: formData.name,
+            userId: formData.userId,
+        }),
     });
 
     if (res.ok) {
@@ -105,12 +115,21 @@ export const addProfile = (formData) => async (dispatch) => {
     }
 };
 export const updateProfile = (formData, profileId) => async (dispatch) => {
+    console.log("ProfileID: ",profileId)
+    console.log("formDate", formData)
     const res = await fetch(`/api/profiles/${profileId}`, {
         method: 'PATCH',
-        // headers: { 'Content-Type': 'application/json' }, //S3 makes own header
-        body: formData,
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            name: formData.name,
+            userId: formData.userId,
+            autoplayHover: formData.autoplayHover,
+            defaultVolume: formData.defaultVolume
+        }),
     });
-
+    console.log(res)
     if (res.ok) {
         const updatedProfile = await res.json();
         dispatch(addOne(updatedProfile));
@@ -124,6 +143,35 @@ export const updateProfile = (formData, profileId) => async (dispatch) => {
         return ['An error occurred. Please try again.'];
     }
 };
+
+export const updateProfileImage =
+  //imageType is 'profile', 'cover', or 'background'
+  (formData, profileId) => async (dispatch) => {
+    const response = await fetch(`/api/profiles/${profileId}/image`, {
+      method: 'PATCH',
+      body: formData,
+    });
+
+    if (response.ok) {
+      const newProfile = await response.json();
+      dispatch(addOne(newProfile));
+      return null;
+    } else if (response.status < 500) {
+      const res = await response.json();
+      if (res.errors) {
+        return res.errors;
+      }
+    } else {
+      return ['An error occurred. Please try again.'];
+    }
+
+    // if (response.ok) {
+    //   const resBody = await response.json();
+    //   dispatch(updateArtistImage(genreId, artistId, resBody.url, imageType));
+    //   return response;
+    // } else throw response;
+  };
+
 export const deleteProfile = (id) => async (dispatch) => {
     const res = await fetch(`/api/profiles/${id}`, {
         method: 'DELETE',
@@ -183,6 +231,14 @@ const profileReducer = (state = initialState, action) => {
                     [action.payload.id]: action.payload,
                 },
             };
+        // case UPDATE_IMAGE:
+        //     return {
+        //         ...state,
+        //         profiles: {
+        //             ...state.profiles,
+        //             [action.payload.profileId]:
+        //         }
+        //     }
         case SET_CURRENT:
             return {
                 ...state,

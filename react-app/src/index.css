@@ -40,6 +40,9 @@ textarea {
   resize: none;
 }
 
+.error-container {
+    color: var(--signin-red)
+}
 
 :root {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;

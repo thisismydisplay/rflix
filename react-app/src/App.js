@@ -10,8 +10,12 @@ import Error404Page from './components/Error404Page';
 import BrowsePage from './components/BrowsePage';
 import NavBar from './components/NavBar/index.js';
 import ProfileSelectPage from './components/ProfileSelectPage';
+import ProfileAddPage from './components/ProfileAddPage';
 import { getProfiles, selectProfile } from './store/profile';
-
+import ProfileManageSelectPage from './components/ProfileManageSelectPage';
+import ProfileEditPage from './components/ProfileEditPage';
+import ProfileDeletePage from './components/ProfileDeletePage';
+import ProfileUploadImagePage from './components/ProfileUploadImagePage';
 // const getProfilesList = (profiles) => {
 //   const profilesArr = Object.entries(profiles);
 //   let idx;
@@ -85,6 +89,24 @@ function App() {
                             <SignUpFormPage />
                         )}
                     </Route>
+                    <ProtectedRoute path='/profile/add' exact>
+                        <ProfileAddPage currentProfile={currentProfile} />
+                    </ProtectedRoute>
+                    <ProtectedRoute path='/profile/delete/:id' exact>
+                        <ProfileDeletePage currentProfile={currentProfile} />
+                    </ProtectedRoute>
+                    <ProtectedRoute path='/profile/manage/:id/image' exact>
+                        <ProfileUploadImagePage currentProfile={currentProfile} />
+                    </ProtectedRoute>
+                    <ProtectedRoute path='/profile/manage/:id' exact>
+                        <ProfileEditPage currentProfile={currentProfile} />
+                    </ProtectedRoute>
+                    <ProtectedRoute path='/profile/manage' exact>
+                        <ProfileManageSelectPage user={sessionUser} />
+                    </ProtectedRoute>
+                    {/* <ProtectedRoute path='/profile/delete' exact>
+                        <ProfileDeletePage currentProfile={currentProfile} />
+                    </ProtectedRoute> */}
                     <ProtectedRoute path='/profile' exact>
                         <ProfileSelectPage user={sessionUser} />
                     </ProtectedRoute>
