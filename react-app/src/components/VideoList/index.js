@@ -21,7 +21,7 @@ function VideoList({ videos }) {
         <div className='video-list-wrapper'>
             {Object.values(videos).map((video) => (
                 // <div className='video-thumb-wrapper' >
-                <div className='video-thumb-wrapper' onMouseEnter={()=> setIsHover(true)} onMouseLeave={() => setIsHover(false)}> key={video.id}>
+                <div className='video-thumb-wrapper' onMouseEnter={()=> setIsHover(true)} onMouseLeave={() => setIsHover(false)} key={video.id}>
                     <ReactPlayer
                         volume={0}
                         playing={profile.autoplayHover && isHover}
