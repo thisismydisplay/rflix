@@ -1,0 +1,14 @@
+.video-back-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 20px;
+    z-index: 1;
+}
+
+.video-player-wrapper {
+    background-color: black;
+}
+.comments-wrapper {
+    background-color: var(--watchlist-bg);
+}
