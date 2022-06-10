@@ -89,7 +89,7 @@ function ProfileButton({ user }) {
 
                             <Link
                                 className='nav-user-dropdown-manage-profiles'
-                                to={`/browse`}
+                                to={`/profile/manage`}
                             >
                                 <div className='nav-user-dropdown-text'>
                                     Manage Profiles

@@ -6,18 +6,17 @@ import { useHistory } from 'react-router-dom';
 
 import { addProfile } from '../../store/profile';
 
-const ProfileAddPage = ({ currentProfile }) => {
+const ProfileAddPage = ({ user }) => {
     const [profileName, setProfileName] = useState('');
     const [errors, setErrors] = useState([]);
     const dispatch = useDispatch();
     const history = useHistory();
-    console.log('current profile:', currentProfile);
     const handleSubmit = async (e) => {
         e.preventDefault();
         setErrors([]);
 
         let formData = {
-            userId: currentProfile.userId,
+            userId: user.id,
             name: profileName,
         };
 

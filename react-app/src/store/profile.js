@@ -116,7 +116,7 @@ export const addProfile = (formData) => async (dispatch) => {
 };
 export const updateProfile = (formData, profileId) => async (dispatch) => {
     console.log("ProfileID: ",profileId)
-    console.log("formDate", formData)
+    console.log("formData", formData)
     const res = await fetch(`/api/profiles/${profileId}`, {
         method: 'PATCH',
         headers: {
