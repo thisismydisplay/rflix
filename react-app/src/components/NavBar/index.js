@@ -28,7 +28,7 @@ const NavBar = ({profile, sessionUser}) => {
     }
 
     return (
-        <ul className="home-nav-splash" >
+        <ul className="home-nav-splash" id='navbar'>
             <div className="home-top-left">
                 <NavLink className='nav-btn-splash' activeClassName='active' exact to="/browse">
                 <img src={logo} className='home-icon' alt='rflix logo' />

@@ -7,30 +7,20 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { selectProfile } from '../../store/profile';
 import { Redirect } from 'react-router-dom';
+import VideoThumbnail from '../VideoThumbnail';
 
 function VideoList({ videos }) {
     const profile = useSelector(
         (state) => state.profile.profiles[state.profile.currentProfileId]
     );
-    const [isHover, setIsHover] = useState(false)
-    //HOVER SETS ALL VIDEOS, NEED TO SEPERATE INTO COMPONENT
 
     console.log(profile);
     if (!profile) return <Redirect to='/profile' />;
     return (
         <div className='video-list-wrapper'>
             {Object.values(videos).map((video) => (
-                // <div className='video-thumb-wrapper' >
-                <div className='video-thumb-wrapper' onMouseEnter={()=> setIsHover(true)} onMouseLeave={() => setIsHover(false)} key={video.id}>
-                    <ReactPlayer
-                        volume={0}
-                        playing={profile.autoplayHover && isHover}
-                        url={video.videoUrl}
-                        width='200px'
-                        height='200px'
-                        // active={currentProfile?.id === profile.id}
-
-                    />
+                <div className='video-thumb-wrapper' >
+                <VideoThumbnail profile={profile} video={video}/>
                 </div>
             ))}
         </div>

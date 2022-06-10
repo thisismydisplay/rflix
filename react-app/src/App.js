@@ -16,6 +16,7 @@ import ProfileManageSelectPage from './components/ProfileManageSelectPage';
 import ProfileEditPage from './components/ProfileEditPage';
 import ProfileDeletePage from './components/ProfileDeletePage';
 import ProfileUploadImagePage from './components/ProfileUploadImagePage';
+import VideoPage from './components/VideoPage';
 import { getVideos } from './store/video';
 // const getProfilesList = (profiles) => {
 //   const profilesArr = Object.entries(profiles);
@@ -115,6 +116,9 @@ function App() {
                     </ProtectedRoute>
                     <ProtectedRoute path='/browse' exact>
                         <BrowsePage videos= {videos}/>
+                    </ProtectedRoute>
+                    <ProtectedRoute path='/video/:id' exact>
+                        <VideoPage profile= {currentProfile}/>
                     </ProtectedRoute>
                     <Route path=''>
                         <Error404Page />
