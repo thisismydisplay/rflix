@@ -16,6 +16,7 @@ import ProfileManageSelectPage from './components/ProfileManageSelectPage';
 import ProfileEditPage from './components/ProfileEditPage';
 import ProfileDeletePage from './components/ProfileDeletePage';
 import ProfileUploadImagePage from './components/ProfileUploadImagePage';
+import { getVideos } from './store/video';
 // const getProfilesList = (profiles) => {
 //   const profilesArr = Object.entries(profiles);
 //   let idx;
@@ -36,6 +37,7 @@ function App() {
     const store = useStore();
     //   const profiles = useSelector((state) => state.profile.profiles);
     const currentProfile = useSelector((state)=> selectProfile(state.profile))
+    const videos = useSelector((state)=> state.video.videos)
 
     // const userId = sessionUser.id cant do this here bc sessionUser is null
 
@@ -45,6 +47,7 @@ function App() {
             const userId = store.getState().session.user?.id;
             if (userId) {
                 await dispatch(getProfiles(userId));
+                await dispatch(getVideos())
             }
             setLoaded(true);
         })();
@@ -111,7 +114,7 @@ function App() {
                         <ProfileSelectPage user={sessionUser} />
                     </ProtectedRoute>
                     <ProtectedRoute path='/browse' exact>
-                        <BrowsePage />
+                        <BrowsePage videos= {videos}/>
                     </ProtectedRoute>
                     <Route path=''>
                         <Error404Page />
