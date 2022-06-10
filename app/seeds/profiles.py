@@ -10,6 +10,22 @@ profiles = [
         "defaultVolume": 0.5,
     },
     {
+        "userId": 1,
+        "name": "The Boss",
+        "profileImageUrl": 'https://lofidelity-bucket.s3.amazonaws.com/pexels-photo-598917.jpeg',
+        "autoplayHover": True,
+        "autoplayNext": True,
+        "defaultVolume": 0.5,
+    },
+    {
+        "userId": 2,
+        "name": "Jerry Cartoons",
+        "profileImageUrl": 'https://lofidelity-bucket.s3.amazonaws.com/astronaut-spacewalk-iss-tools.jpeg',
+        "autoplayHover": True,
+        "autoplayNext": True,
+        "defaultVolume": 0.5,
+    },
+    {
         "userId": 2,
         "name": "Mark",
         "profileImageUrl": 'https://lofidelity-bucket.s3.amazonaws.com/astronaut-spacewalk-iss-tools.jpeg',

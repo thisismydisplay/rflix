@@ -4,7 +4,9 @@ genres = [
     "Comedy",
     "Drama",
     "Thriller",
-    "Action & Adventure"
+    "Action & Adventure",
+    "Cartoons",
+    "Nature"
 ]
 
 def seed_genres():

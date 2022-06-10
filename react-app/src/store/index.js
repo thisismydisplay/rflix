@@ -5,6 +5,7 @@ import profileReducer from './profile'
 // import thunk from 'redux-thunk';
 import sessionReducer from './session'
 import logger from 'redux-logger'
+import videoReducer from './video'
 // const rootReducer = combineReducers({
 //   session,
 // });
@@ -12,7 +13,8 @@ export const store = configureStore(
   {
   reducer: {
     session: sessionReducer,
-    profile: profileReducer
+    profile: profileReducer,
+    video: videoReducer
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
 }

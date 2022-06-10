@@ -1,0 +1,11 @@
+
+.video-list-wrapper {
+    display: flex;
+    flex-direction: row;
+    background-color: var(--browse-bg);
+}
+
+.video-thumb-wrapper {
+    margin: 5px;
+    background-color: var(--browse-bg);
+}
