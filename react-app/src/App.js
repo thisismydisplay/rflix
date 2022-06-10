@@ -90,7 +90,7 @@ function App() {
                         )}
                     </Route>
                     <ProtectedRoute path='/profile/add' exact>
-                        <ProfileAddPage currentProfile={currentProfile} />
+                        <ProfileAddPage user = {sessionUser} currentProfile={currentProfile} />
                     </ProtectedRoute>
                     <ProtectedRoute path='/profile/delete/:id' exact>
                         <ProfileDeletePage currentProfile={currentProfile} />

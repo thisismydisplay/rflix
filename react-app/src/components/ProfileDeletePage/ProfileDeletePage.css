@@ -38,7 +38,7 @@
   border: white 2px solid;
   color: white;
   border-radius: 5px;
-  padding: 20px;
+  /* padding: 20px; */
 }
 .profile-navlink-browse:hover {
   border: white 2px solid;

@@ -54,7 +54,7 @@ const ProfileManageSelectPage = ({ user }) => {
 
                 </div>
                 <div className='manage-profile-btn-div' onClick={handleCancel}>
-                    <div className='manage-profile-btn manage-profile-btn-cancel'>Cancel</div>
+                    <div className='manage-profile-btn-cancel continue-btn'>Done</div>
                 </div>
             </div>
         </div>

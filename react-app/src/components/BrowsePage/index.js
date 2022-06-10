@@ -7,11 +7,13 @@ import { findDOMNode } from 'react-dom'
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { selectProfile } from '../../store/profile';
+import { Redirect } from 'react-router-dom';
 
 function BrowsePage () {
     // const profile = useSelector(state=>selectProfile(state.profile))
     const profile = useSelector(state=>state.profile.profiles[state.profile.currentProfileId])
     console.log(profile)
+    if (!profile) return <Redirect to='/profile' />
   return (
       <ReactPlayer
           playing

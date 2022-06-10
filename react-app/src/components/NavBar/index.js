@@ -1,6 +1,6 @@
 import logo from '../../images/rflix-logo-placeholder2.png'
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import ProfileButton from '../ProfileButton'
 
@@ -10,6 +10,10 @@ import profileReducer from '../../store/profile';
 const NavBar = ({profile, sessionUser}) => {
 //   const sessionUser = useSelector((state) => state.session.user);
     const dispatch = useDispatch();
+    const location = useLocation();
+    const onProfile = location.pathname.split('/')[1] === 'profile'
+
+    if (onProfile) return null
     let topRight;
     if (profile) {
         topRight = <ProfileButton profile={profile} />;
