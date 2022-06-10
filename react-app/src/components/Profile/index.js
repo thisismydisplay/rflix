@@ -1,12 +1,13 @@
 import './Profile.css';
-import defaultProfileImage from '../../images/default-profile-image.jpeg';
 
+import defaultProfileImage from '../../images/default-profile-image.jpeg';
+import editIcon from '../../images/edit-icon.png';
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect, NavLink, Link, useHistory } from 'react-router-dom';
 import { login, setCurrentProfile } from '../../store/session';
 
-const Profile = ({ profile }) => {
+const Profile = ({ profile, manage }) => {
     const dispatch = useDispatch();
     const history = useHistory();
     const img = profile.profileImageUrl;
@@ -15,6 +16,12 @@ const Profile = ({ profile }) => {
         await dispatch(setCurrentProfile(profile.id));
         history.push('/browse');
     };
+    const handleManage = async () => {
+        await dispatch(setCurrentProfile(profile.id));
+        history.push(`/profile/manage/${profile.id}`);
+    };
+    
+
     return (
         <div className='profile-div'>
             {/* <Link
@@ -23,7 +30,7 @@ const Profile = ({ profile }) => {
                 className='profile-navlink-browse'
                 onClick={handleClick}
             > */}
-            <button onClick={handleClick} className='profile-navlink-browse'>
+            <button onClick={manage ? handleManage : handleClick} className='profile-manage-div'>
                 <img
                     className='profile-select-image'
                     src={img}
@@ -31,6 +38,7 @@ const Profile = ({ profile }) => {
                     viewBox='0 0 100 100'
                     preserveAspectRatio='xMidYMid meet'
                 />
+                {manage && (<img className='edit-profile-icon' src={editIcon} alt='edit'/>)}
                 {/* <div
           className='profile-select-image'
           style={{

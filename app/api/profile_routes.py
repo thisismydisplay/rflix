@@ -15,6 +15,9 @@ profile_routes = Blueprint('profiles', __name__)
 @profile_routes.route('/<int:id>')
 @login_required
 def get_all_profiles(id):
+    user = User.query.get(id)
+    if user.id != current_user.id:
+        return {'errors': ['Invalid Request: Unauthorized']}, 403
     print('hit route')
     profiles = Profile.query.filter(Profile.userId == id).all()
 
@@ -44,18 +47,22 @@ interaction. Note: this exception is only raised in debug mode"
 
 
 # ADD Profile - LOGGED-IN USER ONLY
-@profile_routes.route('', methods=['POST'])
+@profile_routes.route('/', methods=['POST'])
 @login_required
 def post_new_profile():
-    form = ProfileForm()
-    # Get csrf_token from request cookie and add to form manually
-    form['csrf_token'].data = request.cookies['csrf_token']
 
+    userId = request.json['userId']
+    user = User.query.get(userId)
+    if userId != current_user.id:
+        return {'errors': ['Invalid Request: Unauthorized']}, 403
+
+    form = ProfileForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         # process data and send to db
         params = dict(
             name=form.data["name"],
-            userId=form.data["userId"],
+            userId=userId,
             profileImageUrl='https://lofidelity-bucket.s3.amazonaws.com/default-profile-image.jpeg',
             autoplayHover=True,
             autoplayNext=False,
@@ -81,26 +88,32 @@ def post_new_profile():
 @profile_routes.route('/<int:id>', methods=['PATCH'])
 @login_required
 def patch_profile(id):
-
+    profile = Profile.query.get(id)
+    user = User.query.get(profile.userId)
+    print(profile)
+    print(user)
+    if user.id != current_user.id:
+        return {'errors': ['Invalid Request: Unauthorized']}
     form = ProfileForm()
 
     # Get csrf_token from request cookie and put into form manually
     form['csrf_token'].data = request.cookies['csrf_token']
+    form['id'].data = id
 
     if form.validate_on_submit():
 
-        profile = Profile.query.get(id)
+
         # session_profile = profile.query.filter(profile.profileUrl == profileUrl).first()
 
 
 
         #might need to cast to bool
         profile.name = form.data["name"]
-        profile.userId = form.data["userId"]
-        profile.autoplayHover = bool(form.data["autoplayHover"])
-        profile.autoplayNext = bool(form.data["autoplayNext"])
+        profile.userId = user.id
+        profile.autoplayHover = form.data["autoplayHover"]
+        profile.autoplayNext = True
         profile.defaultVolume = form.data["defaultVolume"]
-        profile.profileImageUrl = form.data["profileImageUrl"]
+        # profile.profileImageUrl = form.data["profileImageUrl"]
 
         db.session.commit()
 
@@ -119,37 +132,57 @@ def patch_profile(id):
 @profile_routes.route("/<int:id>/image", methods=["PATCH"])
 @login_required
 def upload_profile_image(id):
+    profile = Profile.query.get(id)
+    user = User.query.get(profile.userId)
+    if user.id != current_user.id:
+        return {'errors': ['Invalid Request: Unauthorized']}
+    form = ProfileForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    form['id'].data = id
 
-    if "image" not in request.files:
-        return {"errors": ["Please choose an image file"]}, 400
+    if form.validate_on_submit():
+        if "image" not in request.files:
+            return {"errors": ["Please choose an image file"]}, 400
 
-    image = request.files["image"]
+        image = request.files["image"]
 
-    if not allowed_file(image.filename):
-        return {"errors": ["File type not permitted (Only .png, .jpg, .jpeg, .gif permitted)"]}, 400
+        if not allowed_file(image.filename):
+            return {"errors": ["File type not permitted (Only .png, .jpg, .jpeg, .gif permitted)"]}, 400
 
-    image.filename = get_unique_filename(image.filename)
+        image.filename = get_unique_filename(image.filename)
 
-    upload = upload_file_to_s3(image)
+        upload = upload_file_to_s3(image)
 
-    if "url" not in upload:
-        # if the dictionary doesn't have a url key
-        # it means that there was an error when we tried to upload
-        # so we send back that error message
-        return upload, 400
+        if "url" not in upload:
+            # if the dictionary doesn't have a url key
+            # it means that there was an error when we tried to upload
+            # so we send back that error message
+            return upload, 400
 
-    url = upload["url"]
+        url = upload["url"]
+        profile.name = form.data["name"]
+        profile.userId = user.id
+        profile.autoplayHover = form.data["autoplayHover"]
+        profile.autoplayNext = True
+        profile.defaultVolume = form.data["defaultVolume"]
+        profile.profileImageUrl = url
+        db.session.commit()
+        return profile.to_dict()
+    if form.errors:  # check if errors exist
+        # checks if profileUrl is unique
+        # send errors to frontend
+        return {'errors': validation_errors_to_error_messages(form.errors)}, 418
 
-    current_profile = Profile.query.get(id)
-    current_profile.profileImageUrl = url
-    db.session.commit()
-    return {"url": url}
     # return {'message': 'Success'}
 
 @profile_routes.route('/<int:id>', methods=['DELETE'])
 @login_required
 def delete_profile(id):
+
     profile = Profile.query.get(id)
+    user = User.query.get(profile.userId)
+    if user.id != current_user.id:
+        return {'errors': ['Invalid Request: Unauthorized']}
     db.session.delete(profile)
     db.session.commit()
     return {'message': 'Success'}

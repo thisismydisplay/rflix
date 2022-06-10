@@ -1,32 +1,48 @@
 .profile-div {
- display: flex;
- flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 .profile-select-div {
-  display:flex;
-  padding: 20px;
+    display: flex;
+    padding: 20px;
 }
 
 .profile-select-image {
-  padding: 20px;
+    padding: 20px;
 
-  display: flex;
-  height: 160px;
-  width: 160px;
-  border-radius: 50%;
+    display: flex;
+    height: 160px;
+    width: 160px;
+    border-radius: 50%;
 }
 
-
-.profile-name-text, .add-profile-text {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
+.profile-name-text,
+.add-profile-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
 }
 .profile-name-text:hover {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: auto;
+}
+
+.profile-manage-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.edit-profile-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* position: fixed; */
+    width: 24px;
+    /* top: 50%; */
+    /* z-index: 1; */
 }
