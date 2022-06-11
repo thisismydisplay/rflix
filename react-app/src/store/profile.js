@@ -154,7 +154,7 @@ export const updateProfileImage =
   //imageType is 'profile', 'cover', or 'background'
   (formData, profileId) => async (dispatch) => {
     const response = await fetch(`/api/profiles/${profileId}/image`, {
-      method: 'PATCH',
+      method: 'POST',
       body: formData,
     });
 
