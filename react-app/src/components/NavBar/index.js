@@ -12,13 +12,14 @@ const NavBar = ({profile, sessionUser}) => {
     const dispatch = useDispatch();
     const location = useLocation();
     const onProfile = location.pathname.split('/')[1] === 'profile'
+    const onLogin = location.pathname.split('/')[1] === 'login'
 
     if (onProfile) return null
     let topRight;
     if (profile) {
         topRight = <ProfileButton profile={profile} />;
     } else {
-        topRight = (
+        topRight = onLogin ? null : (
             <>
                 <NavLink className="sign-in-nav" activeClassName='active' to="/login">
                     Sign In

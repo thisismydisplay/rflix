@@ -1,5 +1,6 @@
 
 .home-nav-splash {
+    padding: 20px 0px;
   display: flex;
   justify-content: space-between;
   position: fixed;
@@ -30,6 +31,7 @@ a.nav-btn, button.nav-btn {
 .sign-in-nav {
     background-color: var(--signin-red);
     color: white;
+    font-weight: 400;
     border-radius: 5px;
     padding:10px;
     margin: 10px;
