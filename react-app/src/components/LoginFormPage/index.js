@@ -49,22 +49,20 @@ const LoginFormPage = () => {
       </div> */}
             <div className='login-form-container'>
                 <div className='login-form-wrapper'>
-            <div className='login-wrapper-bg'>
-                <img src={background} alt='rflix' />
-            </div>
+                    <div className='login-wrapper-bg'>
+                        <img src={background} alt='rflix' />
+                    </div>
                     <form className='login-form' onSubmit={onLogin}>
                         <div>
                             {errors.map((error, ind) => (
                                 <div key={ind}>{error}</div>
                             ))}
                         </div>
-                        <div className='sign-in-text'>
-                            Sign In
-                        </div>
+                        <div className='sign-in-text'>Sign In</div>
                         <div>
                             {/* <label htmlFor='email'>Email</label> */}
                             <input
-                            className='login-input'
+                                className='login-input'
                                 name='email'
                                 type='text'
                                 placeholder='Email'
@@ -75,8 +73,7 @@ const LoginFormPage = () => {
                         <div>
                             {/* <label htmlFor='password'>Password</label> */}
                             <input
-                            className='login-input'
-
+                                className='login-input'
                                 name='password'
                                 type='password'
                                 placeholder='Password'
@@ -116,8 +113,8 @@ const LoginFormPage = () => {
                             </div>
                         </div>
                         <div className='new-sign-up-div'>
-                            <span>New to rflix? </span>
-                            <NavLink className='sign-up-now-text' to='/signup'>
+                            <span className='new-to-rflix-text'>New to rflix? </span>
+                            <NavLink className='sign-up-now-text' to='/sign-up'>
                                 Sign up now.
                             </NavLink>
                         </div>

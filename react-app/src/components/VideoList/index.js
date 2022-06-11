@@ -23,7 +23,7 @@ function VideoList({ videos }) {
             </div>
         <div className='video-list-wrapper'>
             {Object.values(videos).map((video) => (
-                <div className='video-thumb-wrapper' >
+                <div className='video-thumb-wrapper' key={video.id} >
                 <VideoThumbnail profile={profile} video={video}/>
                 </div>
             ))}

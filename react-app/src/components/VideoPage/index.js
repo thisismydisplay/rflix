@@ -76,7 +76,7 @@ function VideoPage({ profile }) {
                     controls={controlsOn}
                     volume={profile.defaultVolume}
                     playing
-                    url={video.videoUrl}
+                    url={video?.videoUrl}
                     width='98vw'
                     height='100vh'
                     // style={{display:'flex',justifyContent:'center', alignItems:'center'}}
@@ -84,7 +84,7 @@ function VideoPage({ profile }) {
                 />
             </div>
             <div className='comments-wrapper'>
-                {commentsLoaded && comments && <CommentList comments={comments} currentProfile={profile} videoId={video.id}/>}
+                {commentsLoaded && comments && <CommentList comments={comments} currentProfile={profile} videoId={video?.id}/>}
             </div>
         </div>
 
