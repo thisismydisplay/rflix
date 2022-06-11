@@ -137,42 +137,30 @@ def upload_profile_image(id):
     user = User.query.get(profile.userId)
     if user.id != current_user.id:
         return {'errors': ['Invalid Request: Unauthorized']}
-    form = ProfileForm()
-    form['csrf_token'].data = request.cookies['csrf_token']
-    form['id'].data = id
 
-    if form.validate_on_submit():
-        if "image" not in request.files:
-            return {"errors": ["Please choose an image file"]}, 400
+    if "image" not in request.files:
+        return {"errors": ["Please choose an image file"]}, 400
 
-        image = request.files["image"]
+    image = request.files["image"]
 
-        if not allowed_file(image.filename):
-            return {"errors": ["File type not permitted (Only .png, .jpg, .jpeg, .gif permitted)"]}, 400
+    if not allowed_file(image.filename):
+        return {"errors": ["File type not permitted (Only .png, .jpg, .jpeg, .gif permitted)"]}, 400
 
-        image.filename = get_unique_filename(image.filename)
+    image.filename = get_unique_filename(image.filename)
 
-        upload = upload_file_to_s3(image)
+    upload = upload_file_to_s3(image)
 
-        if "url" not in upload:
-            # if the dictionary doesn't have a url key
-            # it means that there was an error when we tried to upload
-            # so we send back that error message
-            return upload, 400
+    if "url" not in upload:
+        # if the dictionary doesn't have a url key
+        # it means that there was an error when we tried to upload
+        # so we send back that error message
+        return upload, 400
 
-        url = upload["url"]
-        profile.name = form.data["name"]
-        profile.userId = user.id
-        profile.autoplayHover = form.data["autoplayHover"]
-        profile.autoplayNext = True
-        profile.defaultVolume = form.data["defaultVolume"]
-        profile.profileImageUrl = url
-        db.session.commit()
-        return profile.to_dict()
-    if form.errors:  # check if errors exist
-        # checks if profileUrl is unique
-        # send errors to frontend
-        return {'errors': validation_errors_to_error_messages(form.errors)}, 418
+    url = upload["url"]
+
+    profile.profileImageUrl = url
+    db.session.commit()
+    return profile.to_dict()
 
     # return {'message': 'Success'}
 
