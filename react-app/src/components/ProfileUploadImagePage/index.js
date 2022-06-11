@@ -20,12 +20,12 @@ const ProfileUploadImagePage = ({ currentProfile }) => {
 
         const formData = new FormData();
         formData.append('image', image);
-        formData.append('name', currentProfile.name);
-        formData.append('userId', currentProfile.userId);
-        formData.append('profileImageUrl', currentProfile.profileImageUrl);
-        formData.append('autoplayHover', currentProfile.autoplayHover);
-        formData.append('autoplayNext', currentProfile.autoplayNext);
-        formData.append('defaultVolume', currentProfile.defaultVolume);
+        // formData.append('name', currentProfile.name);
+        // formData.append('userId', currentProfile.userId);
+        // formData.append('profileImageUrl', currentProfile.profileImageUrl);
+        // formData.append('autoplayHover', currentProfile.autoplayHover);
+        // formData.append('autoplayNext', currentProfile.autoplayNext);
+        // formData.append('defaultVolume', currentProfile.defaultVolume);
         setImageLoading(true);
         try {
             const errors = await dispatch(
@@ -33,7 +33,7 @@ const ProfileUploadImagePage = ({ currentProfile }) => {
             );
             if (!errors) {
                 setImageLoading(false);
-                history.push(`/profile/manage`);
+                history.push(`/profile/manage/${currentProfile.id}`);
                 return;
             } else {
                 setImageLoading(false);
