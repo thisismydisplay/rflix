@@ -29,7 +29,7 @@ export const getComments = (videoId) => async (dispatch) => {
 };
 
 export const addComment = (formData) => async (dispatch) => {
-    const res = await fetch(`/api/comments/`, {
+    const res = await fetch('/api/comments', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -37,7 +37,7 @@ export const addComment = (formData) => async (dispatch) => {
         body: JSON.stringify({
             text: formData.text,
             profileId: formData.profileId,
-            videoId: formData.userId,
+            videoId: formData.videoId,
         }),
     });
 
@@ -69,7 +69,6 @@ export const updateComment = (formData, commentId) => async (dispatch) => {
             videoId: formData.userId,
         }),
     });
-    console.log(res)
     if (res.ok) {
         const updatedComment = await res.json();
         dispatch(addOne(updatedComment));
@@ -125,8 +124,9 @@ const commentReducer = (state = initialState, action) => {
             };
 
         case DELETE:
-            const newState = { ...state };
-            delete newState[action.payload];
+            const newState = { ...state, comments: {...state.comments} };
+            console.log(newState)
+            delete newState['comments'][action.payload];
             return newState;
         default:
             return state;

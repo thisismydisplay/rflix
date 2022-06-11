@@ -1,0 +1,13 @@
+
+.add-comment-form {
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 40px;
+}
+.comment-add-input{
+    width: 80vw;
+    padding: 10px;
+    margin: 10px;
+    border-bottom: var(--modal-text-grey) 1px solid;
+    border-top: var(--modal-text-grey) 1px solid;
+}

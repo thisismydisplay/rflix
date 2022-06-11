@@ -1,4 +1,5 @@
 from enum import auto
+import pprint
 from flask import Blueprint, request, session
 from flask_login import login_required, current_user
 from app.models import comment, db, Comment, User
@@ -18,9 +19,10 @@ def get_all_comments(id):
     # if user.id != current_user.id:
     #     return {'errors': ['Invalid Request: Unauthorized']}, 403
     # print('hit route')
-    comments = Comment.query.filter(Comment.videoId == id).all()
-
+    comments = Comment.query.filter(Comment.videoId == id).order_by(Comment.updatedAt.asc()).all()
+    print('***********comments')
     comment_dict_list = [comment.to_dict() for comment in comments]
+    print(comment_dict_list)
     # comments_by_commentId = {comment['id']: comment for comment in comment_dict_list}
     # if current_user.is_authenticated:
     return {'comments': comment_dict_list}
@@ -147,4 +149,3 @@ def delete_comment(id):
 # })
 # .then((res)=> res.json())
 # .then((data)=> console.log(data))
-

@@ -7,32 +7,26 @@ import { useSelector } from 'react-redux';
 import { selectProfile } from '../../store/profile';
 import { Redirect } from 'react-router-dom';
 import VideoThumbnail from '../VideoThumbnail';
+import CommentAdd from '../CommentAdd';
+import Comment from '../Comment'
 
-function CommentList({ video, profile }) {
+function CommentList({ comments, currentProfile, videoId }) {
     // const comments = useSelector(
     //     (state) => state.comment.comments[video.id]
     // );
 
-    if (!video) return <Redirect to='/browse' />;
+    if (!videoId) return <Redirect to='/browse' />;
     return (
         <>
         <div className='add-comment-form'>
-            <h1>FORM TO ADD COMMENT</h1>
+            <CommentAdd profile={currentProfile} videoId={videoId} />
         </div>
         <div className='comment-list-wrapper'>
-            {/* {Object.values(comments).map((comment) => (
-                <div className='comment-wrapper' >
-                <Comment videoId={video.id}/>
+            {Object.values(comments).map((comment) => (
+                <div className='comment-wrapper' key={comment.id}>
+                <Comment videoId={videoId} comment={comment} currentProfile={currentProfile}/>
                 </div>
-            ))} */}
-            <h1> TEST COMMENT</h1>
-            <h1> TEST COMMENT</h1>
-            <h1> TEST COMMENT</h1>
-            <h1> TEST COMMENT</h1>
-            <h1> TEST COMMENT</h1>
-            <h1> TEST COMMENT</h1>
-            <h1> TEST COMMENT</h1>
-            <h1> TEST COMMENT</h1>
+            ))}
         </div>
             </>
 

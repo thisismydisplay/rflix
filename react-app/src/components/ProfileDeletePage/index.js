@@ -52,7 +52,7 @@ const ProfileDeletePage = ({ currentProfile}) => {
                             <img
                                 className='profile-select-image'
                                 // onClick={handleClick}
-                                src={currentProfile.profileImageUrl}
+                                src={currentProfile?.profileImageUrl}
                                 alt='default user'
                                 viewBox='0 0 100 100'
                                 preserveAspectRatio='xMidYMid meet'

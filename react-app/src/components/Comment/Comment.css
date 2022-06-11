@@ -1,0 +1,37 @@
+.comment-div {
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    border-top: var(--modal-text-grey) 1px solid;
+}
+
+.comment-edit-btn-div {
+    width: 24px;
+}
+.comment-delete-btn-div {
+    width: 24px;
+}
+
+.comment-content-div {
+    display: flex;
+
+}
+
+.comment-modify-div {
+    display: flex;
+    flex-direction: row;
+    margin-left: 60px;
+}
+
+.comment-profile-wrapper {
+    width: 50px;
+}
+
+.comment-content-wrapper {
+    padding: 10px;
+    margin-right: 100px;
+}
+
+
+.comment-updated {
+    font-size: 12px;
+}
