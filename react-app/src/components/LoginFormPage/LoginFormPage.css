@@ -83,6 +83,9 @@
 }
 
 .sign-in-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: var(--signin-red);
     color: white;
     border-radius: 5px;
