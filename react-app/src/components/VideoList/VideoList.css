@@ -1,8 +1,12 @@
 
 .video-list-wrapper {
+    height: 200px;
     display: flex;
     flex-direction: row;
+    align-items: center;
     background-color: var(--browse-bg);
+    overflow: hidden;
+    flex-wrap: nowrap;
 }
 
 .video-thumb-wrapper {

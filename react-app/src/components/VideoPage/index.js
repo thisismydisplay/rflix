@@ -72,12 +72,14 @@ function VideoPage({ profile }) {
             )}
             <div className='video-player-wrapper' onMouseMove={handleMove}>
                 <ReactPlayer
+                className='video-main'
                     controls={controlsOn}
                     volume={profile.defaultVolume}
                     playing
                     url={video.videoUrl}
-                    width='100vw'
+                    width='98vw'
                     height='100vh'
+                    // style={{display:'flex',justifyContent:'center', alignItems:'center'}}
                     // active={currentProfile?.id === profile.id}
                 />
             </div>

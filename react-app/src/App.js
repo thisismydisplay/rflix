@@ -48,7 +48,7 @@ function App() {
             const userId = store.getState().session.user?.id;
             if (userId) {
                 await dispatch(getProfiles(userId));
-                await dispatch(getVideos())
+                // await dispatch(getVideos())
             }
             setLoaded(true);
         })();
@@ -115,7 +115,8 @@ function App() {
                         <ProfileSelectPage user={sessionUser} />
                     </ProtectedRoute>
                     <ProtectedRoute path='/browse' exact>
-                        <BrowsePage videos= {videos}/>
+                        {/* <BrowsePage videos= {videos}/> */}
+                        <BrowsePage />
                     </ProtectedRoute>
                     <ProtectedRoute path='/video/:id' exact>
                         <VideoPage profile= {currentProfile}/>

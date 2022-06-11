@@ -27,6 +27,7 @@ body,
 .main-content {
     width: 100%;
     flex: 1 1 auto;
+    background-color: var(--modal-bg);
 }
 /* .content-wrap {
   padding-bottom: 2.5rem;

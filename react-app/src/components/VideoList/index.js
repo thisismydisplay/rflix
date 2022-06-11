@@ -17,6 +17,10 @@ function VideoList({ videos }) {
     console.log(profile);
     if (!profile) return <Redirect to='/profile' />;
     return (
+        <div className='video-carousel-wrapper'>
+<div className='video-list-title'>
+    Recommended for you
+            </div>
         <div className='video-list-wrapper'>
             {Object.values(videos).map((video) => (
                 <div className='video-thumb-wrapper' >
@@ -24,6 +28,7 @@ function VideoList({ videos }) {
                 </div>
             ))}
         </div>
+            </div>
         // map movies in carousels by genre
     );
 }
