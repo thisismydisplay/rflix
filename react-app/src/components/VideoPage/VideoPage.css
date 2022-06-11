@@ -7,7 +7,12 @@
 }
 
 .video-player-wrapper {
+
     background-color: black;
+}
+
+.video-main {
+    justify-content: center;
 }
 .comments-wrapper {
     background-color: var(--watchlist-bg);

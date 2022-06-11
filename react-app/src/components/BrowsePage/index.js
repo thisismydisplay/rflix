@@ -2,24 +2,41 @@ import './BrowsePage.css';
 import ReactPlayer from 'react-player';
 import { findDOMNode } from 'react-dom';
 
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { selectProfile } from '../../store/profile';
 import { Redirect } from 'react-router-dom';
 import VideoList from '../VideoList';
+import { getVideos } from '../../store/video';
 
-function BrowsePage({ videos }) {
+function BrowsePage() {
     // const profile = useSelector(state=>selectProfile(state.profile))
     const profile = useSelector(
         (state) => state.profile.profiles[state.profile.currentProfileId]
-    );
-    console.log(profile);
+        );
+
+    //load videos here instead of app
+    const dispatch = useDispatch();
+    const videos = useSelector((state) => state.video.videos);
+    const [loaded, setLoaded] = useState(false);
+    useEffect(() => {
+        (async () => {
+            await dispatch(getVideos());
+            setLoaded(true);
+        })();
+    }, [dispatch]);
+    if (!loaded) {
+        return null;
+    }
+
+
     if (!profile) return <Redirect to='/profile' />;
     return (
         <div className='browse-wrapper'>
             <ReactPlayer
                 playing
-                width='100vw'
+                width='97vw'
+                height='75vh'
                 controls={false}
                 volume={0}
                 url='https://archive.org/download/Destroy_All_Planets/Destroy_All_Planets_512kb.mp4'
