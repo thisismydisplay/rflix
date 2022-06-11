@@ -9,6 +9,7 @@ export const selectProfile = (state) => {
 };
 
 const GET_ALL = 'profiles/GET_ALL';
+const GET_ONE = 'profiles/GET_ONE';
 // const SET_CURRENT = 'profiles/SET_CURRENT';
 const ADD_ONE = 'profiles/ADD_ONE';
 // const UPDATE = 'profiles/UPDATE';
@@ -40,6 +41,10 @@ const updateImage = (url, profileId) => ({
     type: UPDATE_IMAGE,
     payload: {url, profileId},
 })
+const getOne = (profile) => ({
+    type: GET_ONE,
+    payload: profile,
+})
 // const setCurrent = (profile) => ({
 //     type: SET_CURRENT,
 //     payload: profile,
@@ -59,7 +64,7 @@ const deleteOne = (profileId) => ({
 
 export const getProfiles = (userId) => async (dispatch) => {
     // getState is a function that can be passed to a thunk that returns the current store
-    const res = await fetch(`/api/profiles/${userId}`);
+    const res = await fetch(`/api/profiles/${userId}/user`);
 
     if (res.ok) {
         const list = await res.json();
@@ -79,15 +84,16 @@ export const getProfiles = (userId) => async (dispatch) => {
 //     } else throw res;
 // };
 
-// export const getProfile = (id) => async (dispatch) => {
-//   const res = await fetch(`/api/profiles/${id}`);
+export const getProfile = (profileId) => async (dispatch) => {
+  const res = await fetch(`/api/profiles/${profileId}`);
 
-//   if (res.ok) {
-//     const profile = await res.json();
-//     dispatch(setCurrent(profile));
-//     return res;
-//   } else throw res;
-// };
+  if (res.ok) {
+    const profile = await res.json();
+    dispatch(getOne(profile));
+    return res;
+  } else throw res;
+};
+
 export const addProfile = (formData) => async (dispatch) => {
     console.log(formData);
     const res = await fetch(`/api/profiles/`, {
@@ -211,6 +217,10 @@ const profileReducer = (state = initialState, action) => {
                 profileData[profile.id] = profile;
             }
             return { ...state, profiles: profileData };
+        case GET_ONE:
+            //sets state[profileId] to profile
+            return {...state, [action.payload.id]: action.payload}
+
         case SET_USER:
             return {
                 ...state,

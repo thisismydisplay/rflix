@@ -36,6 +36,7 @@ class Video(db.Model, DateMixin):
             'description': self.description,
             'imageUrl': self.imageUrl,
             'videoUrl': self.videoUrl,
+            # 'comments': [comment.to_dict() for comment in self.comments],
             'createdAt': self.createdAt,
             'updatedAt': self.updatedAt,
         }

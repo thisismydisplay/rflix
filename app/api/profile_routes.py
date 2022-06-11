@@ -12,7 +12,7 @@ profile_routes = Blueprint('profiles', __name__)
 
 
 # GET ALL PROFILES by userId
-@profile_routes.route('/<int:id>')
+@profile_routes.route('/<int:id>/user')
 @login_required
 def get_all_profiles(id):
     user = User.query.get(id)
@@ -28,12 +28,13 @@ def get_all_profiles(id):
     # return {'errors': ['Unauthorized']}
 
 
-# # GET ONE PROFILE BY Profile Id
-# @profile_routes.route('/<int:id>')
-# @login_required
-# def get_one_profile(id):
-#     profile = Profile.query.get(id)
-#     return profile.to_dict()
+# GET ONE PROFILE BY Profile Id
+
+@profile_routes.route('/<int:id>')
+@login_required
+def get_one_profile(id):
+    profile = Profile.query.get(id)
+    return profile.to_dict()
 
 
 """

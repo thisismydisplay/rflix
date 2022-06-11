@@ -6,6 +6,7 @@ import React, { useEffect, useState } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getVideo } from '../../store/video';
+import CommentList from '../CommentList';
 
 function VideoPage({ profile }) {
     const history = useHistory();
@@ -67,12 +68,7 @@ function VideoPage({ profile }) {
                 />
             </div>
             <div className='comments-wrapper'>
-                <h1>TEST</h1>
-                <h1>TEST</h1>
-                <h1>TEST</h1>
-                <h1>TEST</h1>
-                <h1>TEST</h1>
-                <h1>TEST</h1>
+                <CommentList video={video} profile={profile} />
             </div>
         </div>
 
