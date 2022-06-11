@@ -11,6 +11,7 @@
     /* margin-bottom: 20px; */
   bottom: 0;
   width: 100%;
+  z-index: 5;
 
 }
 /* .footer-spacer {
