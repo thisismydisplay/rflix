@@ -20,7 +20,7 @@ const NavBar = ({profile, sessionUser}) => {
     } else {
         topRight = (
             <>
-                <NavLink className="nav-btn" activeClassName='active' to="/login">
+                <NavLink className="sign-in-nav" activeClassName='active' to="/login">
                     Sign In
                 </NavLink>
             </>
