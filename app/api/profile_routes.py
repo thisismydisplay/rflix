@@ -130,7 +130,7 @@ def patch_profile(id):
 
 
 # UPDATE profile
-@profile_routes.route("/<int:id>/image", methods=["PATCH"])
+@profile_routes.route("/<int:id>/image", methods=["POST"])
 @login_required
 def upload_profile_image(id):
     profile = Profile.query.get(id)
