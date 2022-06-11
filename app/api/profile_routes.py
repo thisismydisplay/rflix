@@ -138,6 +138,14 @@ def upload_profile_image(id):
     if user.id != current_user.id:
         return {'errors': ['Invalid Request: Unauthorized']}
 
+
+    # form = ProfileForm()
+    #     form['csrf_token'].data = request.cookies['csrf_token']
+    #     form['id'].data = id
+
+    #     if form.validate_on_submit():
+
+
     if "image" not in request.files:
         return {"errors": ["Please choose an image file"]}, 400
 
