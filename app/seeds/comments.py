@@ -20,7 +20,27 @@ comments = [
         "profileId": 4,
         "videoId": 2,
         "text": "I know a lot of people love this movie, but it's just not that good."
-    }
+    },
+    {
+        "profileId": 3,
+        "videoId": 4,
+        "text": "Love Jellys."
+    },
+    {
+        "profileId": 3,
+        "videoId": 4,
+        "text": "So much."
+    },
+    {
+        "profileId": 3,
+        "videoId": 4,
+        "text": "Can't put into words how much i love jellys."
+    },
+    {
+        "profileId": 2,
+        "videoId": 4,
+        "text": "This film will change your life."
+    },
 ]
 
 def seed_comments():

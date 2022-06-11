@@ -1,0 +1,10 @@
+.comment-profile-image {
+    width:40px;
+    padding: 5px;
+    height: 40px;
+    border-radius: 50%;
+}
+.comment-profile-name {
+    font-size: 10px;
+    padding: 5px;
+}

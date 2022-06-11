@@ -6,6 +6,7 @@ import profileReducer from './profile'
 import sessionReducer from './session'
 import logger from 'redux-logger'
 import videoReducer from './video'
+import commentReducer from './comment'
 // const rootReducer = combineReducers({
 //   session,
 // });
@@ -14,7 +15,8 @@ export const store = configureStore(
   reducer: {
     session: sessionReducer,
     profile: profileReducer,
-    video: videoReducer
+    video: videoReducer,
+    comment: commentReducer
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
 }

@@ -262,8 +262,8 @@ const profileReducer = (state = initialState, action) => {
             };
 
         case DELETE:
-            const newState = { ...state };
-            delete newState[action.payload];
+            const newState = { ...state, profiles: {...state.profiles} };
+            delete newState['profiles'][action.payload];
             return newState;
         default:
             return state;
