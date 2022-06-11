@@ -47,7 +47,6 @@ const ProfileUploadImagePage = ({ currentProfile }) => {
 
     const updateImage = (e) => {
         const file = e.target.files[0];
-        console.log(file);
         setImage(file);
     };
 
@@ -60,14 +59,13 @@ const ProfileUploadImagePage = ({ currentProfile }) => {
             <div className='profile-select-wrap'>
                 <div className='profile-edit-text'>Upload Profile Image</div>
 
-                {errors.length > 0 && (
+
                     <div className='error-container'>
-                        {/* <p className='signup-error-message'>Invalid email or password.</p> */}
-                        {errors.map((error, ind) => (
+                        {errors?.map((error, ind) => (
                             <div key={ind}>{error?.split(': ')[1]}</div>
                         ))}
                     </div>
-                )}
+
                 <form className='profile-add-form' onSubmit={handleSubmit}>
                     <div className='profile-select-div'>
                         <div className='profile-default-image-div'>
