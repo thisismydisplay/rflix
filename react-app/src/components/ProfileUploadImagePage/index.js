@@ -61,9 +61,9 @@ const ProfileUploadImagePage = ({ currentProfile }) => {
 
 
                     <div className='error-container'>
-                        {errors?.map((error, ind) => (
+                        {/* {errors?.map((error, ind) => (
                             <div key={ind}>{error?.split(': ')[1]}</div>
-                        ))}
+                        ))} */}
                     </div>
 
                 <form className='profile-add-form' onSubmit={handleSubmit}>
