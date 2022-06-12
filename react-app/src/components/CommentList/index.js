@@ -22,7 +22,7 @@ function CommentList({ comments, currentProfile, videoId }) {
             <CommentAdd profile={currentProfile} videoId={videoId} />
         </div>
         <div className='comment-list-wrapper'>
-            {Object.values(comments).map((comment) => (
+            {Object.values(comments).reverse().map((comment) => (
                 <div className='comment-wrapper' key={comment.id}>
                 <Comment videoId={videoId} comment={comment} currentProfile={currentProfile}/>
                 </div>
