@@ -59,6 +59,15 @@
   color: white;
   font-size: 48px;
 }
+
+.autoplay-preview-text {
+    padding: 10px;
+}
+.remember-me-div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
 .profile-add-subtext {
     justify-content: flex-start;
   color: var(--modal-text-grey);

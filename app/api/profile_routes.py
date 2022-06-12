@@ -112,7 +112,7 @@ def patch_profile(id):
         profile.name = form.data["name"]
         profile.userId = user.id
         profile.autoplayHover = form.data["autoplayHover"]
-        profile.autoplayNext = True
+        profile.autoplayNext = form.data["autoplayNext"]
         profile.defaultVolume = form.data["defaultVolume"]
         # profile.profileImageUrl = form.data["profileImageUrl"]
 

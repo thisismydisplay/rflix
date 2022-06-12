@@ -23,6 +23,9 @@ const ProfileEditPage = ({ currentProfile }) => {
     const [autoplayHover, setAutoplayHover] = useState(
         currentProfile.autoplayHover
     );
+    const [autoplayNext, setAutoplayNext] = useState(
+        currentProfile.autoplayNext
+    );
     const [defaultVolume, setDefaultVolume] = useState(
         currentProfile.defaultVolume*100
     );
@@ -40,6 +43,7 @@ const ProfileEditPage = ({ currentProfile }) => {
             userId: currentProfile.userId,
             name: profileName,
             autoplayHover: autoplayHover,
+            autoplayNext: autoplayNext,
             defaultVolume: defaultVolume/100,
         };
 
@@ -143,9 +147,26 @@ const ProfileEditPage = ({ currentProfile }) => {
                                                 )
                                             }
                                         />
-                                        <span className='autoplay-preview-text'>
-                                            Autoplay previews while browsing
-                                        </span>
+                                        <div className='autoplay-preview-text'>
+                                            Autoplay previews on hover while browsing
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className='autoplay-preview-div'>
+                                    <div className='remember-me-div'>
+                                        <Checkbox
+
+                                            className='autoplay-preview'
+                                            value={autoplayNext}
+                                            onChange={(e) =>
+                                                setAutoplayNext(
+                                                    !autoplayNext
+                                                )
+                                            }
+                                        />
+                                        <div className='autoplay-preview-text'>
+                                            Autoplay video on start
+                                        </div>
                                     </div>
                                 </div>
                                 <div className='profile-add-subtext'>
