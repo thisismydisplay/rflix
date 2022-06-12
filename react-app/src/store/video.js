@@ -1,9 +1,5 @@
 //helper functions
 
-// export const selectProfile = (state) => {
-//     const id = state.currentProfileId;
-//     return state.profiles[id];
-// };
 
 const GET_ALL = 'videos/GET_ALL';
 // const SET_CURRENT = 'videos/SET_CURRENT';

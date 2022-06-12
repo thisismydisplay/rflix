@@ -1,12 +1,9 @@
 import './Comment.css';
 
-import defaultProfileImage from '../../images/default-profile-image.jpeg';
 import editIcon from '../../images/edit-btn.png';
 import deleteIcon from '../../images/trash-btn.png';
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Redirect, NavLink, Link, useHistory } from 'react-router-dom';
-import { login, setCurrentProfile } from '../../store/session';
 import { getProfile } from '../../store/profile';
 import { deleteComment, updateComment } from '../../store/comment';
 import CommentProfile from '../CommentProfile';
@@ -152,8 +149,6 @@ const Comment = ({ videoId, comment, currentProfile }) => {
                     </button>
                 </form>
             )}
-
-            {/* </Link> */}
         </div>
     );
 };

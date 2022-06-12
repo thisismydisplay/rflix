@@ -87,6 +87,7 @@ export const signUp = (email, password) => async (dispatch) => {
         body: JSON.stringify({
             email,
             password,
+            rememberMe: false
         }),
     });
 
@@ -122,6 +123,8 @@ export const setCurrentProfile = (id) => async (dispatch) => {
     } else throw res;
 };
 
+
+// RTK implementation
 export default createReducer(initialState, (builder) => {
     builder.addCase(SET_USER, (state, action) => {
         state.user = action.payload;

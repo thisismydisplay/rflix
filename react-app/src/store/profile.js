@@ -1,4 +1,3 @@
-import { getDefaultMiddleware } from '@reduxjs/toolkit';
 import { SET_USER, SET_CURRENT, REMOVE_USER } from './session';
 
 //helper functions
@@ -10,26 +9,10 @@ export const selectProfile = (state) => {
 
 const GET_ALL = 'profiles/GET_ALL';
 const GET_ONE = 'profiles/GET_ONE';
-// const SET_CURRENT = 'profiles/SET_CURRENT';
 const ADD_ONE = 'profiles/ADD_ONE';
-// const UPDATE = 'profiles/UPDATE';
-const UPDATE_IMAGE = 'profiles/UPDATE_IMAGE'
+// const UPDATE_IMAGE = 'profiles/UPDATE_IMAGE'
 const DELETE = 'profiles/DELETE';
 
-
-//helper selectors
-// const selectMappableProfiles = (profiles)=> {
-//   const profilesArr = Object.entries(profiles);
-//   let idx;
-//   for (let i = 0; i < profilesArr.length; i++) {
-//     if (profilesArr[i][0] === 'currentProfile') {
-//       idx = i;
-//     }
-//   }
-//   profilesArr.splice(idx, 1);
-//   console.log(profilesArr)
-//   return profilesArr
-// }
 
 //action creators
 
@@ -37,26 +20,20 @@ const getAll = (profiles) => ({
     type: GET_ALL,
     payload: profiles,
 });
-const updateImage = (url, profileId) => ({
-    type: UPDATE_IMAGE,
-    payload: {url, profileId},
-})
+
+// use addOne for all updates
+// const updateImage = (url, profileId) => ({
+//     type: UPDATE_IMAGE,
+//     payload: {url, profileId},
+// })
 const getOne = (profile) => ({
     type: GET_ONE,
     payload: profile,
 })
-// const setCurrent = (profile) => ({
-//     type: SET_CURRENT,
-//     payload: profile,
-// });
 const addOne = (profile) => ({
     type: ADD_ONE,
     payload: profile,
 });
-// const updateOne = (profile) => ({
-//   type: UPDATE,
-//   profile,
-// });
 const deleteOne = (profileId) => ({
     type: DELETE,
     payload: profileId,
@@ -72,17 +49,6 @@ export const getProfiles = (userId) => async (dispatch) => {
         return res;
     } else throw res;
 };
-// export const getProfiles = () => async (dispatch, getState) => {
-//     // getState is a function that can be passed to a thunk that returns the current store
-//     const store = getState();
-//     const res = await fetch(`/api/profiles/${store.session.user.id}`);
-
-//     if (res.ok) {
-//         const list = await res.json();
-//         dispatch(getAll(list.profiles));
-//         return res;
-//     } else throw res;
-// };
 
 export const getProfile = (profileId) => async (dispatch) => {
   const res = await fetch(`/api/profiles/${profileId}`);
@@ -152,7 +118,6 @@ export const updateProfile = (formData, profileId) => async (dispatch) => {
 };
 
 export const updateProfileImage =
-  //imageType is 'profile', 'cover', or 'background'
   (formData, profileId) => async (dispatch) => {
     const response = await fetch(`/api/profiles/${profileId}/image`, {
       method: 'POST',
@@ -172,11 +137,6 @@ export const updateProfileImage =
       return ['An error occurred. Please try again.'];
     }
 
-    // if (response.ok) {
-    //   const resBody = await response.json();
-    //   dispatch(updateArtistImage(genreId, artistId, resBody.url, imageType));
-    //   return response;
-    // } else throw response;
   };
 
 export const deleteProfile = (id) => async (dispatch) => {
@@ -192,15 +152,6 @@ export const deleteProfile = (id) => async (dispatch) => {
         return resBody;
     } else throw res;
 };
-// export const setCurrentProfile = (id) => async (dispatch) => {
-//     const res = await fetch(`/api/profiles/${id}`);
-
-//     if (res.ok) {
-//         const profile = await res.json();
-//         dispatch(setCurrent(profile));
-//         return res;
-//     } else throw res;
-// };
 
 const initialState = {
     profiles: {},
@@ -227,11 +178,7 @@ const profileReducer = (state = initialState, action) => {
                 ...state,
                 currentProfileId: action.payload.current_profile_id,
             };
-        // case SET_CURRENT:
-        //     return {
-        //         ...state,
-        //         currentProfile: [action.payload],
-        //     };
+
         // case UPDATE:
         //     return {...state, [action.profile.id]: action.profile};
         case ADD_ONE:

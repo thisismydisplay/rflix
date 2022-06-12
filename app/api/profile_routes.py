@@ -22,7 +22,6 @@ def get_all_profiles(id):
     profiles = Profile.query.filter(Profile.userId == id).all()
 
     profile_dict_list = [profile.to_dict() for profile in profiles]
-    # profiles_by_profileId = {profile['id']: profile for profile in profile_dict_list}
     # if current_user.is_authenticated:
     return {'profiles': profile_dict_list}
     # return {'errors': ['Unauthorized']}
@@ -35,16 +34,6 @@ def get_all_profiles(id):
 def get_one_profile(id):
     profile = Profile.query.get(id)
     return profile.to_dict()
-
-
-"""
-If use "/" below, get FormDataRoutingRedirect error, informing you that your request
-The URL was defined with a trailing slash so Flask will automatically redirect to
-the URL with the trailing slash if it was accessed without one.
-Make sure to directly send your POST-request to this URL since we can't make
-browsers or HTTP clients redirect with form data reliably or without user
-interaction. Note: this exception is only raised in debug mode"
-"""
 
 
 # ADD Profile - LOGGED-IN USER ONLY
@@ -66,7 +55,7 @@ def post_new_profile():
             userId=userId,
             profileImageUrl='https://lofidelity-bucket.s3.amazonaws.com/default-profile-image.jpeg',
             autoplayHover=True,
-            autoplayNext=False,
+            autoplayNext=True,
             defaultVolume=0.5,
         )
 
@@ -75,11 +64,9 @@ def post_new_profile():
         db.session.commit()
 
         return new_profile.to_dict()
-        # return redirect("/") #backend redirect?
 
     # handle errors, note: automatically creates csrf error, if token not present
     if form.errors:  # check if errors exist
-        # checks if profilel is unique
         # send errors to frontend (sends dictionary in json to frontend)
         # return form.errors
         return {'errors': validation_errors_to_error_messages(form.errors)}, 418
@@ -103,33 +90,24 @@ def patch_profile(id):
 
     if form.validate_on_submit():
 
-
-        # session_profile = profile.query.filter(profile.profileUrl == profileUrl).first()
-
-
-
-        #might need to cast to bool
         profile.name = form.data["name"]
         profile.userId = user.id
         profile.autoplayHover = form.data["autoplayHover"]
         profile.autoplayNext = form.data["autoplayNext"]
         profile.defaultVolume = form.data["defaultVolume"]
-        # profile.profileImageUrl = form.data["profileImageUrl"]
-
         db.session.commit()
 
         return profile.to_dict()
-        # return redirect("/") backend redirect?
+
 
     # handle errors, automatically creates csrf error, if token not present
     if form.errors:  # check if errors exist
-        # checks if profileUrl is unique
         # send errors to frontend
         return {'errors': validation_errors_to_error_messages(form.errors)}, 418
 
 
 
-# UPDATE profile
+# UPDATE profile image
 @profile_routes.route("/<int:id>/image", methods=["POST"])
 @login_required
 def upload_profile_image(id):
@@ -137,14 +115,6 @@ def upload_profile_image(id):
     user = User.query.get(profile.userId)
     if user.id != current_user.id:
         return {'errors': ['Invalid Request: Unauthorized']}
-
-
-    # form = ProfileForm()
-    #     form['csrf_token'].data = request.cookies['csrf_token']
-    #     form['id'].data = id
-
-    #     if form.validate_on_submit():
-
 
     if "image" not in request.files:
         return {"errors": ["Please choose an image file"]}, 400
@@ -183,44 +153,3 @@ def delete_profile(id):
     db.session.delete(profile)
     db.session.commit()
     return {'message': 'Success'}
-
-
-# @profile_routes.route('/<int:id>/set', methods=['PATCH'])
-# @login_required
-# def set_profile(id):
-#     session['current_profile_id'] = id
-#     print(session['current_profile_id'])
-#     print(current_user)
-#     profile = Profile.query.get(id)
-#     return profile.to_dict()
-#     return {'message': 'Success'}
-# TEST ROUTES
-
-
-
-# window.store.dispatch(
-#   window.profile.addProfile({
-#     name: 'test',
-#     userId: 2,
-#     autoplayHover: false,
-#     autoplayNext: false,
-#     defaultVolume: 0,
-#     profileImageUrl: 'https://lofidelity-bucket.s3.amazonaws.com/default-profile-image.jpeg',
-#   })
-# ).catch(async (res) => { const resBody= await res.json(); console.log(res,resBody)})
-
-
-# fetch('/api/profiles/5', {
-#     method: 'POST',
-#     headers: {'Content-Type': 'application/json'},
-#     body: JSON.stringify({
-#         userId: 1,
-#         name: 'The Boss',
-#         profileImageUrl: 'https://lofidelity-bucket.s3.amazonaws.com/17498db6ef0f40f793256acd10b863b6.png',
-#         autoplayHover: false,
-#         autoplayNext: false,
-#         defaultVolume: 0,
-#     }),
-# })
-# .then((res)=> res.json())
-# .then((data)=> console.log(data))

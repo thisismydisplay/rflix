@@ -2,9 +2,6 @@ import './CommentAdd.css';
 
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-
-import { addProfile } from '../../store/profile';
 import { addComment } from '../../store/comment';
 
 const CommentAdd = ({ profile, videoId }) => {
@@ -37,9 +34,6 @@ const CommentAdd = ({ profile, videoId }) => {
             setErrors(['Something went wrong, please try again.']);
             console.log('error');
         }
-    };
-    const handleCancel = () => {
-        setShowAddComment(false);
     };
 
     return (

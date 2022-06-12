@@ -47,7 +47,6 @@ const ProfileAddPage = ({ user }) => {
                 </div>
                 {errors.length > 0 && (
                     <div className='error-container'>
-                        {/* <p className='signup-error-message'>Invalid email or password.</p> */}
                         {errors.map((error, ind) => (
                             <div key={ind}>{error?.split(': ')[1]}</div>
                         ))}
@@ -58,7 +57,6 @@ const ProfileAddPage = ({ user }) => {
                         <div className='profile-default-image-div'>
                             <img
                                 className='profile-default-image'
-                                // onClick={handleClick}
                                 src='https://lofidelity-bucket.s3.amazonaws.com/rflix-default-profile.png'
                                 alt='default user'
                                 viewBox='0 0 100 100'
@@ -76,7 +74,6 @@ const ProfileAddPage = ({ user }) => {
                                 placeholder='Name'
                             />
                         </div>
-                        {/* <Profile profile={{profileImageUrl: 'https://lofidelity-bucket.s3.amazonaws.com/default-profile-image.jpeg'}} /> */}
                     </div>
                     <div className='form-buttons'>
                         <div className='continue-btn-div'>
