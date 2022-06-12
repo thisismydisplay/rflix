@@ -17,19 +17,6 @@ import ProfileEditPage from './components/ProfileEditPage';
 import ProfileDeletePage from './components/ProfileDeletePage';
 import ProfileUploadImagePage from './components/ProfileUploadImagePage';
 import VideoPage from './components/VideoPage';
-import { getVideos } from './store/video';
-// const getProfilesList = (profiles) => {
-//   const profilesArr = Object.entries(profiles);
-//   let idx;
-//   for (let i = 0; i < profilesArr.length; i++) {
-//     if (profilesArr[i][0] === 'currentProfile') {
-//       idx = i;
-//     }
-//   }
-//   profilesArr.splice(idx, 1);
-//   console.log(profilesArr)
-//   return profilesArr;
-// }
 
 function App() {
     const [loaded, setLoaded] = useState(false);
@@ -86,7 +73,7 @@ function App() {
                         )}
                         {/* <LoginFormPage /> */}
                     </Route>
-                    <Route path='/sign-up' exact={true}>
+                    <Route path='/signup' exact={true}>
                         {sessionUser ? (
                             <Redirect to='/profile' />
                         ) : (

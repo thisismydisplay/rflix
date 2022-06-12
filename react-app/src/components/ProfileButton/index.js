@@ -1,14 +1,15 @@
 import './ProfileButton.css';
 
+import LogoutButton from '../auth/LogoutButton';
+
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import LogoutButton from '../auth/LogoutButton';
-import defaultProfileImage from '../../images/default-profile-image.jpeg';
+
 import { selectProfile } from '../../store/profile';
 import { setCurrentProfile } from '../../store/session';
-function ProfileButton({ user }) {
-    // function ProfileButton({ profile }) {
+
+function ProfileButton() {
     const currentProfile = useSelector((state) => selectProfile(state.profile));
     const profiles = useSelector((state) =>
         Object.values(state.profile.profiles)
@@ -38,11 +39,6 @@ function ProfileButton({ user }) {
         return () => document.removeEventListener('click', closeMenu);
     }, [showMenu]);
 
-    const logout = (e) => {
-        e.preventDefault();
-        dispatch(logout());
-    };
-
     console.log(currentProfile.profileImageUrl);
     return (
         <div className='nav-user-image-container' onClick={openMenu}>
@@ -51,25 +47,10 @@ function ProfileButton({ user }) {
                 style={{
                     backgroundImage: `url(${currentProfile.profileImageUrl})`,
                 }}
-                // style={
-                //   profile?.profileImageUrl
-                //     ? {
-                //         backgroundImage: `url(${profile.profileImageUrl})`,
-                //       }
-                //     : { backgroundImage: {defaultProfileImage} }
-                // }
             >
                 {showMenu && (
                     <>
                         <div className='nav-user-dropdown-container' ref={menu}>
-                            {/* <div className='nav-user-dropdown-welcome'> */}
-                                {/* <div className='nav-user-dropdown-welcome-text'>
-                                    {' '}
-                                    {currentProfile.name}
-                                </div> */}
-                                {/* map profiles */}
-                                {/* <div className='nav-user-dropdown-welcome-text'> {profile.name}</div> */}
-                            {/* </div> */}
                             <div className='nav-user-profiles'>
                                 {profiles.map((profile) => {
                                     return (

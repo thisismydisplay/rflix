@@ -1,38 +1,30 @@
 import './VideoPage.css';
-import '../../index.css';
-import ReactPlayer from 'react-player';
+
 import backButton from '../../images/back-btn.png';
+
 import React, { useEffect, useState } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { getVideo } from '../../store/video';
-import CommentList from '../CommentList';
+import ReactPlayer from 'react-player';
+
 import { getComments } from '../../store/comment';
+
+import CommentList from '../CommentList';
 
 function VideoPage({ profile }) {
     const history = useHistory();
-    const dispatch =useDispatch()
+    const dispatch = useDispatch();
     const location = useLocation();
     const videoId = location.pathname.split('/')[2];
     useEffect(() => {
         const navbar = document.getElementById('navbar');
         navbar.setAttribute('style', 'display:none;');
-        // navbar.setAttribute("style","display:none;")
     });
     const video = useSelector((state) => state.video.videos[videoId]);
 
     //comments is an object with key videoId
     const comments = useSelector((state) => state.comment?.comments);
 
-    const [commentsLoaded, setCommentsLoaded] = useState(false);
-    useEffect(() => {
-        (async () => {
-            await dispatch(getComments(videoId));
-            //await dispatch(getComments(videoId));
-            setCommentsLoaded(true);
-            // setCommentsLoaded(true);
-        })();
-    }, [dispatch, videoId]);
     //OR
     // const video = useSelector((state)=>state.video.currentVideo)
     // const [videoLoaded, setVideoLoaded] = useState(false)
@@ -46,8 +38,16 @@ function VideoPage({ profile }) {
     //     })();
     // }, [dispatch, videoId])
 
+    const [commentsLoaded, setCommentsLoaded] = useState(false);
+    useEffect(() => {
+        (async () => {
+            await dispatch(getComments(videoId));
+            setCommentsLoaded(true);
+        })();
+    }, [dispatch, videoId]);
+
     const [controlsOn, setControlsOn] = useState(false);
-    const [firstMove, setFirstMove] = useState(true)
+    const [firstMove, setFirstMove] = useState(true);
 
     const handleClick = () => {
         const navbar = document.getElementById('navbar');
@@ -57,16 +57,15 @@ function VideoPage({ profile }) {
         history.push(`/browse`);
     };
     const handleMove = () => {
-        if(firstMove){
+        if (firstMove) {
             setControlsOn(true);
-            setFirstMove(false)
+            setFirstMove(false);
             setTimeout(() => {
                 setControlsOn(false);
-                setFirstMove(true)
+                setFirstMove(true);
             }, 5000);
         }
     };
-    //add mousemove to show controls and back to browse button
 
     return (
         <div className='video-page-wrapper'>
@@ -77,23 +76,25 @@ function VideoPage({ profile }) {
             )}
             <div className='video-player-wrapper' onMouseMove={handleMove}>
                 <ReactPlayer
-                className='video-main'
+                    className='video-main'
                     controls={controlsOn}
                     volume={profile.defaultVolume}
                     playing={profile.autoplayNext}
                     url={video?.videoUrl}
                     width='98vw'
                     height='100vh'
-                    // style={{display:'flex',justifyContent:'center', alignItems:'center'}}
-                    // active={currentProfile?.id === profile.id}
                 />
             </div>
             <div className='comments-wrapper'>
-                {commentsLoaded && comments && <CommentList comments={comments} currentProfile={profile} videoId={video?.id}/>}
+                {commentsLoaded && comments && (
+                    <CommentList
+                        comments={comments}
+                        currentProfile={profile}
+                        videoId={video?.id}
+                    />
+                )}
             </div>
         </div>
-
-        // map movies in carousels by genre
     );
 }
 

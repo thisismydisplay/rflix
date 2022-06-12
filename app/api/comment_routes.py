@@ -9,7 +9,7 @@ from .utils import validation_errors_to_error_messages
 comment_routes = Blueprint('comments', __name__)
 
 
-# GET ALL commentS by videoId
+# GET ALL comments by videoId
 @comment_routes.route('/<int:id>')
 @login_required
 def get_all_comments(id):
@@ -26,15 +26,6 @@ def get_all_comments(id):
     # if current_user.is_authenticated:
     return {'comments': comment_dict_list}
     # return {'errors': ['Unauthorized']}
-
-
-# # GET ONE PROFILE BY Profile Id
-# @profile_routes.route('/<int:id>')
-# @login_required
-# def get_one_profile(id):
-#     profile = Profile.query.get(id)
-#     return profile.to_dict()
-
 
 """
 If use "/" below, get FormDataRoutingRedirect error, informing you that your request
@@ -86,8 +77,7 @@ def patch_comment(id):
 
     if form.validate_on_submit():
 
-        # comment.profileId= form.profileId.data,
-        # comment.videoId= form.videoId.data,
+
         comment.text= form.text.data
 
         db.session.commit()
@@ -96,7 +86,7 @@ def patch_comment(id):
 
     # handle errors, automatically creates csrf error, if token not present
     if form.errors:  # check if errors exist
-        # checks if commentUrl is unique
+
         # send errors to frontend
         return {'errors': validation_errors_to_error_messages(form.errors)}, 418
 

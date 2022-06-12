@@ -32,7 +32,6 @@
 .manage-profile-btn {
   border: var(--modal-text-grey) 2px solid;
   border-radius: 5px;
-  padding: 20px;
 }
 .manage-profile-btn:hover {
   border: white 2px solid;

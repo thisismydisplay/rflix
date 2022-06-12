@@ -4,9 +4,9 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-import { addProfile, deleteProfile } from '../../store/profile';
+import { deleteProfile } from '../../store/profile';
 
-const ProfileDeletePage = ({ currentProfile}) => {
+const ProfileDeletePage = ({ currentProfile }) => {
     const [errors, setErrors] = useState([]);
     const dispatch = useDispatch();
     const history = useHistory();
@@ -18,7 +18,6 @@ const ProfileDeletePage = ({ currentProfile}) => {
         try {
             const res = await dispatch(deleteProfile(currentProfile.id));
             if (res.message === 'Success') {
-                // closeModal()
                 history.push('/profile');
                 return;
             } else {
@@ -40,7 +39,6 @@ const ProfileDeletePage = ({ currentProfile}) => {
 
                 {errors.length > 0 && (
                     <div className='error-container'>
-                        {/* <p className='signup-error-message'>Invalid email or password.</p> */}
                         {errors.map((error, ind) => (
                             <div key={ind}>{error?.split(': ')[1]}</div>
                         ))}
@@ -51,7 +49,6 @@ const ProfileDeletePage = ({ currentProfile}) => {
                         <div className='profile-default-image-div'>
                             <img
                                 className='profile-select-image'
-                                // onClick={handleClick}
                                 src={currentProfile?.profileImageUrl}
                                 alt='default user'
                                 viewBox='0 0 100 100'
@@ -59,23 +56,24 @@ const ProfileDeletePage = ({ currentProfile}) => {
                             />
                         </div>
                         <div className='add-name-input-div'>
-                            <span className='delete-text'>This profile's history - including My List, comments, and activity - will be gone forever, and you wont be able to access it again.</span>
-
+                            <span className='delete-text'>
+                                This profile's history - including My List,
+                                comments, and activity - will be gone forever,
+                                and you wont be able to access it again.
+                            </span>
                         </div>
-                        {/* <Profile profile={{profileImageUrl: 'https://lofidelity-bucket.s3.amazonaws.com/default-profile-image.jpeg'}} /> */}
                     </div>
                     <div className='form-buttons'>
                         <div className='continue-btn-div'>
-                            <button className='continue-btn' onClick={handleCancel}>
+                            <button
+                                className='continue-btn'
+                                onClick={handleCancel}
+                            >
                                 Keep Profile
                             </button>
                         </div>
                         <div className='continue-btn-div'>
-                            <button
-                            type='submit'
-                                className='cancel-btn'
-
-                            >
+                            <button type='submit' className='cancel-btn'>
                                 Delete Profile
                             </button>
                         </div>

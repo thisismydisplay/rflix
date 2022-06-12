@@ -1,10 +1,10 @@
+import './LoginFormPage.css';
+
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect, NavLink } from 'react-router-dom';
 import { login } from '../../store/session';
-import logo from '../../images/rflix-logo-placeholder2.png';
 import background from '../../images/splash-bg.png';
-import './LoginFormPage.css';
 const LoginFormPage = () => {
     const [errors, setErrors] = useState([]);
     const [email, setEmail] = useState('');
@@ -40,13 +40,8 @@ const LoginFormPage = () => {
     return (
         <div
             className='login-page-wrapper'
-            //   style={{ backgroundImage: `url(${background})` }}
         >
-            {/* <div className='login-header-container'>
-        <div className='logo-container'>
-          <img src={logo} alt='rflix logo' />
-        </div>
-      </div> */}
+
             <div className='login-form-container'>
                 <div className='login-form-wrapper'>
                     <div className='login-wrapper-bg'>
@@ -114,7 +109,7 @@ const LoginFormPage = () => {
                         </div>
                         <div className='new-sign-up-div'>
                             <span className='new-to-rflix-text'>New to rflix? </span>
-                            <NavLink className='sign-up-now-text' to='/sign-up'>
+                            <NavLink className='sign-up-now-text' to='/signup'>
                                 Sign up now.
                             </NavLink>
                         </div>

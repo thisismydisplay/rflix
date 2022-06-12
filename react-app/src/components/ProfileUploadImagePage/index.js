@@ -4,10 +4,10 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-import { addProfile, updateProfileImage } from '../../store/profile';
+import { updateProfileImage } from '../../store/profile';
 
 const ProfileUploadImagePage = ({ currentProfile }) => {
-    const [errors, setErrors] = useState([]);
+    const [uploadErrors, setUploadErrors] = useState([]);
     const [image, setImage] = useState(false);
 
     const [imageLoading, setImageLoading] = useState(false);
@@ -16,7 +16,7 @@ const ProfileUploadImagePage = ({ currentProfile }) => {
     console.log('current profile:', currentProfile);
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setErrors([]);
+        setUploadErrors([]);
 
         const formData = new FormData();
         formData.append('image', image);
@@ -37,10 +37,10 @@ const ProfileUploadImagePage = ({ currentProfile }) => {
                 return;
             } else {
                 setImageLoading(false);
-                setErrors(errors);
+                setUploadErrors(errors);
             }
         } catch (errorResponse) {
-            setErrors(['Something went wrong, please try again.']);
+            setUploadErrors(['Something went wrong, please try again.']);
             console.log('error');
         }
     };
@@ -59,19 +59,17 @@ const ProfileUploadImagePage = ({ currentProfile }) => {
             <div className='profile-select-wrap'>
                 <div className='profile-edit-text'>Upload Profile Image</div>
 
-
-                    <div className='error-container'>
-                        {/* {errors?.map((error, ind) => (
-                            <div key={ind}>{error?.split(': ')[1]}</div>
-                        ))} */}
-                    </div>
+                <div className='error-container'>
+                    {uploadErrors?.map((error, ind) => (
+                        <div key={ind}>{error}</div>
+                    ))}
+                </div>
 
                 <form className='profile-add-form' onSubmit={handleSubmit}>
                     <div className='profile-select-div'>
                         <div className='profile-default-image-div'>
                             <img
                                 className='profile-select-image'
-                                // onClick={handleClick}
                                 src={currentProfile.profileImageUrl}
                                 alt='default user'
                                 viewBox='0 0 100 100'
@@ -88,7 +86,6 @@ const ProfileUploadImagePage = ({ currentProfile }) => {
                                 onChange={updateImage}
                             />
                         </div>
-                        {/* <Profile profile={{profileImageUrl: 'https://lofidelity-bucket.s3.amazonaws.com/default-profile-image.jpeg'}} /> */}
                     </div>
                     <div className='form-buttons'>
                         <div className='continue-btn-div'>

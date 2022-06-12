@@ -1,12 +1,8 @@
 import './CommentList.css';
-import ReactPlayer from 'react-player';
-import { findDOMNode } from 'react-dom';
 
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { selectProfile } from '../../store/profile';
+import React from 'react';
+
 import { Redirect } from 'react-router-dom';
-import VideoThumbnail from '../VideoThumbnail';
 import CommentAdd from '../CommentAdd';
 import Comment from '../Comment'
 

@@ -1,11 +1,7 @@
 import './VideoList.css';
-import '../../index.css';
-import ReactPlayer from 'react-player';
-import { findDOMNode } from 'react-dom';
 
-import React, { useState } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
-import { selectProfile } from '../../store/profile';
 import { Redirect } from 'react-router-dom';
 import VideoThumbnail from '../VideoThumbnail';
 
@@ -18,17 +14,15 @@ function VideoList({ videos }) {
     if (!profile) return <Redirect to='/profile' />;
     return (
         <div className='video-carousel-wrapper'>
-<div className='video-list-title'>
-    Recommended for you
+            <div className='video-list-title'>Recommended for you</div>
+            <div className='video-list-wrapper'>
+                {Object.values(videos).map((video) => (
+                    <div className='video-thumb-wrapper' key={video.id}>
+                        <VideoThumbnail profile={profile} video={video} />
+                    </div>
+                ))}
             </div>
-        <div className='video-list-wrapper'>
-            {Object.values(videos).map((video) => (
-                <div className='video-thumb-wrapper' key={video.id} >
-                <VideoThumbnail profile={profile} video={video}/>
-                </div>
-            ))}
         </div>
-            </div>
         // map movies in carousels by genre
     );
 }

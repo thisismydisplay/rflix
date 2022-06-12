@@ -1,8 +1,11 @@
+import './SignUpFormPage.css';
+
+import background from '../../images/splash-bg.png';
+
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
-import background from '../../images/splash-bg.png';
 
 const SignUpFormPage = () => {
     const [errors, setErrors] = useState([]);
@@ -19,6 +22,8 @@ const SignUpFormPage = () => {
             if (data) {
                 setErrors(data);
             }
+        } else {
+            setErrors(['Password must match']);
         }
     };
 
@@ -39,20 +44,13 @@ const SignUpFormPage = () => {
     }
 
     return (
-        <div
-            className='login-page-wrapper'
-            //   style={{ backgroundImage: `url(${background})` }}
-        >
-            {/* <div className='login-header-container'>
-<div className='logo-container'>
-  <img src={logo} alt='rflix logo' />
-</div>
-</div> */}
+        <div className='login-page-wrapper'>
             <div className='login-form-container'>
                 <div className='login-form-wrapper'>
                     <div className='login-wrapper-bg'>
                         <img src={background} alt='rflix' />
                     </div>
+
                     <form onSubmit={onSignUp} className='login-form'>
                         <div>
                             {errors.map((error, ind) => (
@@ -69,6 +67,7 @@ const SignUpFormPage = () => {
                                 placeholder='Email'
                                 onChange={updateEmail}
                                 value={email}
+                                required
                             ></input>
                         </div>
                         <div>
@@ -78,7 +77,7 @@ const SignUpFormPage = () => {
                                 type='password'
                                 name='password'
                                 placeholder='Password'
-
+                                required
                                 onChange={updatePassword}
                                 value={password}
                             ></input>
@@ -90,7 +89,6 @@ const SignUpFormPage = () => {
                                 type='password'
                                 name='repeat_password'
                                 placeholder='Confirm Password'
-
                                 onChange={updateRepeatPassword}
                                 value={repeatPassword}
                                 required={true}

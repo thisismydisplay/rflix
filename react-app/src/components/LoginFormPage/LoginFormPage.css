@@ -73,6 +73,7 @@
     margin: 10px;
     border-bottom: var(--modal-text-grey) 1px solid;
     border-top: var(--modal-text-grey) 1px solid;
+    color: black;
     background-color: white;
     border-radius: 5px;
 }

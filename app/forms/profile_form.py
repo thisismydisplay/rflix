@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, IntegerField, BooleanField, FloatField
-from wtforms.validators import DataRequired, Email, ValidationError, Length
-from app.models import Profile, User
+from wtforms.validators import DataRequired, ValidationError, Length
+from app.models import Profile
 
 
 def profile_exists(form, field):
@@ -13,17 +13,8 @@ def profile_exists(form, field):
     print(form.data['id'])
     profiles = Profile.query.filter(Profile.userId == userId).all()
     for profile in profiles:
-      if profile.name == name and profile.id != form.data['id']: #check if profile.id == form.data['id']
+      if profile.name.lower() == name.lower() and profile.id != form.data['id']: #check if profile.id == form.data['id']
           raise ValidationError('Profile name is already in use.')
-
-
-
-# def username_exists(form, field):
-#     # Checking if username is already in use
-#     username = field.data
-#     user = User.query.filter(User.username == username).first()
-#     if user:
-#         raise ValidationError('Username is already in use.')
 
 
 class ProfileForm(FlaskForm):
@@ -37,6 +28,3 @@ class ProfileForm(FlaskForm):
     autoplayNext = BooleanField('autoplayNext')
     defaultVolume = FloatField('defaultVolume')
     profileImageUrl = StringField('profileImageUrl')
-    # autoplayHover = BooleanField('autoplayHover', default=True, false_values=('False', 'false', ''))
-    # autoplayNext = BooleanField('autoplayNext', default=True, false_values=('False', 'false', ''))
-    # defaultVolume = FloatField('defaultVolume' default=0.5, false_values=('False', 'false', ''))

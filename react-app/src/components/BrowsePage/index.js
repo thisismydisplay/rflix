@@ -1,10 +1,8 @@
 import './BrowsePage.css';
 import ReactPlayer from 'react-player';
-import { findDOMNode } from 'react-dom';
 
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectProfile } from '../../store/profile';
 import { Redirect } from 'react-router-dom';
 import VideoList from '../VideoList';
 import { getVideos } from '../../store/video';
