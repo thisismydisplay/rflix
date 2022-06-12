@@ -75,7 +75,7 @@ function VideoPage({ profile }) {
                 className='video-main'
                     controls={controlsOn}
                     volume={profile.defaultVolume}
-                    playing
+                    playing={profile.autoplayNext}
                     url={video?.videoUrl}
                     width='98vw'
                     height='100vh'

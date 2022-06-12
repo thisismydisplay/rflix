@@ -132,6 +132,7 @@ export const updateProfile = (formData, profileId) => async (dispatch) => {
             name: formData.name,
             userId: formData.userId,
             autoplayHover: formData.autoplayHover,
+            autoplayNext: formData.autoplayNext,
             defaultVolume: formData.defaultVolume
         }),
     });
