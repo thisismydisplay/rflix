@@ -1,8 +1,7 @@
 from enum import auto
-import pprint
 from flask import Blueprint, request, session
 from flask_login import login_required, current_user
-from app.models import comment, db, Comment, User
+from app.models import db, Comment, User
 from app.forms import CommentForm
 from .utils import validation_errors_to_error_messages
 
@@ -19,7 +18,7 @@ def get_all_comments(id):
     # if user.id != current_user.id:
     #     return {'errors': ['Invalid Request: Unauthorized']}, 403
     # print('hit route')
-    comments = Comment.query.filter(Comment.videoId == id).order_by(Comment.updatedAt.asc()).all()
+    comments = Comment.query.filter(Comment.videoId == id).all()
     print('***********comments')
     comment_dict_list = [comment.to_dict() for comment in comments]
     print(comment_dict_list)
