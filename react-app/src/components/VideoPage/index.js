@@ -47,6 +47,7 @@ function VideoPage({ profile }) {
     // }, [dispatch, videoId])
 
     const [controlsOn, setControlsOn] = useState(false);
+    const [firstMove, setFirstMove] = useState(true)
 
     const handleClick = () => {
         const navbar = document.getElementById('navbar');
@@ -56,10 +57,14 @@ function VideoPage({ profile }) {
         history.push(`/browse`);
     };
     const handleMove = () => {
-        setControlsOn(true);
-        const timer = setTimeout(() => {
-            setControlsOn(false);
-        }, 5000);
+        if(firstMove){
+            setControlsOn(true);
+            setFirstMove(false)
+            setTimeout(() => {
+                setControlsOn(false);
+                setFirstMove(true)
+            }, 5000);
+        }
     };
     //add mousemove to show controls and back to browse button
 
