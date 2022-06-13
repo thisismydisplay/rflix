@@ -21,5 +21,5 @@ class Genre(db.Model, DateMixin):
         return {
             'id': self.id,
             'name': self.name,
-            'videoIds:': [video.id for video in self.videos]
+            'videos:': [video.to_dict() for video in self.videos]
         }

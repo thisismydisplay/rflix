@@ -21,7 +21,7 @@ class Video(db.Model, DateMixin):
     comments = db.relationship('Comment', back_populates='video', cascade='all, delete, delete-orphan', lazy='joined')
 
     #belongs to one
-    genre = db.relationship('Genre', back_populates='videos', lazy='joined')
+    genre = db.relationship('Genre', back_populates='videos')
 
     #many to many
     profiles = db.relationship('Profile', back_populates='videos', secondary=watchlists)
@@ -36,7 +36,8 @@ class Video(db.Model, DateMixin):
             'description': self.description,
             'imageUrl': self.imageUrl,
             'videoUrl': self.videoUrl,
-            # 'comments': [comment.to_dict() for comment in self.comments],
+            'genre': self.genre.name,
+            'comments': [comment.to_dict() for comment in self.comments],
             'createdAt': self.createdAt,
             'updatedAt': self.updatedAt,
         }

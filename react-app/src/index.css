@@ -51,6 +51,7 @@ textarea {
   /* box-sizing: border-box; */
   --modal-bg: #0f0f0f;
   --modal-text-grey: #5f5f5f;
+  --description-text-grey: rgb(210, 210, 210);
   --watchlist-bg: #141414;
   --profile-dropdown-bg: #141414;
   --nav-white: #ffffff;

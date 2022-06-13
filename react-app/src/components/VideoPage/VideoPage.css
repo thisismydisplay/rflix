@@ -7,8 +7,41 @@
 }
 
 .video-player-wrapper {
-
     background-color: black;
+}
+.video-detail-wrapper {
+    padding: 20px;
+    color:#d2d2d2
+}
+
+.video-detail-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.video-detail-list-wrapper {
+    width: 300px;
+    padding: 10px;
+}
+
+.video-detail-description-wrapper {
+    margin-right: 100px;
+    padding: 20px;
+}
+
+.video-detail-title{
+    font-size: 20px;
+    padding: 10px;
+    font-weight: 700;
+}
+.video-detail-year{
+    font-size: 14px;
+    padding-left:10px;
+}
+.video-detail-genre{
+    padding:5px;
+    padding-left:10px;
+    font-size: 14px;
 }
 
 .video-main {

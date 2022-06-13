@@ -38,11 +38,11 @@ const CommentAdd = ({ profile, videoId }) => {
 
     return (
         <div className='comment-add-div'>
-            {errors?.map((error, idx) => (
-              <p className='error-message' key={idx}>
-                {error?.split(': ')[1]}
-              </p>
-            ))}
+            <div className='error-container'>
+                {errors?.map((error, ind) => (
+                    <div key={ind}>{error?.split(': ')[1]}</div>
+                ))}
+            </div>
             <form onSubmit={handleSubmit}>
                 <input
                     className='comment-add-input'
@@ -50,19 +50,22 @@ const CommentAdd = ({ profile, videoId }) => {
                     value={commentText}
                     // required
                     onClick={(e) => setShowAddComment(true)}
-                    onChange={(e) => setCommentText(e.target.value)}
+                    onChange={(e) => {
+                        setErrors([]);
+                        setCommentText(e.target.value);
+                    }}
                 ></input>
 
                 {showAddComment && (
                     <div className='comment-add-btns'>
                         <button
-                            className='comment-add-confirm-btn'
+                            className='comment-add-confirm-btn continue-btn'
                             type='submit'
                         >
                             Confirm
                         </button>
                         <button
-                            className='comment-add-cancel-btn'
+                            className='comment-add-cancel-btn cancel-btn'
                             onClick={() => setShowAddComment(false)}
                             type='button'
                         >

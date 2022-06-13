@@ -55,7 +55,7 @@ def post_comment():
         return comment.to_dict()
 
     if form.errors:
-        return form.errors
+        return {'errors': validation_errors_to_error_messages(form.errors)}, 418
 
     return {"error": "Failed"}
 

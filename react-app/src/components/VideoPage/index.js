@@ -46,6 +46,10 @@ function VideoPage({ profile }) {
         })();
     }, [dispatch, videoId]);
 
+    useEffect(() => {
+        window.scrollTo(0, 0)
+      }, [])
+    
     const [controlsOn, setControlsOn] = useState(false);
     const [firstMove, setFirstMove] = useState(true);
 
@@ -84,6 +88,19 @@ function VideoPage({ profile }) {
                     width='98vw'
                     height='100vh'
                 />
+            </div>
+            <div className='video-detail-wrapper'>
+                <div className='video-detail-container'>
+                <div className='video-detail-list-wrapper'>
+                    <p className='video-detail-title'>{video?.title}</p>
+                    <p className='video-detail-year'>{video?.releaseYear}</p>
+                    <p className='video-detail-genre'>{video?.genre}</p>
+
+                </div>
+                <div className='video-detail-description-wrapper'>
+                    <div className='video-detail-description'>{video?.description}</div>
+                </div>
+                </div>
             </div>
             <div className='comments-wrapper'>
                 {commentsLoaded && comments && (
