@@ -1,3 +1,4 @@
-.video-thumb-wrapper:hover{
-
+.hidden-thumbnail-overlay, .hidden-thumbnail-description {
+    padding: 10px;
+    display:none;
 }

@@ -11,3 +11,8 @@
     border-bottom: var(--modal-text-grey) 1px solid;
     border-top: var(--modal-text-grey) 1px solid;
 }
+
+.comment-add-btns {
+    padding: 20px;
+    padding-top: 10px;
+}

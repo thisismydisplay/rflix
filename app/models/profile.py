@@ -36,6 +36,7 @@ class Profile(db.Model, DateMixin):
             'defaultVolume': self.defaultVolume,
             'createdAt': self.createdAt,
             'updatedAt': self.updatedAt,
+            'watchlist': [video.to_dict() for video in self.videos]
         }
 
     @staticmethod
