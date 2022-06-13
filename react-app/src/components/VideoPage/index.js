@@ -3,7 +3,7 @@ import './VideoPage.css';
 import backButton from '../../images/back-btn.png';
 
 import React, { useEffect, useState } from 'react';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useHistory, useLocation, Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import ReactPlayer from 'react-player';
 
@@ -49,7 +49,7 @@ function VideoPage({ profile }) {
     useEffect(() => {
         window.scrollTo(0, 0)
       }, [])
-    
+
     const [controlsOn, setControlsOn] = useState(false);
     const [firstMove, setFirstMove] = useState(true);
 
@@ -70,7 +70,7 @@ function VideoPage({ profile }) {
             }, 5000);
         }
     };
-
+    if (!profile) return <Redirect to='/profile' />;
     return (
         <div className='video-page-wrapper'>
             {controlsOn && (
