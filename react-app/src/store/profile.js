@@ -60,7 +60,6 @@ export const getProfile = (profileId) => async (dispatch) => {
 };
 
 export const addProfile = (formData) => async (dispatch) => {
-    console.log(formData);
     const res = await fetch(`/api/profiles/`, {
         method: 'POST',
         headers: {
@@ -86,8 +85,6 @@ export const addProfile = (formData) => async (dispatch) => {
     }
 };
 export const updateProfile = (formData, profileId) => async (dispatch) => {
-    console.log('ProfileID: ', profileId);
-    console.log('formData', formData);
     const res = await fetch(`/api/profiles/${profileId}`, {
         method: 'PATCH',
         headers: {
@@ -101,7 +98,6 @@ export const updateProfile = (formData, profileId) => async (dispatch) => {
             defaultVolume: formData.defaultVolume,
         }),
     });
-    console.log(res);
     if (res.ok) {
         const updatedProfile = await res.json();
         dispatch(addOne(updatedProfile));
@@ -295,16 +291,14 @@ const profileReducer = (state = initialState, action) => {
                     ...state.profiles,
                     [action.payload.profileId]: {
                         ...state.profiles[action.payload.profileId],
-                        ['watchlistVideos']: [...state.profiles[action.payload.profileId]['watchlistVideos']]
+                        watchlistVideos: [...state.profiles[action.payload.profileId]['watchlistVideos']]
                     },
                 },
                 [action.payload.profileId]: {
                     ...state.profiles[action.payload.profileId],
-                    ['watchlistVideos']: [...state.profiles[action.payload.profileId]['watchlistVideos']]
+                    watchlistVideos: [...state.profiles[action.payload.profileId]['watchlistVideos']]
                 } };
-            console.log('NEWWSTATE', newWState)
             const watchlistArr = newWState['profiles'][action.payload.profileId]['watchlistVideos']
-            console.log(watchlistArr)
             const idx = watchlistArr.indexOf(action.payload.videoId)
             newWState['profiles'][action.payload.profileId]['watchlistVideos'].splice(idx, 1);
             newWState[action.payload.profileId]['watchlistVideos'].splice(idx, 1);

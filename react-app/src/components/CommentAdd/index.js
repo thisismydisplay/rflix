@@ -19,7 +19,6 @@ const CommentAdd = ({ profile, videoId }) => {
             videoId: videoId,
         };
 
-        console.log(formData);
         try {
             const errors = await dispatch(addComment(formData));
             if (!errors) {
@@ -31,7 +30,6 @@ const CommentAdd = ({ profile, videoId }) => {
             }
         } catch (errorResponse) {
             setErrors(['Something went wrong, please try again.']);
-            console.log('error');
         }
     };
 

@@ -20,7 +20,6 @@ function VideoList({ videos, mylist }) {
     const myListVideos = Object.values(videos).filter((video) =>
         profile.watchlistVideos.includes(video.id)
     );
-    console.log(profile);
     if (!profile) return <Redirect to='/profile' />;
     return (
         <>

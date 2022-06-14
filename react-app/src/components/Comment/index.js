@@ -51,7 +51,6 @@ const Comment = ({ videoId, comment, currentProfile }) => {
             }
         } catch (errorResponse) {
             setErrors(['Something went wrong please try again']);
-            console.log('Failed Request: ', errorResponse);
         }
     };
     const handleDeleteSubmit = async (e) => {
