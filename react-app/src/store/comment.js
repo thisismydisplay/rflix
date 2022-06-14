@@ -56,8 +56,6 @@ export const addComment = (formData) => async (dispatch) => {
 };
 
 export const updateComment = (formData, commentId) => async (dispatch) => {
-    console.log("commentID: ",commentId)
-    console.log("formData", formData)
     const res = await fetch(`/api/comments/${commentId}`, {
         method: 'PATCH',
         headers: {
@@ -125,7 +123,6 @@ const commentReducer = (state = initialState, action) => {
 
         case DELETE:
             const newState = { ...state, comments: {...state.comments} };
-            console.log(newState)
             delete newState['comments'][action.payload];
             return newState;
         default:

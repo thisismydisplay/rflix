@@ -43,7 +43,6 @@ const ProfileEditPage = ({ currentProfile }) => {
             defaultVolume: defaultVolume / 100,
         };
 
-        console.log(formData);
         try {
             const errors = await dispatch(
                 updateProfile(formData, currentProfile.id)

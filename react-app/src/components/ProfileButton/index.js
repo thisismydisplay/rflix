@@ -40,7 +40,6 @@ function ProfileButton() {
         return () => document.removeEventListener('click', closeMenu);
     }, [showMenu]);
 
-    console.log(currentProfile.profileImageUrl);
     return (
         <div className='nav-user-image-container' onClick={openMenu}>
             <div

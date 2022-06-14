@@ -10,7 +10,6 @@ const ProfileDeletePage = ({ currentProfile }) => {
     const [errors, setErrors] = useState([]);
     const dispatch = useDispatch();
     const history = useHistory();
-    console.log('current profile:', currentProfile);
     const handleSubmit = async (e) => {
         e.preventDefault();
         setErrors([]);
@@ -25,7 +24,6 @@ const ProfileDeletePage = ({ currentProfile }) => {
             }
         } catch (errorResponse) {
             setErrors(['Something went wrong, please try again.']);
-            console.log('error');
         }
     };
     const handleCancel = () => {

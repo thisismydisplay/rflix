@@ -18,10 +18,7 @@ function VideoPage({ profile }) {
     const dispatch = useDispatch();
     const location = useLocation();
     const videoId = location.pathname.split('/')[2];
-    console.log('PROFILE', profile)
-    const [onWatchlist, setOnWatchlist] = useState(profile.watchlistVideos.includes(Number(videoId)))
-    console.log(videoId)
-    console.log('profile.watchlistVideos.includes(Number(videoId))', profile.watchlistVideos.includes(Number(videoId)))
+    const [onWatchlist, setOnWatchlist] = useState(profile?.watchlistVideos.includes(Number(videoId)))
     useEffect(() => {
         const navbar = document.getElementById('navbar');
         navbar.setAttribute('style', 'display:none;');

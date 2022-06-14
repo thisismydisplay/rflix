@@ -13,7 +13,6 @@ const ProfileUploadImagePage = ({ currentProfile }) => {
     const [imageLoading, setImageLoading] = useState(false);
     const dispatch = useDispatch();
     const history = useHistory();
-    console.log('current profile:', currentProfile);
     const handleSubmit = async (e) => {
         e.preventDefault();
         setUploadErrors([]);
@@ -41,7 +40,6 @@ const ProfileUploadImagePage = ({ currentProfile }) => {
             }
         } catch (errorResponse) {
             setUploadErrors(['Something went wrong, please try again.']);
-            console.log('error');
         }
     };
 

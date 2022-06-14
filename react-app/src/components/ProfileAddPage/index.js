@@ -20,7 +20,6 @@ const ProfileAddPage = ({ user }) => {
             name: profileName,
         };
 
-        console.log(formData);
         try {
             const errors = await dispatch(addProfile(formData));
             if (!errors) {
@@ -31,7 +30,6 @@ const ProfileAddPage = ({ user }) => {
             }
         } catch (errorResponse) {
             setErrors(['Something went wrong, please try again.']);
-            console.log('error');
         }
     };
     const handleCancel = () => {
