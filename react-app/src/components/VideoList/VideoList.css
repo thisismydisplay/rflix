@@ -1,6 +1,6 @@
 .video-list-wrapper {
     /* padding: 20px; */
-    height: 280px;
+    height: 240px;
     display: flex;
     flex-grow: 1;
     flex-direction: row;
@@ -26,7 +26,8 @@
     flex-direction: column;
     overflow-y: visible;
     margin: 5px;
-    background-color: var(--browse-bg);
+    background-color: rgba(0,0,0,0.7);
+    border-radius: 5px;
 }
 
 .react-player {
@@ -68,6 +69,7 @@
     display: flex;
     justify-content: space-between;
     text-align: center;
+    padding-bottom: 10px;
 }
 
 .thumbnail-left-btns-div {
