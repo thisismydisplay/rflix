@@ -53,7 +53,7 @@ def post_new_profile():
         params = dict(
             name=form.data["name"],
             userId=userId,
-            profileImageUrl='https://lofidelity-bucket.s3.amazonaws.com/default-profile-image.jpeg',
+            profileImageUrl='https://lofidelity-bucket.s3.amazonaws.com/rflix-default-profile.png',
             autoplayHover=True,
             autoplayNext=True,
             defaultVolume=0.5,
@@ -142,6 +142,7 @@ def upload_profile_image(id):
 
     # return {'message': 'Success'}
 
+#delete one profile
 @profile_routes.route('/<int:id>', methods=['DELETE'])
 @login_required
 def delete_profile(id):
@@ -153,3 +154,14 @@ def delete_profile(id):
     db.session.delete(profile)
     db.session.commit()
     return {'message': 'Success'}
+
+
+# @profile_routes.route('<int:profileId>/watchlist', methods=['GET'])
+# @login_required
+# def get_watchlist():
+
+#     print('hit route')
+#     profile = Profile.query.get(id)
+#     watchlist = profile.watchlist_videos
+
+#     return {'watchlistVideos': watchlist}

@@ -1,4 +1,4 @@
-import './BrowsePage.css';
+import './MyListPage.css';
 import ReactPlayer from 'react-player';
 
 import React, { useState, useEffect } from 'react';
@@ -7,7 +7,7 @@ import { Redirect } from 'react-router-dom';
 import VideoList from '../VideoList';
 import { getVideos } from '../../store/video';
 
-function BrowsePage() {
+function MyListPage() {
     // const profile = useSelector(state=>selectProfile(state.profile))
     const profile = useSelector(
         (state) => state.profile.profiles[state.profile.currentProfileId]
@@ -30,18 +30,11 @@ function BrowsePage() {
 
     if (!profile) return <Redirect to='/profile' />;
     return (
-        <div className='browse-wrapper'>
-            <ReactPlayer
-                playing
-                width='97vw'
-                height='75vh'
-                controls={false}
-                volume={0}
-                url='https://archive.org/download/Destroy_All_Planets/Destroy_All_Planets_512kb.mp4'
-            />
-            <div className='browse-list-wrapper'>
-                <div className='video-list'>
-                    <VideoList videos={videos} mylist={false}/>
+        <div className='my-list-wrapper'>
+            <div className='my-list-list-wrapper'>
+            <div className='my-list-title'>My List</div>
+                <div className='my-video-list'>
+                    <VideoList videos={videos} mylist={true}/>
                 </div>
             </div>
         </div>
@@ -49,4 +42,4 @@ function BrowsePage() {
     );
 }
 
-export default BrowsePage;
+export default MyListPage;

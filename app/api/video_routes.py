@@ -1,7 +1,7 @@
 from enum import auto
 from flask import Blueprint, request, session
 from flask_login import login_required, current_user
-from app.models import db, Video, User
+from app.models import db, Video, User, Watchlist
 from app.forms import ProfileForm
 from .utils import validation_errors_to_error_messages
 
@@ -34,5 +34,6 @@ def get_all_videos():
 def get_one_video(id):
     video = Video.query.get(id)
     return video.to_dict()
+
 
 

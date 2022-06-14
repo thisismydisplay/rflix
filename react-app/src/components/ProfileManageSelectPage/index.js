@@ -18,6 +18,10 @@ const ProfileManageSelectPage = ({ user }) => {
         })();
     }, [dispatch, user.id]);
 
+    const handleAdd = () => {
+        history.push('/profile/add');
+    };
+
     const handleCancel = () => {
         history.push('/profile');
     };
@@ -29,7 +33,7 @@ const ProfileManageSelectPage = ({ user }) => {
     return (
         <div className='profile-page-div'>
             <div className='profile-select-wrap'>
-                <div className='profile-watching-text'>Manage Profiles</div>
+                <div className='profile-watching-text'>Manage Profiles:</div>
                 <div className='profile-select-div'>
                     {Object.values(profiles).map((profile) => (
                         <Profile
@@ -38,6 +42,13 @@ const ProfileManageSelectPage = ({ user }) => {
                             key={profile.id}
                         />
                     ))}
+                    <div className='add-profile-btn-div' onClick={handleAdd}>
+                        <span className='material-symbols-outlined add-profile-btn'>
+                            add_circle
+                        </span>
+
+                        <span className='add-profile-text'>Add Profile</span>
+                    </div>
                 </div>
                 <div className='manage-profile-btn-div' onClick={handleCancel}>
                     <div className='manage-profile-btn-cancel continue-btn'>

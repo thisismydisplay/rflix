@@ -12,19 +12,6 @@
   color: var(--modal-text-grey);
   }
 
-.profile-div {
-  display: flex;
-  flex-direction: column;
-  height: 200px;
-  width: 200px;
-  border-radius: 10px;
-}
-
-.manage-profile-btn-div, .profile-watching-text {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
 .manage-profile-btn {
   border: var(--modal-text-grey) 2px solid;
@@ -43,11 +30,7 @@
 }
 .profile-watching-text {
   color: white;
-  font-size: 48px;
-}
-
-.manage-profile-btn-div {
-  /* padding: 20px; */
+  font-size: 2.5rem;
 }
 
 .add-profile-btn-div {
@@ -64,9 +47,9 @@ color:white;
 
 }
 
-.manage-profile-btn-cancel{
+/* .manage-profile-btn-cancel{
     margin-top: 50px;
-}
+} */
 
 
 .add-profile-btn {

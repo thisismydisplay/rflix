@@ -1,0 +1,15 @@
+.my-list-title {
+    height: 120px;
+    display: flex;
+    align-items: flex-end;
+    font-size: 24px;
+}
+.my-list-wrapper {
+    margin-left: 40px;
+}
+
+.my-video-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}

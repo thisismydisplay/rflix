@@ -1,7 +1,8 @@
 import './VideoPage.css';
 
 import backButton from '../../images/back-btn.png';
-
+import addButton from '../../images/add-btn.png'
+import removeButton from '../../images/remove-btn.png'
 import React, { useEffect, useState } from 'react';
 import { useHistory, useLocation, Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -10,12 +11,17 @@ import ReactPlayer from 'react-player';
 import { getComments } from '../../store/comment';
 
 import CommentList from '../CommentList';
+import { addToWatchlistThunk, deleteFromWatchlistThunk } from '../../store/profile';
 
 function VideoPage({ profile }) {
     const history = useHistory();
     const dispatch = useDispatch();
     const location = useLocation();
     const videoId = location.pathname.split('/')[2];
+    console.log('PROFILE', profile)
+    const [onWatchlist, setOnWatchlist] = useState(profile.watchlistVideos.includes(Number(videoId)))
+    console.log(videoId)
+    console.log('profile.watchlistVideos.includes(Number(videoId))', profile.watchlistVideos.includes(Number(videoId)))
     useEffect(() => {
         const navbar = document.getElementById('navbar');
         navbar.setAttribute('style', 'display:none;');
@@ -60,6 +66,22 @@ function VideoPage({ profile }) {
 
         history.push(`/browse`);
     };
+
+    const handleAdd = () => {
+        (async () => {
+            await dispatch(addToWatchlistThunk(profile.id, videoId));
+            setOnWatchlist(true)
+        })();
+    };
+    const handleRemove = () => {
+        (async () => {
+            await dispatch(deleteFromWatchlistThunk(profile.id, videoId));
+            setOnWatchlist(false)
+        })();
+    };
+
+
+
     const handleMove = () => {
         if (firstMove) {
             setControlsOn(true);
@@ -99,6 +121,10 @@ function VideoPage({ profile }) {
                 </div>
                 <div className='video-detail-description-wrapper'>
                     <div className='video-detail-description'>{video?.description}</div>
+                    <div className='description-btn-wrapper' onClick={onWatchlist ? handleRemove : handleAdd}>
+                        <img src={onWatchlist ? removeButton : addButton} alt='add to watchlist' className='watchlist-add-remove-btn' />
+                        <span className='watchlist-add-remove-text'> {onWatchlist ? 'Remove from watchlist' : 'Add to watchlist' }</span>
+                    </div>
                 </div>
                 </div>
             </div>

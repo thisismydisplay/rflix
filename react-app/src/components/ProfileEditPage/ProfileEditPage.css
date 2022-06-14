@@ -12,13 +12,6 @@
   color: var(--modal-text-grey);
   }
 
-.profile-div {
-  display: flex;
-  flex-direction: column;
-  height: 200px;
-  width: 200px;
-  border-radius: 10px;
-}
 .profile-settings-div {
     display: flex;
     flex-direction: column;
@@ -31,11 +24,7 @@
     border-radius: 50%;
   }
 
-.manage-profile-btn-div, .profile-watching-text {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+
 
 .manage-profile-btn {
   border: var(--modal-text-grey) 2px solid;
@@ -76,7 +65,6 @@
 .edit-form-top{
     display: flex;
     flex-direction: row;
-
 }
 .manage-profile-btn-div {
   padding: 20px;
@@ -137,6 +125,18 @@ color:white;
     display: flex;
     flex-direction: row;
     padding: 5px;
+    margin-top: 20px;
+}
+
+.edit-profile-icon-edit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    /* position: fixed; */
+    width: 24px;
+    /* top: 50%; */
+    z-index: 1;
 }
 
 .continue-btn, .cancel-btn {

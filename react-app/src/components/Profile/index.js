@@ -22,8 +22,8 @@ const Profile = ({ profile, manage }) => {
 
 
     return (
-        <div className='profile-div'>
-            <button onClick={manage ? handleManage : handleClick} className='profile-manage-div'>
+        <div className='profile-div' onClick={manage ? handleManage : handleClick} >
+            <button className='profile-manage-div'>
                 <img
                     className='profile-select-image'
                     src={img}
@@ -32,8 +32,8 @@ const Profile = ({ profile, manage }) => {
                     preserveAspectRatio='xMidYMid meet'
                 />
                 {manage && (<img className='edit-profile-icon' src={editIcon} alt='edit'/>)}
-                <div className='profile-name-text'>{profile.name}</div>
             </button>
+                <div className='profile-name-text'>{profile.name}</div>
         </div>
     );
 };

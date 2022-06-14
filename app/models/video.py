@@ -1,6 +1,7 @@
 from .db import db
 from .date_mixin import DateMixin
-from.watchlist import watchlists
+from.watchlist import Watchlist
+
 
 
 class Video(db.Model, DateMixin):
@@ -19,12 +20,12 @@ class Video(db.Model, DateMixin):
 
     #has many
     comments = db.relationship('Comment', back_populates='video', cascade='all, delete, delete-orphan', lazy='joined')
-
+    watchlists = db.relationship('Watchlist', back_populates='video', cascade='all, delete, delete-orphan', lazy='joined' )
     #belongs to one
     genre = db.relationship('Genre', back_populates='videos')
 
     #many to many
-    profiles = db.relationship('Profile', back_populates='videos', secondary=watchlists)
+    # profiles = db.relationship('Profile', back_populates='videos', secondary='watchlists')
 
 
     def to_dict(self):
@@ -38,6 +39,7 @@ class Video(db.Model, DateMixin):
             'videoUrl': self.videoUrl,
             'genre': self.genre.name,
             'comments': [comment.to_dict() for comment in self.comments],
+            # 'watchlists': [watchlist.to_dict() for watchlist in self.watchlists],
             'createdAt': self.createdAt,
             'updatedAt': self.updatedAt,
         }
@@ -51,6 +53,5 @@ class Video(db.Model, DateMixin):
         video.description = video_data.get("description")
         video.imageUrl = video_data.get("videoUrl")
         video.videoUrl = video_data.get("videoUrl")
-
 
         return video

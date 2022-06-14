@@ -8,7 +8,7 @@ const LogoutButton = () => {
     await dispatch(logout());
   };
 
-  return <button onClick={onLogout}>Sign out of rflix</button>;
+  return <button className='logout-btn nav-profile-text' onClick={onLogout}>Sign out of rflix</button>;
 };
 
 export default LogoutButton;

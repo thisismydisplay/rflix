@@ -9,7 +9,6 @@ const CommentAdd = ({ profile, videoId }) => {
     const [showAddComment, setShowAddComment] = useState(false);
     const [errors, setErrors] = useState([]);
     const dispatch = useDispatch();
-    console.log('comment add profile',profile)
     const handleSubmit = async (e) => {
         e.preventDefault();
         setErrors([]);

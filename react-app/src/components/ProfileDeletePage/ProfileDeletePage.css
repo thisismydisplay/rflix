@@ -15,19 +15,8 @@
     width: 300px;
     flex-wrap: wrap;
 }
-.profile-div {
-  display: flex;
-  flex-direction: column;
-  height: 200px;
-  width: 200px;
-  border-radius: 10px;
-}
 
-.manage-profile-btn-div, .profile-watching-text {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+
 
 .manage-profile-btn {
   border: var(--modal-text-grey) 2px solid;
@@ -55,9 +44,6 @@
   font-size: 24px;
 }
 
-.manage-profile-btn-div {
-  padding: 20px;
-}
 
 .add-name-input-div {
     display: flex;
@@ -72,8 +58,6 @@
 .profile-select-div {
     padding: 0px;
     margin: 20px;
-    border-top: var(--modal-text-grey) 1px solid;
-    border-bottom: var(--modal-text-grey) 1px solid;
 }
 
 .add-profile-btn-div {
