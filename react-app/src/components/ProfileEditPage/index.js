@@ -96,7 +96,7 @@ const ProfileEditPage = ({ currentProfile }) => {
                                     preserveAspectRatio='xMidYMid meet'
                                 />
                                 <img
-                                    className='edit-profile-icon'
+                                    className='edit-profile-icon-edit'
                                     src={editIcon}
                                     alt='edit'
                                 />

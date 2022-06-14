@@ -17,7 +17,7 @@ import ProfileEditPage from './components/ProfileEditPage';
 import ProfileDeletePage from './components/ProfileDeletePage';
 import ProfileUploadImagePage from './components/ProfileUploadImagePage';
 import VideoPage from './components/VideoPage';
-
+import MyListPage from './components/MyListPage';
 function App() {
     const [loaded, setLoaded] = useState(false);
     const dispatch = useDispatch();
@@ -94,6 +94,9 @@ function App() {
                     </ProtectedRoute>
                     <ProtectedRoute path='/profile/manage' exact>
                         <ProfileManageSelectPage user={sessionUser} />
+                    </ProtectedRoute>
+                    <ProtectedRoute path='/browse/mylist' exact>
+                        <MyListPage currentProfile={currentProfile} />
                     </ProtectedRoute>
                     {/* <ProtectedRoute path='/profile/delete' exact>
                         <ProfileDeletePage currentProfile={currentProfile} />

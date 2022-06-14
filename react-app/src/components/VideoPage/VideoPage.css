@@ -43,6 +43,20 @@
     padding-left:10px;
     font-size: 14px;
 }
+.watchlist-add-remove-btn {
+    display: flex;
+    width: 32px;
+}
+.description-btn-wrapper {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 10px;
+}
+
+.watchlist-add-remove-text {
+    margin-left: 10px;
+}
 
 .video-main {
     justify-content: center;

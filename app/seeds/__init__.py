@@ -4,6 +4,8 @@ from .genres import seed_genres, undo_genres
 from .profiles import seed_profiles, undo_profiles
 from .videos import seed_videos, undo_videos
 from .comments import seed_comments, undo_comments
+from .watchlists import seed_watchlists, undo_watchlists
+# from .watchlists import seed_watchlists, undo_watchlists
 
 # Creates a seed group to hold our commands
 # So we can type `flask seed --help`
@@ -18,6 +20,7 @@ def seed():
     seed_profiles()
     seed_videos()
     seed_comments()
+    seed_watchlists()
     # Add other seed functions here
 
 
@@ -29,4 +32,5 @@ def undo():
     undo_profiles()
     undo_videos()
     undo_comments()
+    undo_watchlists()
     # Add other undo functions here

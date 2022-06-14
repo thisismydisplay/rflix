@@ -1,6 +1,7 @@
 import './ProfileButton.css';
 
 import LogoutButton from '../auth/LogoutButton';
+import editBtn from '../../images/edit-profile-btn.png'
 
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
@@ -22,8 +23,8 @@ function ProfileButton() {
         setShowMenu(true);
     };
     const handleProfileChange = (profile) => {
-        dispatch(setCurrentProfile(profile.id))
-    }
+        dispatch(setCurrentProfile(profile.id));
+    };
     useEffect(() => {
         if (!showMenu) return;
 
@@ -54,25 +55,38 @@ function ProfileButton() {
                             <div className='nav-user-profiles'>
                                 {profiles.map((profile) => {
                                     return (
-                                        <div className='nav-profile' key={profile.id}>
+                                        <div
+                                            className='nav-profile'
+                                            key={profile.id}
+                                            onClick={() =>
+                                                handleProfileChange(profile)
+                                            }
+                                        >
                                             <div
                                                 className='nav-user-image'
                                                 style={{
                                                     backgroundImage: `url(${profile.profileImageUrl})`,
                                                 }}
-                                                onClick={()=>handleProfileChange(profile)}
+
                                             ></div>
-                                            <div>{profile.name}</div>
+                                            <div className='nav-profile-text'>
+                                                {profile.name}
+                                            </div>
                                         </div>
                                     );
                                 })}
                             </div>
 
                             <Link
-                                className='nav-user-dropdown-manage-profiles'
+                                className='nav-profile manage-profile-dropdown-btn-div'
                                 to={`/profile/manage`}
                             >
-                                <div className='nav-user-dropdown-text'>
+                                <img
+                                    className='nav-user-image-manage'
+                                    src={editBtn}
+                                    alt='manage profiles'
+                                />
+                                <div className='nav-profile-text'>
                                     Manage Profiles
                                 </div>
                             </Link>

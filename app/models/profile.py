@@ -1,6 +1,6 @@
 from .db import db
 from .date_mixin import DateMixin
-from .watchlist import watchlists
+from .watchlist import Watchlist
 
 # autopep8: off
 class Profile(db.Model, DateMixin):
@@ -19,9 +19,10 @@ class Profile(db.Model, DateMixin):
 
     # has many
     comments = db.relationship('Comment', back_populates='profile', cascade='all, delete, delete-orphan', lazy="joined")
+    watchlists = db.relationship('Watchlist', back_populates='profile', cascade='all, delete, delete-orphan', lazy='joined' )
 
     #many to many
-    videos = db.relationship('Video', back_populates='profiles', secondary=watchlists)
+    # videos = db.relationship('Video', back_populates='profiles', secondary='watchlists')
 
 
 
@@ -36,7 +37,7 @@ class Profile(db.Model, DateMixin):
             'defaultVolume': self.defaultVolume,
             'createdAt': self.createdAt,
             'updatedAt': self.updatedAt,
-            'watchlist': [video.to_dict() for video in self.videos]
+            'watchlistVideos': [watchlist.videoId for watchlist in self.watchlists]
         }
 
     @staticmethod

@@ -69,7 +69,6 @@ const Comment = ({ videoId, comment, currentProfile }) => {
     };
 
     const [commentText, setCommentText] = useState(comment.text);
-    console.log('comment', comment);
     return (
         <div className='comment-div'>
             <div className='error-container'>

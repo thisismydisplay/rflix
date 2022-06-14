@@ -48,7 +48,7 @@ const ProfileDeletePage = ({ currentProfile }) => {
                     <div className='profile-select-div'>
                         <div className='profile-default-image-div'>
                             <img
-                                className='profile-select-image'
+                                className='profile-select-image-upload'
                                 src={currentProfile?.profileImageUrl}
                                 alt='default user'
                                 viewBox='0 0 100 100'

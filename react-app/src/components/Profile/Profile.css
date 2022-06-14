@@ -1,7 +1,21 @@
 .profile-div {
     display: flex;
     flex-direction: column;
-}
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: pre;
+    overflow-wrap: break-word;
+    word-break: break-all;
+    max-width: 200px;
+    flex-grow: 0;
+    width: 200px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: color .4 ease;
+  }
+.profile-div:hover {
+    color: white;
+  }
 
 .profile-select-div {
     display: flex;
@@ -9,12 +23,15 @@
 }
 
 .profile-select-image {
-    padding: 20px;
-
+    position: absolute;
+    margin: 20px;
     display: flex;
     height: 160px;
     width: 160px;
     border-radius: 50%;
+}
+.profile-select-image:hover {
+border: var(--modal-text-grey) 3px solid;
 }
 
 .profile-name-text,
@@ -22,7 +39,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px;
+    margin: 20px;
+    overflow-wrap: break-word;
+    word-break: break-all;
+    overflow: clip;
+    white-space: pre;
+    text-overflow: ellipsis;
 }
 .profile-name-text:hover {
     display: flex;
@@ -33,16 +55,21 @@
 
 .profile-manage-div {
     display: flex;
+    position: relative;
+    flex-grow: 0;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    height: 200px;
 }
 .edit-profile-icon {
     display: flex;
+    position: absolute;
     justify-content: center;
     align-items: center;
+    padding: 10px;
     /* position: fixed; */
     width: 24px;
     /* top: 50%; */
-    /* z-index: 1; */
+    z-index: 1;
 }

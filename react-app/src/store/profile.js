@@ -13,7 +13,6 @@ const ADD_ONE = 'profiles/ADD_ONE';
 // const UPDATE_IMAGE = 'profiles/UPDATE_IMAGE'
 const DELETE = 'profiles/DELETE';
 
-
 //action creators
 
 const getAll = (profiles) => ({
@@ -29,7 +28,7 @@ const getAll = (profiles) => ({
 const getOne = (profile) => ({
     type: GET_ONE,
     payload: profile,
-})
+});
 const addOne = (profile) => ({
     type: ADD_ONE,
     payload: profile,
@@ -51,13 +50,13 @@ export const getProfiles = (userId) => async (dispatch) => {
 };
 
 export const getProfile = (profileId) => async (dispatch) => {
-  const res = await fetch(`/api/profiles/${profileId}`);
+    const res = await fetch(`/api/profiles/${profileId}`);
 
-  if (res.ok) {
-    const profile = await res.json();
-    dispatch(getOne(profile));
-    return res;
-  } else throw res;
+    if (res.ok) {
+        const profile = await res.json();
+        dispatch(getOne(profile));
+        return res;
+    } else throw res;
 };
 
 export const addProfile = (formData) => async (dispatch) => {
@@ -87,8 +86,8 @@ export const addProfile = (formData) => async (dispatch) => {
     }
 };
 export const updateProfile = (formData, profileId) => async (dispatch) => {
-    console.log("ProfileID: ",profileId)
-    console.log("formData", formData)
+    console.log('ProfileID: ', profileId);
+    console.log('formData', formData);
     const res = await fetch(`/api/profiles/${profileId}`, {
         method: 'PATCH',
         headers: {
@@ -99,10 +98,10 @@ export const updateProfile = (formData, profileId) => async (dispatch) => {
             userId: formData.userId,
             autoplayHover: formData.autoplayHover,
             autoplayNext: formData.autoplayNext,
-            defaultVolume: formData.defaultVolume
+            defaultVolume: formData.defaultVolume,
         }),
     });
-    console.log(res)
+    console.log(res);
     if (res.ok) {
         const updatedProfile = await res.json();
         dispatch(addOne(updatedProfile));
@@ -117,27 +116,25 @@ export const updateProfile = (formData, profileId) => async (dispatch) => {
     }
 };
 
-export const updateProfileImage =
-  (formData, profileId) => async (dispatch) => {
+export const updateProfileImage = (formData, profileId) => async (dispatch) => {
     const response = await fetch(`/api/profiles/${profileId}/image`, {
-      method: 'POST',
-      body: formData,
+        method: 'POST',
+        body: formData,
     });
 
     if (response.ok) {
-      const newProfile = await response.json();
-      dispatch(addOne(newProfile));
-      return null;
+        const newProfile = await response.json();
+        dispatch(addOne(newProfile));
+        return null;
     } else if (response.status < 500) {
-      const res = await response.json();
-      if (res.errors) {
-        return res.errors;
-      }
+        const res = await response.json();
+        if (res.errors) {
+            return res.errors;
+        }
     } else {
-      return ['An error occurred. Please try again.'];
+        return ['An error occurred. Please try again.'];
     }
-
-  };
+};
 
 export const deleteProfile = (id) => async (dispatch) => {
     const res = await fetch(`/api/profiles/${id}`, {
@@ -152,6 +149,66 @@ export const deleteProfile = (id) => async (dispatch) => {
         return resBody;
     } else throw res;
 };
+
+const ADD_TO_WATCHLIST = 'profiles/ADD_TO_WATCHLIST';
+const DELETE_FROM_WATCHLIST = 'profiles/DELETE_FROM_WATCHLIST';
+
+const addToWatchlist = (watchlist) => ({
+    type: ADD_TO_WATCHLIST,
+    payload: watchlist,
+});
+const deleteFromWatchlist = (deletedWatchlist) => ({
+    type: DELETE_FROM_WATCHLIST,
+    payload: deletedWatchlist,
+});
+
+// export const getProfileWatchlist = (profileId) => async (dispatch) => {
+//     // getState is a function that can be passed to a thunk that returns the current store
+//     const res = await fetch(`/api/watchlists/${profileId}`);
+
+//     if (res.ok) {
+//         const list = await res.json();
+//         dispatch(getAll(list.profiles));
+//         return res;
+//     } else throw res;
+// };
+
+export const addToWatchlistThunk = (profileId, videoId) => async (dispatch) => {
+    const res = await fetch(`/api/watchlists/${profileId}/add/${videoId}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            profileId: profileId,
+            videoId: videoId,
+        }),
+    });
+
+    if (res.ok) {
+        const newWatchlist = await res.json();
+        dispatch(addToWatchlist(newWatchlist));
+        return null;
+    } else {
+        return ['An error occurred. Please try again.'];
+    }
+};
+
+export const deleteFromWatchlistThunk =
+    (profileId, videoId) => async (dispatch) => {
+        const res = await fetch(
+            `/api/watchlists/${profileId}/delete/${videoId}`,
+            {
+                method: 'DELETE',
+            }
+        );
+
+        if (res.ok) {
+            const deletedWatchlist = await res.json();
+            dispatch(deleteFromWatchlist(deletedWatchlist));
+            return null;
+        } else return ['An error occurred. Please try again.'];
+    };
 
 const initialState = {
     profiles: {},
@@ -171,7 +228,7 @@ const profileReducer = (state = initialState, action) => {
             return { ...state, profiles: profileData };
         case GET_ONE:
             //sets state[profileId] to profile
-            return {...state, [action.payload.id]: action.payload}
+            return { ...state, [action.payload.id]: action.payload };
 
         case SET_USER:
             return {
@@ -187,6 +244,25 @@ const profileReducer = (state = initialState, action) => {
                 profiles: {
                     ...state.profiles,
                     [action.payload.id]: action.payload,
+                },
+            };
+        case ADD_TO_WATCHLIST:
+            const newWatchlistVideos = [
+                ...state.profiles[action.payload.profileId].watchlistVideos,
+            ];
+            newWatchlistVideos.push(action.payload.videoId);
+            return {
+                ...state,
+                profiles: {
+                    ...state.profiles,
+                    [action.payload.profileId]: {
+                        ...state.profiles[action.payload.profileId],
+                        watchlistVideos: newWatchlistVideos,
+                    },
+                },
+                [action.payload.profileId]: {
+                    ...state.profiles[action.payload.profileId],
+                    watchlistVideos: newWatchlistVideos,
                 },
             };
         // case UPDATE_IMAGE:
@@ -210,9 +286,30 @@ const profileReducer = (state = initialState, action) => {
             };
 
         case DELETE:
-            const newState = { ...state, profiles: {...state.profiles} };
+            const newState = { ...state, profiles: { ...state.profiles } };
             delete newState['profiles'][action.payload];
             return newState;
+        case DELETE_FROM_WATCHLIST:
+            const newWState = {  ...state,
+                profiles: {
+                    ...state.profiles,
+                    [action.payload.profileId]: {
+                        ...state.profiles[action.payload.profileId],
+                        ['watchlistVideos']: [...state.profiles[action.payload.profileId]['watchlistVideos']]
+                    },
+                },
+                [action.payload.profileId]: {
+                    ...state.profiles[action.payload.profileId],
+                    ['watchlistVideos']: [...state.profiles[action.payload.profileId]['watchlistVideos']]
+                } };
+            console.log('NEWWSTATE', newWState)
+            const watchlistArr = newWState['profiles'][action.payload.profileId]['watchlistVideos']
+            console.log(watchlistArr)
+            const idx = watchlistArr.indexOf(action.payload.videoId)
+            newWState['profiles'][action.payload.profileId]['watchlistVideos'].splice(idx, 1);
+            newWState[action.payload.profileId]['watchlistVideos'].splice(idx, 1);
+            return newWState;
+
         default:
             return state;
     }

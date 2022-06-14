@@ -12,13 +12,6 @@
   color: var(--modal-text-grey);
   }
 
-.profile-div {
-  display: flex;
-  flex-direction: column;
-  height: 200px;
-  width: 200px;
-  border-radius: 10px;
-}
 
 .profile-default-image {
     display: flex;
@@ -26,12 +19,6 @@
     width: 160px;
     border-radius: 50%;
   }
-
-.manage-profile-btn-div, .profile-watching-text {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
 .manage-profile-btn {
   border: var(--modal-text-grey) 2px solid;
@@ -59,10 +46,6 @@
   font-size: 24px;
   padding-top: 20px;
   padding-bottom: 20px;
-}
-
-.manage-profile-btn-div {
-  padding: 20px;
 }
 
 .add-name-input-div {

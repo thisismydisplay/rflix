@@ -12,13 +12,7 @@
   color: var(--modal-text-grey);
   }
 
-.profile-div {
-  display: flex;
-  flex-direction: column;
-  height: 200px;
-  width: 200px;
-  border-radius: 10px;
-}
+
 
 .manage-profile-btn-div, .profile-watching-text {
   display: flex;
@@ -44,10 +38,6 @@
 .profile-watching-text {
   color: white;
   font-size: 48px;
-}
-
-.manage-profile-btn-div {
-  padding: 20px;
 }
 
 .add-profile-btn-div {
