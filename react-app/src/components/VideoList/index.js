@@ -39,16 +39,16 @@ function VideoList({ videos, mylist }) {
                 </>
             )}
             {!mylist &&
-                genres.map((genre) => (
-                    <div className='video-carousel-wrapper'>
+                genres.map((genre, i) => (
+                    <div className='video-carousel-wrapper' key={i}>
                         <div className='video-list-title'>{genre}</div>
                         <div className='video-list-wrapper'>
                             {Object.values(videos).map((video) => (
-                                <>
+                                <div key={video.id}>
                                     {video.genre === genre && (
                                         <div
                                             className='video-thumb-container'
-                                            key={video.id}
+                                            // key={video.id}
                                         >
                                             <VideoThumbnail
                                                 profile={profile}
@@ -56,7 +56,7 @@ function VideoList({ videos, mylist }) {
                                             />
                                         </div>
                                     )}
-                                </>
+                                </div>
                             ))}
                         </div>
                     </div>
