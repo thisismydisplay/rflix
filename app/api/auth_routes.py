@@ -67,7 +67,7 @@ def login():
         user_dict = user.to_dict()
         user_dict['current_profile_id']=None
         return user_dict
-    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+    return {'errors': ['There was a problem with your credentials. Please try again.']}, 401
 
 
 @auth_routes.route('/logout')

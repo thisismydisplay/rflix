@@ -15,4 +15,4 @@ def user_exists(form, field):
 class SignUpForm(FlaskForm):
     email = StringField('email', validators=[DataRequired(), user_exists, Email(message='Please enter a valid email address.')])
     password = StringField('password', validators=[DataRequired(), Length(min=6, max=100,
-                   message='Username must be between 6 & 100 characters.')])
+                   message='Password must be between 6 & 100 characters.')])
