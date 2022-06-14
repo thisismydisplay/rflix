@@ -1,7 +1,6 @@
-
 .video-list-wrapper {
     /* padding: 20px; */
-    height: 240px;
+    height: 280px;
     display: flex;
     flex-grow: 1;
     flex-direction: row;
@@ -9,31 +8,77 @@
     justify-content: center;
     background-color: var(--browse-bg);
     overflow: hidden;
-    /* overflow-y: visible; */
+    overflow-y: visible;
     flex-wrap: nowrap;
 }
 .video-thumb-container {
-    display:flex;
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     overflow: visible;
 }
 .video-thumb-wrapper {
-    display:flex;
+    position: relative;
+    display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     overflow-y: visible;
     margin: 5px;
     background-color: var(--browse-bg);
+}
+
+.react-player {
+    position: relative;
+}
+
+.thumbnail-overlay {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    z-index: 1;
+}
+.thumbnail-title{
+    text-align: center;
+}
+.mute-btn-div {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+.mute-btn {
+    width: 24px;
+    padding: 10px;
+    padding-bottom: 0px;
 
 }
+.mute-btn-hidden {
+    display: none;
+}
+
+.thumbnail-description-hidden {
+    display: none;
+}
+
+.thumbnail-description {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.thumbnail-left-btns-div {
+    display: flex;
+}
+
 /*
 .video-thumb-wrapper div {
     position: relative;
 }
-.video-thumb-wrapper div video {
+-wrapper div video {
     position: absolute;
 } */
 
