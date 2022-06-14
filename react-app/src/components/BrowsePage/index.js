@@ -11,8 +11,12 @@ function BrowsePage() {
     // const profile = useSelector(state=>selectProfile(state.profile))
     const profile = useSelector(
         (state) => state.profile.profiles[state.profile.currentProfileId]
-        );
+    );
 
+    useEffect(() => {
+        const navbar = document.getElementById('navbar');
+        navbar.setAttribute('style', 'display:flex');
+    }, []);
     //load videos here instead of app
     const dispatch = useDispatch();
     const videos = useSelector((state) => state.video.videos);
@@ -27,7 +31,6 @@ function BrowsePage() {
         return null;
     }
 
-
     if (!profile) return <Redirect to='/profile' />;
     return (
         <div className='browse-wrapper'>
@@ -41,7 +44,7 @@ function BrowsePage() {
             />
             <div className='browse-list-wrapper'>
                 <div className='video-list'>
-                    <VideoList videos={videos} mylist={false}/>
+                    <VideoList videos={videos} mylist={false} />
                 </div>
             </div>
         </div>
