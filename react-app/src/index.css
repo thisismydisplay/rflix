@@ -42,7 +42,8 @@ textarea {
 }
 
 .error-container {
-    color: var(--signin-red)
+    color: var(--signin-red);
+    padding: 10px;
 }
 
 :root {

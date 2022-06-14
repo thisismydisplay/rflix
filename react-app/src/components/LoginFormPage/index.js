@@ -61,6 +61,7 @@ const LoginFormPage = () => {
                                 name='email'
                                 type='text'
                                 placeholder='Email'
+                                required
                                 value={email}
                                 onChange={updateEmail}
                             />
@@ -72,6 +73,7 @@ const LoginFormPage = () => {
                                 name='password'
                                 type='password'
                                 placeholder='Password'
+                                required
                                 value={password}
                                 onChange={updatePassword}
                             />
