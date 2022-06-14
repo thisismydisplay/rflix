@@ -114,14 +114,6 @@ videos = [
         "imageUrl": None,
         "videoUrl": "https://archive.org/download/StimpysCartoonShow/14014405039de7e-360.mp4"
     },
-    {
-        "genreId": 5,
-        "releaseYear": 2012,
-        "title": "Superman",
-        "description": "Classic superman cartoons",
-        "imageUrl": None,
-        "videoUrl": "https://archive.org/embed/ClassicSupermanCartoons720p/Superman_ArcticGiant.mp4"
-    },
 ]
 
 def seed_videos():
