@@ -10,6 +10,7 @@ const NavBar = ({ profile }) => {
     const location = useLocation();
     const onProfile = location.pathname.split('/')[1] === 'profile';
     const onLogin = location.pathname.split('/')[1] === 'login';
+    const onSignup = location.pathname.split('/')[1] === 'signup';
 
     if (onProfile) return null;
     let topRight;
@@ -40,14 +41,30 @@ const NavBar = ({ profile }) => {
                 >
                     <img src={logo} className='home-icon' alt='rflix logo' />
                 </NavLink>
-                <NavLink
-                    className='nav-btn-splash'
-                    activeClassName='active'
-                    exact
-                    to='/browse/mylist'
-                >
-                    <div className='my-list-nav-link ' alt='my list link'>My List</div>
-                </NavLink>
+                {!onLogin && !onSignup && (
+                    <>
+                    <NavLink
+                        className='nav-btn-splash'
+                        activeClassName='active'
+                        exact
+                        to='/browse'
+                    >
+                        <div className='my-list-nav-link home-text-link' alt='home link'>
+                            Home
+                        </div>
+                    </NavLink>
+                    <NavLink
+                        className='nav-btn-splash'
+                        activeClassName='active'
+                        exact
+                        to='/browse/mylist'
+                        >
+                        <div className='my-list-nav-link ' alt='my list link'>
+                            My List
+                        </div>
+                    </NavLink>
+                        </>
+                )}
             </div>
             <div className='home-top-right'>{topRight}</div>
         </ul>
