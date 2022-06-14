@@ -44,6 +44,8 @@ function VideoThumbnail({ video, profile }) {
 
     const handleExpand = () => {
         console.log('expand');
+        //setIsHover(false)
+        //openModal()
     };
 
     return (
