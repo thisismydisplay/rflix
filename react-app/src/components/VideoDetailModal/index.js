@@ -12,7 +12,7 @@ import muteButton from '../../images/muted-btn.png';
 import unmuteButton from '../../images/unmuted-btn.png';
 import playButton from '../../images/play-btn-black.png';
 import addButton from '../../images/add-btn-modal.png';
-import removeButton from '../../images/remove-btn-grey.png';
+import removeButton from '../../images/remove-btn.png';
 import cancelButton from '../../images/cancel-btn-white.png';
 
 function VideoDetailModal({ video, profile, hideModal }) {
@@ -75,64 +75,69 @@ function VideoDetailModal({ video, profile, hideModal }) {
                         ></img>
                     </div>
                     <div className='modal-title-btns-div'>
-
-                    <div className='video-detail-title-div'>
-                        <div className='video-detail-title'>{video.title}</div>
-                    </div>
-                    <div
-                        className='modal-mute-btn-div'
-                        style={{ width: '100%' }}
-                    >
-                    <div className='video-detail-left-btns-div'>
-                        <div className='video-detail-modal-play-div'>
+                        <div className='video-detail-title-div'>
+                            <div className='video-detail-title'>
+                                {video.title}
+                            </div>
+                        </div>
+                        <div
+                            className='modal-mute-btn-div'
+                            style={{ width: '100%' }}
+                        >
+                            <div className='video-detail-left-btns-div'>
+                                <div className='video-detail-modal-play-div'>
+                                    <img
+                                        src={playButton}
+                                        alt='play button'
+                                        className='modal-play-btn'
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            handleClick();
+                                        }}
+                                    ></img>
+                                    <span className='modal-play-text'>
+                                        Play
+                                    </span>
+                                </div>
+                                <div className='video-detail-modal-watchlist-div'>
+                                    <img
+                                        src={
+                                            onWatchlist
+                                                ? removeButton
+                                                : addButton
+                                        }
+                                        alt={
+                                            onWatchlist
+                                                ? 'remove from watchlist'
+                                                : 'add to watchlist'
+                                        }
+                                        className='modal-watchlist-btn'
+                                        onClick={
+                                            onWatchlist
+                                                ? (e) => {
+                                                      e.stopPropagation();
+                                                      handleRemove();
+                                                  }
+                                                : (e) => {
+                                                      e.stopPropagation();
+                                                      handleAdd();
+                                                  }
+                                        }
+                                    ></img>
+                                    {/* <span className='modal-play-text'>Add to Watchlist</span> */}
+                                </div>
+                            </div>
                             <img
-                                src={playButton}
-                                alt='play button'
-                                className='modal-play-btn'
+                                src={isMuted ? muteButton : unmuteButton}
+                                alt='mute unmute button'
+                                className='modal-mute-btn'
                                 onClick={(e) => {
                                     e.stopPropagation();
-                                    handleClick();
+                                    setIsMuted(!isMuted);
                                 }}
                             ></img>
-                            <span className='modal-play-text'>Play</span>
-
-                        </div>
-                        <div className='video-detail-modal-watchlist-div'>
-                            <img
-                                src={onWatchlist ? removeButton : addButton}
-                                alt={
-                                    onWatchlist
-                                        ? 'remove from watchlist'
-                                        : 'add to watchlist'
-                                }
-                                className='modal-watchlist-btn'
-                                onClick={
-                                    onWatchlist
-                                        ? (e) => {
-                                              e.stopPropagation();
-                                              handleRemove();
-                                          }
-                                        : (e) => {
-                                              e.stopPropagation();
-                                              handleAdd();
-                                          }
-                                }
-                            ></img>
-                            {/* <span className='modal-play-text'>Add to Watchlist</span> */}
                         </div>
                     </div>
-                        <img
-                            src={isMuted ? muteButton : unmuteButton}
-                            alt='mute unmute button'
-                            className='modal-mute-btn'
-                            onClick={(e) => {
-                                e.stopPropagation();
-                                setIsMuted(!isMuted);
-                            }}
-                        ></img>
-                    </div>
-                    </div>
-
                 </div>
 
                 <ReactPlayer
@@ -144,14 +149,12 @@ function VideoDetailModal({ video, profile, hideModal }) {
                     height='100%'
                 />
             </div>
-                <div className='video-detail-description'>
-                <div className='modal-year-text'>
-                    {video.releaseYear}
-                </div>
+            <div className='video-detail-description'>
+                <div className='modal-year-text'>{video.releaseYear}</div>
                 <div className='video-detail-description-text'>
                     {video.description}
                 </div>
-                </div>
+            </div>
         </section>
     );
     // const genres = [

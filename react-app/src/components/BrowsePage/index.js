@@ -50,6 +50,7 @@ function BrowsePage() {
                     <VideoList videos={videos} mylist={false} />
                 </div>
             </div>
+            <div className='bottom-spacer'></div>
         </div>
         // map movies in carousels by genre
     );

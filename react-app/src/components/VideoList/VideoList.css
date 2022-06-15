@@ -1,13 +1,18 @@
+.video-carousel-wrapper {
+    background-color: var(--browse-bg);
+
+}
+
 .video-list-wrapper {
     /* padding: 20px; */
-    height: 240px;
+    /* height: 240px; */
     display: flex;
     flex-grow: 1;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     background-color: var(--browse-bg);
-    overflow: hidden;
+    overflow: visible;
     overflow-y: visible;
     flex-wrap: nowrap;
 }
@@ -22,12 +27,17 @@
     position: relative;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     flex-direction: column;
     overflow-y: visible;
     margin: 5px;
-    background-color: rgba(0,0,0,0.7);
+    /* background-color: rgba(0,0,0,0.7); */
+    background-color: var(--browse-bg);
     border-radius: 5px;
+}
+.video-thumb-wrapper:hover {
+    z-index: 5;
+    margin: -200px -45px;
 }
 
 .react-player {
@@ -37,44 +47,144 @@
 .thumbnail-overlay {
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
+    /* flex-grow: 1; */
     justify-content: space-between;
-    align-items: center;
+    align-items: space-between;
     position: absolute;
     z-index: 1;
 }
 .thumbnail-title{
     text-align: center;
+    margin-top: 40px;
+    margin-bottom: 60px;
 }
 .mute-btn-div {
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
+
 }
-.mute-btn {
+/* .mute-btn {
     width: 24px;
     padding: 10px;
     padding-bottom: 0px;
 
+} */
+
+.mute-btn {
+    display: flex;
+    width: 19px;
+    padding: 5px;
+    margin: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-radius: 50%;
+    border: white 2px solid;
+    opacity: 0.4;
 }
+.mute-btn:hover {
+    transition: opacity 0.4s ease;
+    opacity: 1;
+}
+
+.play-btn {
+    display: flex;
+    width: 13px;
+    padding: 11px;
+    background-color: white;
+    color: black;
+    border-radius: 50%;
+
+}
+.play-btn-div {
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: 5px 0px;
+    margin-left:10px;
+    cursor: pointer;
+}
+.play-btn:hover {
+    transition: background-color 0.4s ease;
+    background-color: rgb(225, 225, 225);
+}
+
+.watchlist-btn-div {
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.watchlist-btn {
+    display: flex;
+    width: 19px;
+    padding: 5px;
+    border-radius: 50%;
+    border: white 2px solid;
+    opacity: 0.5;
+}
+.watchlist-btn:hover{
+    transition: opacity 0.4s ease;
+    opacity: 1;
+}
+
 .mute-btn-hidden {
     display: none;
 }
 
-.thumbnail-description-hidden {
+.thumbnail-btn-wrapper-hidden {
     display: none;
 }
 
-.thumbnail-description {
+.thumbnail-btn-wrapper {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     text-align: center;
     padding-bottom: 10px;
+    margin: 0px 10px;
 }
 
 .thumbnail-left-btns-div {
     display: flex;
 }
+
+
+.thumbnail-description-text {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    padding: 30px 0px;
+    font-size: 14px;
+    font-weight: 300px;
+    max-height: 36px;
+    /* overflow-wrap: break-word; */
+    /* word-break: break-all; */
+    overflow: hidden;
+    -webkit-line-clamp: 4;
+    /* white-space: pre-wrap; */
+    text-overflow: ellipsis;
+}
+.thumbnail-year-text {
+    text-align: left;
+    font-size: 16px;
+    font-weight: 300px;
+}
+
+.thumbnail-description-wrapper {
+    padding: 0px 40px;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: space-between;
+    text-align: left;
+    padding-bottom: 10px;
+}
+
 
 /*
 .video-thumb-wrapper div {
@@ -85,5 +195,15 @@
 } */
 
 .video-list-title {
-    padding: 20px;
+    max-height: 36px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    /* overflow-wrap: break-word; */
+    /* word-break: break-all; */
+    overflow: hidden;
+    -webkit-line-clamp: 4;
+    /* white-space: pre-wrap; */
+    text-overflow: ellipsis;
+    padding-top: 15px;
+    padding-bottom: 5px;
 }

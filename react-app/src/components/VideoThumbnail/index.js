@@ -13,8 +13,8 @@ import {
 } from '../../store/profile';
 import muteButton from '../../images/muted-btn.png';
 import unmuteButton from '../../images/unmuted-btn.png';
-import playButton from '../../images/play-btn.png';
-import addButton from '../../images/add-btn.png';
+import playButton from '../../images/play-btn-black.png';
+import addButton from '../../images/add-btn-modal.png';
 import removeButton from '../../images/remove-btn.png';
 import expandButton from '../../images/expand-down.png';
 
@@ -57,6 +57,7 @@ function VideoThumbnail({ video, profile }) {
             onMouseLeave={() => setIsHover(false)}
             key={video.id}
             onClick={handleClick}
+            // style={isHover ? {margin: '-40px'} : {margin: '0px'}}
         >
             <div
                 // className={
@@ -65,7 +66,7 @@ function VideoThumbnail({ video, profile }) {
                 className='thumbnail-overlay'
                 style={
                     isHover
-                        ? { height: '80px', width: '200px' }
+                        ? { height: '80px', width: '260px' }
                         : { height: '40px', width: '120px' }
                 }
             >
@@ -74,7 +75,7 @@ function VideoThumbnail({ video, profile }) {
                 </div>
                 <div
                     className='mute-btn-div'
-                    style={isHover ? { width: '200px' } : { width: '120px' }}
+                    style={isHover ? { width: '260px' } : { width: '120px' }}
                 >
                     <img
                         src={isMuted ? muteButton : unmuteButton}
@@ -113,10 +114,10 @@ function VideoThumbnail({ video, profile }) {
             <div
                 className={
                     isHover
-                        ? 'thumbnail-description'
-                        : 'thumbnail-description-hidden'
+                        ? 'thumbnail-btn-wrapper'
+                        : 'thumbnail-btn-wrapper-hidden'
                 }
-                style={isHover ? { width: '200px' } : { width: '120px' }}
+                style={isHover ? { width: '260px' } : { width: '120px' }}
             >
                 {/* <div className='thumbnail-description-text' style={
                     isHover
@@ -124,15 +125,18 @@ function VideoThumbnail({ video, profile }) {
                     : { width: '120px' }
                 }>{video.description}</div> */}
                 <div className='thumbnail-left-btns-div'>
+                    <div className='play-btn-div'>
                     <img
                         src={playButton}
                         alt='play button'
-                        className={isHover ? 'mute-btn' : 'mute-btn-hidden'}
+                        className='play-btn'
                         onClick={(e) => {
                             e.stopPropagation();
                             handleClick();
                         }}
                     ></img>
+                    </div>
+                    <div className='watchlist-btn-div'>
                     <img
                         src={onWatchlist ? removeButton : addButton}
                         alt={
@@ -140,7 +144,7 @@ function VideoThumbnail({ video, profile }) {
                                 ? 'remove from watchlist'
                                 : 'add to watchlist'
                         }
-                        className={isHover ? 'mute-btn' : 'mute-btn-hidden'}
+                        className='watchlist-btn'
                         onClick={
                             onWatchlist
                                 ? (e) => {
@@ -153,6 +157,7 @@ function VideoThumbnail({ video, profile }) {
                                   }
                         }
                     ></img>
+                    </div>
                 </div>
                 <div className='thumbnail-right-btns-div'>
                     <img
@@ -165,6 +170,13 @@ function VideoThumbnail({ video, profile }) {
                             handleExpand();
                         }}
                     ></img>
+                </div>
+            </div>
+            <div className='thumbnail-description-wrapper' style={isHover ? {display: 'flex'} : {display: 'none'}}>
+            <div className='thumbnail-year-text'>{video.releaseYear}</div>
+
+                <div className='thumbnail-description-text'>
+                    {video.description}
                 </div>
             </div>
         </div>
