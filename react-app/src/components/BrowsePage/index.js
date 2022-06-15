@@ -21,6 +21,9 @@ function BrowsePage() {
     const dispatch = useDispatch();
     const videos = useSelector((state) => state.video.videos);
     const [loaded, setLoaded] = useState(false);
+
+
+
     useEffect(() => {
         (async () => {
             await dispatch(getVideos());
