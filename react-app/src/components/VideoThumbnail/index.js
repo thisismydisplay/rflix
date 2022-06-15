@@ -4,18 +4,19 @@ import ReactPlayer from 'react-player';
 
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-
+import { useDispatch } from 'react-redux';
+import Modal from '../Modal';
+import VideoDetailModal from '../VideoDetailModal';
+import {
+    addToWatchlistThunk,
+    deleteFromWatchlistThunk,
+} from '../../store/profile';
 import muteButton from '../../images/muted-btn.png';
 import unmuteButton from '../../images/unmuted-btn.png';
 import playButton from '../../images/play-btn.png';
 import addButton from '../../images/add-btn.png';
 import removeButton from '../../images/remove-btn.png';
 import expandButton from '../../images/expand-down.png';
-import {
-    addToWatchlistThunk,
-    deleteFromWatchlistThunk,
-} from '../../store/profile';
-import { useDispatch } from 'react-redux';
 
 function VideoThumbnail({ video, profile }) {
     const dispatch = useDispatch();
@@ -24,6 +25,7 @@ function VideoThumbnail({ video, profile }) {
     const [onWatchlist, setOnWatchlist] = useState(
         profile?.watchlistVideos.includes(Number(video.id))
     );
+    const [showModal, setShowModal] = useState(false);
 
     const history = useHistory();
     const handleClick = () => {
@@ -44,8 +46,8 @@ function VideoThumbnail({ video, profile }) {
 
     const handleExpand = () => {
         console.log('expand');
-        //setIsHover(false)
-        //openModal()
+        setIsHover(false);
+        setShowModal(true);
     };
 
     return (
@@ -85,6 +87,21 @@ function VideoThumbnail({ video, profile }) {
                     ></img>
                 </div>
             </div>
+
+            {showModal && (
+                <Modal
+                    onHide={() => {
+                        setShowModal(false);
+                    }}
+                >
+                    <VideoDetailModal
+                        hideModal={() => setShowModal(false)}
+                        video={video}
+                        profile={profile}
+                    />
+                </Modal>
+            )}
+
             <ReactPlayer
                 className='react-player'
                 volume={isMuted ? 0 : profile.defaultVolume}
@@ -107,36 +124,41 @@ function VideoThumbnail({ video, profile }) {
                     : { width: '120px' }
                 }>{video.description}</div> */}
                 <div className='thumbnail-left-btns-div'>
-                <img
-                    src={playButton}
-                    alt='play button'
-                    className={isHover ? 'mute-btn' : 'mute-btn-hidden'}
-                    onClick={(e) => {
-                        e.stopPropagation();
-                        handleClick();
-                    }}
-                ></img>
-                <img
-                    src={onWatchlist ? removeButton : addButton}
-                    alt={
-                        onWatchlist
-                            ? 'remove from watchlist'
-                            : 'add to watchlist'
-                    }
-                    className={isHover ? 'mute-btn' : 'mute-btn-hidden'}
-                    onClick={onWatchlist ? (e) => {
-                        e.stopPropagation();
-                        handleRemove();
-                    } : (e) => {
-                        e.stopPropagation();
-                        handleAdd();
-                    }}
-                ></img>
+                    <img
+                        src={playButton}
+                        alt='play button'
+                        className={isHover ? 'mute-btn' : 'mute-btn-hidden'}
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            handleClick();
+                        }}
+                    ></img>
+                    <img
+                        src={onWatchlist ? removeButton : addButton}
+                        alt={
+                            onWatchlist
+                                ? 'remove from watchlist'
+                                : 'add to watchlist'
+                        }
+                        className={isHover ? 'mute-btn' : 'mute-btn-hidden'}
+                        onClick={
+                            onWatchlist
+                                ? (e) => {
+                                      e.stopPropagation();
+                                      handleRemove();
+                                  }
+                                : (e) => {
+                                      e.stopPropagation();
+                                      handleAdd();
+                                  }
+                        }
+                    ></img>
                 </div>
                 <div className='thumbnail-right-btns-div'>
                     <img
                         src={expandButton}
                         alt='expand details'
+                        hidden={showModal}
                         className={isHover ? 'mute-btn' : 'mute-btn-hidden'}
                         onClick={(e) => {
                             e.stopPropagation();
