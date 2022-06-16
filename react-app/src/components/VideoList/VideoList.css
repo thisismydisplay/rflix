@@ -207,3 +207,9 @@
     padding-top: 15px;
     padding-bottom: 5px;
 }
+
+
+.my-list-no-videos-yet-text {
+    font-weight: 400;
+    color: var(--modal-text-grey);
+}

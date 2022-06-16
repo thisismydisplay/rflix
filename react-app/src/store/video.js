@@ -1,10 +1,8 @@
 //helper functions
 
-
 const GET_ALL = 'videos/GET_ALL';
 // const SET_CURRENT = 'videos/SET_CURRENT';
 const GET_ONE = 'videos/GET_ONE';
-
 
 //action creators
 
@@ -13,7 +11,7 @@ const getAll = (videos) => ({
     payload: videos,
 });
 const getOne = (video) => ({
-    type: GET_ALL,
+    type: GET_ONE,
     payload: video,
 });
 
@@ -28,7 +26,7 @@ export const getVideos = () => async (dispatch) => {
     } else throw res;
 };
 export const getVideo = (id) => async (dispatch) => {
-    const res = await fetch(`/api/video/${id}`);
+    const res = await fetch(`/api/videos/${id}`);
 
     if (res.ok) {
         const video = await res.json();
@@ -37,10 +35,9 @@ export const getVideo = (id) => async (dispatch) => {
     } else throw res;
 };
 
-
 const initialState = {
     videos: {},
-    currentVideoId: null,
+    currentVideo: {},
 };
 
 const videoReducer = (state = initialState, action) => {
@@ -53,11 +50,11 @@ const videoReducer = (state = initialState, action) => {
             for (let video of action.payload) {
                 videoData[video.id] = video;
             }
-            return { ...state, videos: videoData };
+            return { ...state, videos: videoData, currentVideo: {...state.currentVideo} };
         case GET_ONE:
             return {
                 ...state,
-                currentVideoId: action.payload.current_video_id,
+                currentVideo: {...action.payload},
             };
         default:
             return state;
