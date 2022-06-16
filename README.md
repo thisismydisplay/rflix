@@ -1,6 +1,6 @@
-# lofidelity
+# rFlix
 
-rflix is a video streaming platform
+rFlix is a video streaming platform
 
 Check out a live version of rflix here: [https://rflix.herokuapp.com](https://rflix.herokuapp.com)
 
@@ -57,4 +57,3 @@ Check out a live version of rflix here: [https://rflix.herokuapp.com](https://rf
   - Mark Osman
     - Github: https://github.com/thisismydisplay
     - LinkedIn: https://www.linkedin.com/in/markrockwellosman/
-
