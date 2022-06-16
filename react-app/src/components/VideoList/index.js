@@ -25,11 +25,13 @@ function VideoList({ videos, mylist }) {
         <>
             {mylist && (
                 <>
-                    {myListVideos.map((video) => (
+                    {myListVideos.length > 0 ?
+                    (myListVideos.map((video) => (
                         <div className='video-thumb-container' key={video.id}>
-                            <VideoThumbnail profile={profile} video={video} />
+                        <VideoThumbnail profile={profile} video={video} />
                         </div>
-                    ))}
+                        ))
+                    ) : (<div className='my-list-no-videos-yet-text'>You haven't added any videos to My List yet.</div>)}
                 </>
             )}
 

@@ -1,3 +1,7 @@
 .comment-list-wrapper {
     background-color: var(--browse-bg);
 }
+.no-comments-yet-text {
+    width: 100%;
+    padding: 60px;
+}

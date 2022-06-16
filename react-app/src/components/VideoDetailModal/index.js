@@ -54,9 +54,6 @@ function VideoDetailModal({ video, profile, hideModal }) {
                 onClick={handleClick}
             >
                 <div
-                    // className={
-                    //     isHover ? 'thumbnail-overlay' : 'hidden-thumbnail-overlay'
-                    // }
                     className='video-detail-overlay'
                     style={{ height: '100%', width: '100%' }}
                 >

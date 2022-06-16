@@ -18,6 +18,9 @@ function CommentList({ comments, currentProfile, videoId }) {
             <CommentAdd profile={currentProfile} videoId={videoId} />
         </div>
         <div className='comment-list-wrapper'>
+        {Object.values(comments).length === 0 && (<div className='no-comments-yet-text'>
+            There are no comments yet!  Be the first to comment.
+        </div>)}
             {Object.values(comments).reverse().map((comment) => (
                 <div className='comment-wrapper' key={comment.id}>
                 <Comment videoId={videoId} comment={comment} currentProfile={currentProfile}/>
