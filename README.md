@@ -53,6 +53,43 @@ Check out a live version of rflix here: [https://rflix.herokuapp.com](https://rf
     `npm start`
 
 
+
+https://user-images.githubusercontent.com/66559149/174091565-462ae208-573a-4cdb-8a33-44ca552b0364.mov
+
+
+
+https://user-images.githubusercontent.com/66559149/174092019-c27fa390-5d1f-4ac3-af29-952fb28ceff5.mov
+
+
+
+https://user-images.githubusercontent.com/66559149/174092045-2e08d7d7-bf30-4e6b-a968-3ac75819a9b2.mov
+
+
+
+## Features
+
+### Profile
+Logged in users can create, read, update, and delete profiles
+Profiles have customizable settings such as 'preview on hover over thumbnail' and 'default volume'
+Users can upload a custom profile photo
+
+### Comments
+Logged in users can post and read all comments and edit or delete their profile's comments
+
+### Watchlist
+Each profile has a customizable watchlist to save a list of series the user wants to watch later
+
+### Video Player
+There is a video player that enables viewing of video content.  Previews are shown on hover-over by default for video thumbnails, though users can turn off this behavior in manage profile > settings
+
+## Future Features
+
+### Search
+### Kids profiles
+### Recommended Videos based on browsing history
+### Live chat
+
+
  ## Developers
   - Mark Osman
     - Github: https://github.com/thisismydisplay
