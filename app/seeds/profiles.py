@@ -4,7 +4,7 @@ profiles = [
     {
         "userId": 2,
         "name": "Jane",
-        "profileImageUrl": 'https://lofidelity-bucket.s3.amazonaws.com/pexels-photo-598917.jpeg',
+        "profileImageUrl": 'https://rflix.s3.amazonaws.com/pexels-photo-598917.jpeg',
         "autoplayHover": True,
         "autoplayNext": True,
         "defaultVolume": 0.5,
@@ -12,7 +12,7 @@ profiles = [
     {
         "userId": 1,
         "name": "The Boss",
-        "profileImageUrl": 'https://lofidelity-bucket.s3.amazonaws.com/pexels-photo-598917.jpeg',
+        "profileImageUrl": 'https://rflix.s3.amazonaws.com/pexels-photo-598917.jpeg',
         "autoplayHover": True,
         "autoplayNext": True,
         "defaultVolume": 0.5,
@@ -20,7 +20,7 @@ profiles = [
     {
         "userId": 2,
         "name": "Jerry Cartoons",
-        "profileImageUrl": 'https://lofidelity-bucket.s3.amazonaws.com/astronaut-spacewalk-iss-tools.jpeg',
+        "profileImageUrl": 'https://rflix.s3.amazonaws.com/astronaut-spacewalk-iss-tools.jpeg',
         "autoplayHover": True,
         "autoplayNext": True,
         "defaultVolume": 0.5,
@@ -28,7 +28,7 @@ profiles = [
     {
         "userId": 2,
         "name": "Mark",
-        "profileImageUrl": 'https://lofidelity-bucket.s3.amazonaws.com/astronaut-spacewalk-iss-tools.jpeg',
+        "profileImageUrl": 'https://rflix.s3.amazonaws.com/astronaut-spacewalk-iss-tools.jpeg',
         "autoplayHover": False,
         "autoplayNext": False,
         "defaultVolume": 1,
@@ -36,7 +36,7 @@ profiles = [
     {
         "userId": 3,
         "name": "Jeff",
-        "profileImageUrl": 'https://lofidelity-bucket.s3.amazonaws.com/pexels-photo-598917.jpeg',
+        "profileImageUrl": 'https://rflix.s3.amazonaws.com/pexels-photo-598917.jpeg',
         "autoplayHover": True,
         "autoplayNext": True,
         "defaultVolume": 0.5,
@@ -44,7 +44,7 @@ profiles = [
     {
         "userId": 3,
         "name": "Tony",
-        "profileImageUrl": 'https://lofidelity-bucket.s3.amazonaws.com/astronaut-spacewalk-iss-tools.jpeg',
+        "profileImageUrl": 'https://rflix.s3.amazonaws.com/astronaut-spacewalk-iss-tools.jpeg',
         "autoplayHover": False,
         "autoplayNext": False,
         "defaultVolume": 1,

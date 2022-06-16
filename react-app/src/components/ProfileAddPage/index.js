@@ -55,7 +55,7 @@ const ProfileAddPage = ({ user }) => {
                         <div className='profile-default-image-div'>
                             <img
                                 className='profile-default-image'
-                                src='https://lofidelity-bucket.s3.amazonaws.com/rflix-default-profile.png'
+                                src='https://rflix.s3.amazonaws.com/rflix-default-profile.png'
                                 alt='default user'
                                 viewBox='0 0 100 100'
                                 preserveAspectRatio='xMidYMid meet'

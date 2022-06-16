@@ -53,7 +53,7 @@ def post_new_profile():
         params = dict(
             name=form.data["name"],
             userId=userId,
-            profileImageUrl='https://lofidelity-bucket.s3.amazonaws.com/rflix-default-profile.png',
+            profileImageUrl='https://rflix.s3.amazonaws.com/rflix-default-profile.png',
             autoplayHover=True,
             autoplayNext=True,
             defaultVolume=0.5,
