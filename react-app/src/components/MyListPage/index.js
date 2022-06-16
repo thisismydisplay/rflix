@@ -33,6 +33,7 @@ function MyListPage() {
         <div className='my-list-wrapper'>
             <div className='my-list-list-wrapper'>
             <div className='my-list-title'>My List</div>
+            <div className='my-list-description'>See videos you've added to your watchlist.</div>
                 <div className='my-video-list'>
                     <VideoList videos={videos} mylist={true}/>
                 </div>
