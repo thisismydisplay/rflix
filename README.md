@@ -1,6 +1,6 @@
 # rFlix
 
-rFlix is a video streaming platform
+rFlix is a video streaming platform where users can comment on videos and create customizable profiles with unique settings and watchlist for sharing an account with multiple users.  [App Academy](https://appacademy.io) Full Stack Engineering program capstone project based on [Netflix](https://netflix.com)
 
 Check out a live version of rflix here: [https://rflix.herokuapp.com](https://rflix.herokuapp.com)
 
