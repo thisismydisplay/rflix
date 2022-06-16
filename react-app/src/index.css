@@ -3,6 +3,19 @@
 
 /* add universal Box Sizing */
 
+@font-face {
+    font-family: "netflix-sans";
+    src: url("./fonts/NetflixSans_W_Rg.woff2");
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "netflix-sans";
+    src: url("./fonts/NetflixSans_W_Md.woff2");
+    font-weight: 500;
+}
+
+
 html {
   box-sizing: border-box;
 }
@@ -47,7 +60,8 @@ textarea {
 }
 
 :root {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'netflix-sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  line-height: 1.2;
   /* font-family: Helvetica; */
   /* box-sizing: border-box; */
   --modal-bg: #0f0f0f;

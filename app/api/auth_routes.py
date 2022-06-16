@@ -75,6 +75,7 @@ def logout():
     """
     Logs a user out
     """
+    print(session)
     logout_user()
     return {'message': 'User logged out'}
 
