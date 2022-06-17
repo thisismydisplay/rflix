@@ -1,3 +1,7 @@
+.react-player-browse {
+    cursor: default;
+}
+
 .browse-wrapper {
     background-color: var(--browse-bg);
 
@@ -30,7 +34,7 @@
     align-items: center;
     position: absolute;
     z-index: 1;
-    cursor: pointer;
+    /* cursor: pointer; */
 }
 .video-browse-title-div {
     display: flex;
@@ -90,6 +94,7 @@
     border-radius: 50%;
     border: white 2px solid;
     opacity: 0.5;
+    cursor: pointer;
 }
 .browse-mute-btn:hover {
     transition: opacity 0.4s ease;

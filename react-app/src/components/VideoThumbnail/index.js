@@ -1,5 +1,5 @@
 import './VideoThumbnail.css';
-
+import '../VideoList/Swiper.css'
 import ReactPlayer from 'react-player';
 
 import React, { useState } from 'react';
@@ -64,18 +64,18 @@ function VideoThumbnail({ video, profile }) {
                 //     isHover ? 'thumbnail-overlay' : 'hidden-thumbnail-overlay'
                 // }
                 className='thumbnail-overlay'
-                style={
-                    isHover
-                        ? { height: '80px', width: '260px' }
-                        : { height: '40px', width: '120px' }
-                }
+                // style={
+                //     isHover
+                //         ? { height: '80px', width: '260px' }
+                //         : { height: '40px', width: '120px' }
+                // }
             >
                 <div className='thumbnail-title-div'>
-                    <div className='thumbnail-title'>{video.title}</div>
+                    <div className='thumbnail-title' style={isHover ? {display:'flex'} : {display:'none'}}>{video.title}</div>
                 </div>
                 <div
                     className='mute-btn-div'
-                    style={isHover ? { width: '260px' } : { width: '120px' }}
+                    // style={isHover ? { width: '260px' } : { width: '120px' }}
                 >
                     <img
                         src={isMuted ? muteButton : unmuteButton}
@@ -108,8 +108,10 @@ function VideoThumbnail({ video, profile }) {
                 volume={isMuted ? 0 : profile.defaultVolume}
                 playing={profile.autoplayHover && isHover}
                 url={video.videoUrl}
-                width={isHover ? '260px' : '180px'}
-                height={isHover ? '180px' : '140px'}
+                // style={{objectFit:'contain'}}
+                width={isHover ? '24vw' : '18vw'}
+                style={{backgroundColor:'black'}}
+                height={isHover ? '100%' : '100%'}
             />
             <div
                 className={
@@ -117,7 +119,7 @@ function VideoThumbnail({ video, profile }) {
                         ? 'thumbnail-btn-wrapper'
                         : 'thumbnail-btn-wrapper-hidden'
                 }
-                style={isHover ? { width: '260px' } : { width: '120px' }}
+                // style={isHover ? { width: '260px' } : { width: '120px' }}
             >
                 {/* <div className='thumbnail-description-text' style={
                     isHover

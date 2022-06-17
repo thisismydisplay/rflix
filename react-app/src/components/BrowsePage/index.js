@@ -169,7 +169,7 @@ function BrowsePage() {
                         )}
                     </div>
                     <ReactPlayer
-                        className='react-player-modal'
+                        className='react-player-browse'
                         playing
                         volume={isMuted ? 0 : profile.defaultVolume}
                         width='97vw'
