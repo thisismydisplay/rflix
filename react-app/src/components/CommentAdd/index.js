@@ -37,7 +37,7 @@ const CommentAdd = ({ profile, videoId }) => {
         <div className='comment-add-div'>
             <div className='error-container'>
                 {errors?.map((error, ind) => (
-                    <div key={ind}>{error?.split(': ')[1]}</div>
+                    <div key={`comment-add-error-${ind}`}>{error?.split(': ')[1]}</div>
                 ))}
             </div>
             <form onSubmit={handleSubmit}>

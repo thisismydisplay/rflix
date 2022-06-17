@@ -72,7 +72,7 @@ const Comment = ({ videoId, comment, currentProfile }) => {
         <div className='comment-div'>
             <div className='error-container'>
                 {errors?.map((error, ind) => (
-                    <div key={ind}>{error?.split(': ')[1]}</div>
+                    <div key={`comment-error-${ind}`}>{error?.split(': ')[1]}</div>
                 ))}
             </div>
             <div className='comment-content-div'>
