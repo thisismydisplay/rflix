@@ -38,7 +38,7 @@ function VideoList({ videos, mylist }) {
                     {myListVideos.length > 0 ? (
                         myListVideos.map((video) => (
                             <div
-                                className='video-thumb-container'
+                                className='video-thumb-container-list'
                                 key={video.id}
                             >
                                 <VideoThumbnail
@@ -107,11 +107,17 @@ function VideoList({ videos, mylist }) {
                         slidesPerView={5}
                         spaceBetween={0}
                         slidesPerGroup={5}
+                        // observer={true}
+                        // observeParents={true}
+                        // observeSlideChildren={true}
+                        // preloadImages={false}
+                        // lazy={{enabled: true, loadOnTransitionStart: true}}
+                        // virtual={true}
                         // height={160}
-                        loop={true}
+                        rewind={true}
                         // slidesOffsetAfter={100}
                         // slidesOffsetBefore={100}
-                        // loopFillGroupWithBlank={true}
+                        loopFillGroupWithBlank={true}
                         pagination={{
                             clickable: true,
                             type: 'progressbar'
@@ -122,7 +128,7 @@ function VideoList({ videos, mylist }) {
                         className='video-list-wrapper'
                     >
                                 {Object.values(videos).map((video) => (
-                                    <div key={video.id}>
+                                    <div key={video.id} >
                                         {video.genre === genre && (
 
                                                 <SwiperSlide className='video-thumb-container' >

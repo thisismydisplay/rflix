@@ -71,7 +71,8 @@ function VideoThumbnail({ video, profile }) {
                 // }
             >
                 <div className='thumbnail-title-div'>
-                    <div className='thumbnail-title' style={isHover ? {display:'flex'} : {display:'none'}}>{video.title}</div>
+                    {/* <div className='thumbnail-title' style={isHover ? {display:'flex'} : {display:'none'}}>{video.title}</div> */}
+                    <div className='thumbnail-title' style={isHover ? {display:'flex'} : {display:'flex', marginTop:'40px'}}>{video.title}</div>
                 </div>
                 <div
                     className='mute-btn-div'
@@ -175,7 +176,7 @@ function VideoThumbnail({ video, profile }) {
                 </div>
             </div>
             <div className='thumbnail-description-wrapper' style={isHover ? {display: 'flex'} : {display: 'none'}}>
-            <div className='thumbnail-year-text'>{video.releaseYear}</div>
+            {/* <div className='thumbnail-year-text'>{video.releaseYear}</div> */}
 
                 <div className='thumbnail-description-text'>
                     {video.description}

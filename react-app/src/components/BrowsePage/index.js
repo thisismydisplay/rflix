@@ -105,7 +105,7 @@ function BrowsePage() {
                                 </div>
                             </div>
                             <div
-                                className='modal-mute-btn-div'
+                                className='browse-mute-btn-div'
                                 style={{ width: '100%' }}
                             >
                                 <div className='video-detail-left-btns-div'>
@@ -171,6 +171,7 @@ function BrowsePage() {
                     <ReactPlayer
                         className='react-player-browse'
                         playing
+                        loop={true}
                         volume={isMuted ? 0 : profile.defaultVolume}
                         width='97vw'
                         height='75vh'

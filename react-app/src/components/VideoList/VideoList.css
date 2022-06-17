@@ -18,6 +18,17 @@
 }
 .video-thumb-container {
     display: flex;
+    max-height: 210px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+}
+.video-thumb-container-list {
+    display: flex;
+    max-height: 210px;
+    max-width: 18vw;
+    margin: 0px 5px;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -29,7 +40,7 @@
     align-items: center;
     justify-content: flex-start;
     flex-direction: column;
-    overflow-y: visible;
+    overflow: visible;
     margin: 5px;
     /* max-height: calc(.75*18vw); */
     /* height: 160px; */
@@ -38,11 +49,27 @@
     border-radius: 5px;
     /* z-index: 100000; */
 }
+/* .video-thumb-wrapper-my-list {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    overflow-y: visible;
+    margin: 5px;
+    max-height: calc(.75*18vw); */
+    /* height: 160px; */
+    /* background-color: rgba(0,0,0,0.7);
+    background-color: var(--browse-bg);
+    border-radius: 5px; */
+    /* z-index: 100000; */
+/* } */
 .video-thumb-wrapper:hover {
     /* position: absolute; */
     z-index: 5000;
     /* background-color: aquamarine; */
-    /* margin: -500px -45px; */
+    margin-top: -45px;
+    margin-left: -40px;
 }
 
 .react-player {
@@ -64,11 +91,15 @@
     /* display: none; */
     /* position: absolute; */
     width: 100%;
-
+    text-align: center;
     justify-content: center;
     margin-top: 20px;
     margin-bottom: 20px;
-    /* z-index: 100000; */
+    /* z-index: 1000; */
+}
+
+.thumbnail-title-div {
+    display: flex;
 }
 .mute-btn-div {
     width: 100%;
@@ -163,10 +194,12 @@
 }
 
 .thumbnail-btn-wrapper {
+
     display: flex;
     justify-content: space-between;
     align-items: center;
     text-align: center;
+    width: 100%;
     padding-bottom: 10px;
     margin: 0px 10px;
 }
@@ -179,15 +212,17 @@
 .thumbnail-description-text {
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    padding: 30px 0px;
+    padding: 5px 0px;
+    padding-bottom: 60px;
     font-size: 14px;
     font-weight: 300px;
     max-height: 36px;
-    /* overflow-wrap: break-word; */
-    /* word-break: break-all; */
+    max-width: 260px;
+    overflow-wrap: break-word;
+    word-break: break-all;
     overflow: hidden;
     -webkit-line-clamp: 4;
-    /* white-space: pre-wrap; */
+    /* white-space: pre; */
     text-overflow: ellipsis;
 }
 .thumbnail-year-text {
@@ -197,8 +232,10 @@
 }
 
 .thumbnail-description-wrapper {
+    margin: 0px 10px;
     padding: 0px 4px;
-    width: 200px;
+    min-width: 140px;
+    /* max-height: 50px; */
     display: flex;
     flex-direction: column;
     align-items: space-between;
