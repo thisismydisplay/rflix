@@ -64,7 +64,7 @@ function BrowsePage() {
         })();
     }, [dispatch]);
     useEffect(() => {
-        if (videos){
+        if (Object.values(videos).length){
 
             (async () => {
                 await dispatch(getVideo(getRandomVideoId(1, Object.values(videos).length - 1)))

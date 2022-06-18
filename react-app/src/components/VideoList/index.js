@@ -44,6 +44,7 @@ function VideoList({ videos, mylist }) {
                                 <VideoThumbnail
                                     profile={profile}
                                     video={video}
+                                    isMyListCarousel
                                 />
                             </div>
                         ))
@@ -85,6 +86,7 @@ function VideoList({ videos, mylist }) {
                                             <VideoThumbnail
                                                 profile={profile}
                                                 video={video}
+                                                isMyListCarousel
                                             />
                                         </SwiperSlide>
                                     // </div>

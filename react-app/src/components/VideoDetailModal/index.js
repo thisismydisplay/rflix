@@ -15,7 +15,12 @@ import addButton from '../../images/add-btn-modal.png';
 import removeButton from '../../images/remove-btn.png';
 import cancelButton from '../../images/cancel-btn-white.png';
 
-function VideoDetailModal({ video, profile, hideModal }) {
+function VideoDetailModal({
+    video,
+    profile,
+    hideModal,
+    onMyListRemove = () => {},
+}) {
     const [isMuted, setIsMuted] = useState(true);
     const onWatchlist = profile?.watchlistVideos.includes(Number(video.id));
 
@@ -33,6 +38,8 @@ function VideoDetailModal({ video, profile, hideModal }) {
     const handleRemove = () => {
         (async () => {
             await dispatch(deleteFromWatchlistThunk(profile.id, video.id));
+            onMyListRemove()
+            // hideModal()
             // setOnWatchlist(false);
         })();
     };

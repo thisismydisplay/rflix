@@ -18,7 +18,7 @@ import addButton from '../../images/add-btn-modal.png';
 import removeButton from '../../images/remove-btn.png';
 import expandButton from '../../images/expand-down.png';
 
-function VideoThumbnail({ video, profile }) {
+function VideoThumbnail({ video, profile, isMyListCarousel=false }) {
     const dispatch = useDispatch();
     const [isHover, setIsHover] = useState(false);
     const [isMuted, setIsMuted] = useState(true);
@@ -38,6 +38,7 @@ function VideoThumbnail({ video, profile }) {
     const handleRemove = () => {
         (async () => {
             await dispatch(deleteFromWatchlistThunk(profile.id, video.id));
+
             // setOnWatchlist(false);
         })();
     };
@@ -93,8 +94,15 @@ function VideoThumbnail({ video, profile }) {
                     onHide={() => {
                         setShowModal(false);
                     }}
+
+
                 >
                     <VideoDetailModal
+                        onMyListRemove={()=>{
+                            if (isMyListCarousel) {
+                                setShowModal(false)
+                            }
+                        }}
                         hideModal={() => setShowModal(false)}
                         video={video}
                         profile={profile}
