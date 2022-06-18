@@ -66,7 +66,7 @@ function VideoList({ videos, mylist }) {
                                 spaceBetween={0}
                                 slidesPerGroup={5}
                                 // height={160}
-                                rewind={true}
+                                loop={true}
                                 // slidesOffsetAfter={100}
                                 // slidesOffsetBefore={100}
                                 loopFillGroupWithBlank={true}
@@ -80,14 +80,14 @@ function VideoList({ videos, mylist }) {
                                 className='video-list-wrapper'
                             >
                                 {myListVideos.map((video, i) => (
-                                    <div key={`browse-list-${i}`}>
-                                        <SwiperSlide className='video-thumb-container'>
+                                    // <div key={`browse-list-${i}`}>
+                                        <SwiperSlide className='video-thumb-container' key={`browse-list-${i}`}>
                                             <VideoThumbnail
                                                 profile={profile}
                                                 video={video}
                                             />
                                         </SwiperSlide>
-                                    </div>
+                                    // </div>
                                 ))}
                             </Swiper>
                             {/* </div> */}
@@ -99,14 +99,15 @@ function VideoList({ videos, mylist }) {
             <div className='browse-genre-container'>
                 {!mylist &&
                     genres.map((genre, i) => (
-                        <>
+                        <React.Fragment key={`genre-${i}`}>
                             <div
                                 className='video-list-title'
-                                key={`genre-${i}`}
+                                key={`genre-div-${i}`}
                             >
                                 {genre}
                             </div>
                             <Swiper
+                                key={`genre-swiper-${i}`}
                                 slidesPerView={5}
                                 spaceBetween={0}
                                 slidesPerGroup={5}
@@ -117,7 +118,7 @@ function VideoList({ videos, mylist }) {
                                 // lazy={{enabled: true, loadOnTransitionStart: true}}
                                 // virtual={true}
                                 // height={160}
-                                rewind={true}
+                                loop={true}
                                 // slidesOffsetAfter={100}
                                 // slidesOffsetBefore={100}
                                 loopFillGroupWithBlank={true}
@@ -131,19 +132,19 @@ function VideoList({ videos, mylist }) {
                                 className='video-list-wrapper'
                             >
                                 {Object.values(videos).map((video, i) => (
-                                    <div key={`${genre}-${i}-${video.id}`}>
-                                        {video.genre === genre && (
-                                            <SwiperSlide className='video-thumb-container'>
+                                    // <div key={`${genre}-${i}-${video.id}`}>
+                                        video.genre === genre && (
+                                            <SwiperSlide key={`inner-${genre}-${video.id}`} className='video-thumb-container'>
                                                 <VideoThumbnail
                                                     profile={profile}
                                                     video={video}
                                                 />
                                             </SwiperSlide>
-                                        )}
-                                    </div>
+                                        )
+                                    // </div>
                                 ))}
                             </Swiper>
-                        </>
+                        </React.Fragment>
                     ))}
             </div>
         </>

@@ -22,9 +22,7 @@ function VideoThumbnail({ video, profile }) {
     const dispatch = useDispatch();
     const [isHover, setIsHover] = useState(false);
     const [isMuted, setIsMuted] = useState(true);
-    const [onWatchlist, setOnWatchlist] = useState(
-        profile?.watchlistVideos.includes(Number(video.id))
-    );
+    const onWatchlist = profile?.watchlistVideos.includes(Number(video.id))
     const [showModal, setShowModal] = useState(false);
 
     const history = useHistory();
@@ -34,13 +32,13 @@ function VideoThumbnail({ video, profile }) {
     const handleAdd = () => {
         (async () => {
             await dispatch(addToWatchlistThunk(profile.id, video.id));
-            setOnWatchlist(true);
+            // setOnWatchlist(true);
         })();
     };
     const handleRemove = () => {
         (async () => {
             await dispatch(deleteFromWatchlistThunk(profile.id, video.id));
-            setOnWatchlist(false);
+            // setOnWatchlist(false);
         })();
     };
 
