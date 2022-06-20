@@ -43,7 +43,6 @@ function VideoThumbnail({ video, profile, isMyListCarousel=false }) {
     };
 
     const handleExpand = () => {
-        console.log('expand');
         setIsHover(false);
         setShowModal(true);
     };
