@@ -50,10 +50,19 @@ const LoginFormPage = () => {
                     <form className='login-form' onSubmit={onLogin}>
                         <div className='error-container'>
                             {errors?.map((error, ind) => (
-                                <div key={ind}>{error}</div>
+                                <div key={`login-error-${ind}`}>{error}</div>
                             ))}
                         </div>
-                        <div className='sign-in-text'>Sign In</div>
+                        <p className='sign-in-stream-text'>
+                            Stream movies, share thoughts.
+                        </p>
+                        <p className='sign-in-welcome-text'>
+                            Welcome to{' '}
+                            <span className='rflix-span sign-in-welcome-text'>
+                                {' '}
+                                rFlix.
+                            </span>
+                        </p>
                         <div>
                             {/* <label htmlFor='email'>Email</label> */}
                             <input

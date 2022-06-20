@@ -4,6 +4,7 @@
     left: 20px;
     padding: 20px;
     z-index: 1;
+    cursor: pointer;
 }
 
 .video-player-wrapper {
@@ -44,6 +45,7 @@
     font-size: 14px;
 }
 .watchlist-add-remove-btn {
+    cursor: pointer;
     display: flex;
     width: 32px;
 }

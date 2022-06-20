@@ -94,7 +94,7 @@ videos = [
         "genreId": 4,
         "releaseYear": 1977,
         "title": "Star Wars",
-        "description": 'this is the original 1977 trailer that preceded the eventual change in 1981 when the film was retroactively renamed "Star Wars: Episode IV A New Hope"',
+        "description": 'This is the original 1977 trailer that preceded the eventual change in 1981 when the film was retroactively renamed "Star Wars: Episode IV A New Hope"',
         "imageUrl": None,
         "videoUrl": "https://archive.org/download/star-wars-1977/Star-wars_1977.mp4"
     },
@@ -233,6 +233,110 @@ videos = [
         "description": 'Explore some of the world\'s most majestic waterfalls.  Narrated by David Attenborough',
         "imageUrl": None,
         "videoUrl": "https://rflix.s3.amazonaws.com/pexels-sarowar-hussain-5946371.mp4"
+    },
+    {
+        "genreId": 2,
+        "releaseYear": 2021,
+        "title": "Clara Sola",
+        "description": 'In a remote village in Costa Rica, Clara, a 36-year-old woman, takes off on a journey to break free from social and religious conventions and become the master of her sexuality and newfound powers.',
+        "imageUrl": None,
+        "videoUrl": "https://rflix.s3.amazonaws.com/clara-sola-trailer.mov"
+    },
+    {
+        "genreId": 3,
+        "releaseYear": 2022,
+        "title": "Abandoned",
+        "description": 'After a couple move into a remote farmhouse with their infant son, the woman\'s struggles with postpartum psychosis begin to intensify.',
+        "imageUrl": None,
+        "videoUrl": "https://rflix.s3.amazonaws.com/abandoned-trailer.mov"
+    },
+    {
+        "genreId": 3,
+        "releaseYear": 2022,
+        "title": "The Witch: Part 2. The Other One",
+        "description": 'A girl wakes up in a secret laboratory and meets Kyung-hee, who is trying to protect her from a gang. When the gang finally finds the girl, they are overwhelmed by an unexpected power.',
+        "imageUrl": None,
+        "videoUrl": "https://rflix.s3.amazonaws.com/the-witch-2-trailer.mov"
+    },
+    {
+        "genreId": 2,
+        "releaseYear": 2021,
+        "title": "The Tale of King Crab",
+        "description": 'In the 19th century, a wandering drunkard in Italy is cast out of his village for a crime. He is exiled to Tierra del Fuego, where he searches for a mythical treasure, paving his way toward redemption.',
+        "imageUrl": None,
+        "videoUrl": "https://rflix.s3.amazonaws.com/the-tale-of-king-crab-trailer.mov"
+    },
+    {
+        "genreId": 1,
+        "releaseYear": 2021,
+        "title": "Marvelous and the Black Hole",
+        "description": 'A teenage delinquent teams up with a surly children\'s party magician to navigate her dysfunctional family and inner demons.',
+        "imageUrl": None,
+        "videoUrl": "https://rflix.s3.amazonaws.com/marvelous-and-the-black-hole-trailer.mov"
+    },
+    {
+        "genreId": 5,
+        "releaseYear": 2022,
+        "title": "Minions: The Rise of Gru",
+        "description": 'In the 1970s, young Gru tries to join a group of supervillains called the Vicious 6 after they oust their leader -- the legendary fighter Wild Knuckles. When the interview turns disastrous, Gru and his Minions go on the run with the Vicious 6 hot on their tails. Luckily, he finds an unlikely source for guidance -- Wild Knuckles himself -- and soon discovers that even bad guys need a little help from their friends.',
+        "imageUrl": None,
+        "videoUrl": "https://rflix.s3.amazonaws.com/minions-the-rise-of-gruu-trailer.mov"
+    },
+    {
+        "genreId": 5,
+        "releaseYear": 2022,
+        "title": "Paws of Fury: The Legend of Hank",
+        "description": 'A down-on-his-luck hound finds himself in a town full of cats who need a hero to defend them from a ruthless villain\'s evil plot to wipe their village off the map. With help from a reluctant trainer, the underdog must assume the role of fearsome samurai and team up with the felines to save the day. The only problem is -- they all hate dogs.',
+        "imageUrl": None,
+        "videoUrl": "https://rflix.s3.amazonaws.com/paws-of-fury-trailer.mov"
+    },
+    {
+        "genreId": 5,
+        "releaseYear": 2022,
+        "title": "Puss in Boots: The Last Wish",
+        "description": 'Puss in Boots discovers that his passion for adventure has taken its toll: he has burnt through eight of his nine lives. Puss sets out on an epic journey to find the mythical Last Wish and restore his nine lives.',
+        "imageUrl": None,
+        "videoUrl": "https://rflix.s3.amazonaws.com/puss-In-boots-thr-last-wish.mov"
+    },
+    {
+        "genreId": 5,
+        "releaseYear": 2022,
+        "title": "Lightyear",
+        "description": 'Legendary space ranger Buzz Lightyear embarks on an intergalactic adventure alongside ambitious recruits Izzy, Mo, Darby, and his robot companion, Sox.',
+        "imageUrl": None,
+        "videoUrl": "https://rflix.s3.amazonaws.com/lightyear-trailer.mov"
+    },
+    {
+        "genreId": 2,
+        "releaseYear": 2022,
+        "title": "Charlotte",
+        "description": 'Charlotte Salomon, a young German-Jewish painter, flees Berlin on the eve of the Second World War and attempts to reinvent herself in the South of France.',
+        "imageUrl": None,
+        "videoUrl": "https://rflix.s3.amazonaws.com/charlotte-trailer.mov"
+    },
+    {
+        "genreId": 3,
+        "releaseYear": 2021,
+        "title": "The Black Phone",
+        "description": 'Finney Shaw is a shy but clever 13-year-old boy who\'s being held in a soundproof basement by a sadistic, masked killer. When a disconnected phone on the wall starts to ring, he soon discovers that he can hear the voices of the murderer\'s previous victims -- and they are dead set on making sure that what happened to them doesn\'t happen to Finney.',
+        "imageUrl": None,
+        "videoUrl": "https://rflix.s3.amazonaws.com/black-phone-trailer.mov"
+    },
+    {
+        "genreId": 2,
+        "releaseYear": 2021,
+        "title": "Anaïs in Love",
+        "description": 'A spirited young woman falls in love with the live-in partner of the man with whom she\'s having an affair.',
+        "imageUrl": None,
+        "videoUrl": "https://rflix.s3.amazonaws.com/anais-in-love-trailer.mov"
+    },
+    {
+        "genreId": 3,
+        "releaseYear": 2015,
+        "title": "Poltergeist",
+        "description": 'All seems well for Eric Bowen (Sam Rockwell), wife Amy (Rosemarie DeWitt) and their three children as they move into their new house in the suburbs of Illinois. Soon, youngest daughter Maddy (Kennedi Clements) begins talking to an imaginary friend, or so the family thinks. It\'s not long before sinister spirits wreak havoc in the home, holding Maddy captive and forcing the parents to consult a team of parapsychologists who engage the supernatural entities in a battle for the girl\'s freedom.',
+        "imageUrl": None,
+        "videoUrl": "https://rflix.s3.amazonaws.com/Poltergeist.mp4"
     },
 
 ]

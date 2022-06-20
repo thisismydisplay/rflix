@@ -11,7 +11,7 @@ function VideoList({ videos, mylist }) {
         'Cartoons',
         'Comedy',
         'Drama',
-        'Thriller',
+        'Thriller/Horror',
         'Action & Adventure',
     ];
     const profile = useSelector(
@@ -25,13 +25,24 @@ function VideoList({ videos, mylist }) {
         <>
             {mylist && (
                 <>
-                    {myListVideos.length > 0 ?
-                    (myListVideos.map((video) => (
-                        <div className='video-thumb-container' key={video.id}>
-                        <VideoThumbnail profile={profile} video={video} />
-                        </div>
+                    {myListVideos.length > 0 ? (
+                        myListVideos.map((video) => (
+                            <div
+                                className='video-thumb-container'
+                                key={`my-list-${video.id}`}
+                            >
+                                <VideoThumbnail
+                                    profile={profile}
+                                    video={video}
+                                    isMyListCarousel
+                                />
+                            </div>
                         ))
-                    ) : (<div className='my-list-no-videos-yet-text'>You haven't added any videos to My List yet.</div>)}
+                    ) : (
+                        <div className='my-list-no-videos-yet-text'>
+                            You haven't added any videos to My List yet.
+                        </div>
+                    )}
                 </>
             )}
 
@@ -41,17 +52,18 @@ function VideoList({ videos, mylist }) {
                         <div className='video-carousel-wrapper'>
                             <div className='video-list-title'>My List</div>
                             <div className='video-list-wrapper'>
-                            {myListVideos.map((video) => (
-                                <div
-                                    className='video-thumb-container'
-                                    key={video.id}
-                                >
-                                    <VideoThumbnail
-                                        profile={profile}
-                                        video={video}
-                                    />
-                                </div>
-                            ))}
+                                {myListVideos.map((video) => (
+                                    <div
+                                        className='video-thumb-container'
+                                        key={`browse-list-${video.id}`}
+                                    >
+                                        <VideoThumbnail
+                                            profile={profile}
+                                            video={video}
+                                            isMyListCarousel
+                                        />
+                                    </div>
+                                ))}
                             </div>
                         </div>
                     </div>
@@ -61,11 +73,11 @@ function VideoList({ videos, mylist }) {
             <div className='browse-genre-container'>
                 {!mylist &&
                     genres.map((genre, i) => (
-                        <>
+                        <React.Fragment key={`genre-${i}`}>
                             <div className='video-list-title'>{genre}</div>
                             <div className='video-list-wrapper'>
-                                {Object.values(videos).map((video) => (
-                                    <div key={video.id}>
+                                {Object.values(videos).map((video, i) => (
+                                    <div key={`inner-${genre}-${video.id}`}>
                                         {video.genre === genre && (
                                             <div
                                                 className='video-thumb-container'
@@ -80,7 +92,7 @@ function VideoList({ videos, mylist }) {
                                     </div>
                                 ))}
                             </div>
-                        </>
+                        </React.Fragment>
                     ))}
             </div>
         </>

@@ -39,7 +39,7 @@ const ProfileSelectPage = ({ user }) => {
                         <Profile
                             profile={profile}
                             manage={false}
-                            key={profile.id}
+                            key={`profile-select-${profile.id}`}
                         />
                     ))}
                     <div className='add-profile-btn-div' onClick={handleAdd}>

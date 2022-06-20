@@ -64,7 +64,7 @@ function BrowsePage() {
         })();
     }, [dispatch]);
     useEffect(() => {
-        if (videos){
+        if (Object.values(videos).length){
 
             (async () => {
                 await dispatch(getVideo(getRandomVideoId(1, Object.values(videos).length - 1)))
@@ -105,7 +105,7 @@ function BrowsePage() {
                                 </div>
                             </div>
                             <div
-                                className='modal-mute-btn-div'
+                                className='browse-mute-btn-div'
                                 style={{ width: '100%' }}
                             >
                                 <div className='video-detail-left-btns-div'>
@@ -169,8 +169,9 @@ function BrowsePage() {
                         )}
                     </div>
                     <ReactPlayer
-                        className='react-player-modal'
+                        className='react-player-browse'
                         playing
+                        loop={true}
                         volume={isMuted ? 0 : profile.defaultVolume}
                         width='97vw'
                         height='75vh'

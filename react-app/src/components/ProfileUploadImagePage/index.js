@@ -59,7 +59,7 @@ const ProfileUploadImagePage = ({ currentProfile }) => {
 
                 <div className='error-container'>
                     {uploadErrors?.map((error, ind) => (
-                        <div key={ind}>{error}</div>
+                        <div key={`upload-error-${ind}`}>{error}</div>
                     ))}
                 </div>
 

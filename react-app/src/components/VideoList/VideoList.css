@@ -42,6 +42,7 @@
 
 .react-player {
     position: relative;
+    cursor: pointer;
 }
 
 .thumbnail-overlay {
@@ -58,11 +59,14 @@
     margin-top: 40px;
     margin-bottom: 50px;
 }
+.thumbnail-title-div{
+    cursor: pointer;
+}
 .mute-btn-div {
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
-
+    cursor: pointer;
 }
 /* .mute-btn {
     width: 24px;
@@ -80,6 +84,7 @@
     margin-bottom: 5px;
     border-radius: 50%;
     border: white 2px solid;
+    cursor: pointer;
     opacity: 0.4;
 }
 .mute-btn:hover {
