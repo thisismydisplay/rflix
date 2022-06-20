@@ -12,10 +12,13 @@
     padding: 30px 0px;
     font-size: 14px;
     font-weight: 300px;
+    cursor: auto;
 }
+
 .modal-year-text {
     font-size: 16px;
     font-weight: 300px;
+    cursor: auto;
 }
 
 .video-modal-wrapper {

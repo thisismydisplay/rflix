@@ -23,6 +23,9 @@ def add_video_to_watchlist(profileId, videoId):
     # is_duplicate_watchlist = Watchlist.query.filter(Watchlist.profileId==profileId and Watchlist.videoId==videoId).first()
     # if is_duplicate_watchlist:
     #     return {'errors': ['Video already exists in watchlist']}
+    duplicateWatchlist = Watchlist.query.filter(Watchlist.profileId==profileId).filter(Watchlist.videoId==videoId).first()
+    if duplicateWatchlist:
+        return {'errors': ['Video already exists in watchlist']}, 418
     params = dict(
         profileId=profileId,
         videoId=videoId,

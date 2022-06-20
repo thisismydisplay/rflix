@@ -18,7 +18,7 @@ function VideoPage({ profile }) {
     const dispatch = useDispatch();
     const location = useLocation();
     const videoId = location.pathname.split('/')[2];
-    const [onWatchlist, setOnWatchlist] = useState(profile?.watchlistVideos.includes(Number(videoId)))
+    const onWatchlist = profile?.watchlistVideos.includes(Number(videoId))
     useEffect(() => {
         const navbar = document.getElementById('navbar');
         navbar.setAttribute('style', 'display:none;');
@@ -67,13 +67,13 @@ function VideoPage({ profile }) {
     const handleAdd = () => {
         (async () => {
             await dispatch(addToWatchlistThunk(profile.id, videoId));
-            setOnWatchlist(true)
+            // setOnWatchlist(true)
         })();
     };
     const handleRemove = () => {
         (async () => {
             await dispatch(deleteFromWatchlistThunk(profile.id, videoId));
-            setOnWatchlist(false)
+            // setOnWatchlist(false)
         })();
     };
 

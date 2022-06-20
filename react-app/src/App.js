@@ -65,7 +65,7 @@ function App() {
                             <Redirect to='/login' />
                         )}
                     </Route>
-                    <Route path='/login' exact={true}>
+                    <Route path='/login' exact>
                         {sessionUser ? (
                             <Redirect to='/profile' />
                         ) : (
@@ -73,7 +73,7 @@ function App() {
                         )}
                         {/* <LoginFormPage /> */}
                     </Route>
-                    <Route path='/signup' exact={true}>
+                    <Route path='/signup' exact>
                         {sessionUser ? (
                             <Redirect to='/profile' />
                         ) : (

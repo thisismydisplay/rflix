@@ -56,7 +56,7 @@ function ProfileButton() {
                                     return (
                                         <div
                                             className='nav-profile'
-                                            key={profile.id}
+                                            key={`profile-btn-${profile.id}`}
                                             onClick={() =>
                                                 handleProfileChange(profile)
                                             }

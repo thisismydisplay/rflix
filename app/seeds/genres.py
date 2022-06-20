@@ -3,7 +3,7 @@ from ..models import db, Genre
 genres = [
     "Comedy",
     "Drama",
-    "Thriller",
+    "Thriller/Horror",
     "Action & Adventure",
     "Cartoons",
     "Nature"
