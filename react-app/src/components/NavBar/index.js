@@ -11,7 +11,6 @@ const NavBar = ({ profile }) => {
     const onProfile = location.pathname.split('/')[1] === 'profile';
     const onLogin = location.pathname.split('/')[1] === 'login';
     const onSignup = location.pathname.split('/')[1] === 'signup';
-    console.log('onprofile', onProfile)
     if (onProfile) return null;
     let topRight;
     if (profile) {
