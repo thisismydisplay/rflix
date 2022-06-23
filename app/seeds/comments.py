@@ -41,6 +41,11 @@ comments = [
         "videoId": 2,
         "text": "This film will change your life."
     },
+    {
+        "profileId": 3,
+        "videoId": 3,
+        "text": "This might be my favorite."
+    },
 ]
 
 def seed_comments():

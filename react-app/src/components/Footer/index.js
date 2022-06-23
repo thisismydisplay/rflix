@@ -11,8 +11,8 @@ function Footer() {
             <li className="footer-li"><a className='footer-link' href='https://developer.mozilla.org/en-US/docs/Web/css'>CSS3</a></li>
             <li className="footer-li"><a className='footer-link' href='https://reactjs.org/docs/getting-started.html'>React</a></li>
             <li className="footer-li"><a className='footer-link' href='https://redux.js.org/introduction/getting-started'>Redux</a></li>
-            <li className="footer-li"><a className='footer-link' href='https://expressjs.com/'>Express</a></li>
-            <li className="footer-li"><a className='footer-link' href='https://sequelize.org/'>Sequelize</a></li>
+            <li className="footer-li"><a className='footer-link' href='https://docs.python.org/3'>Python 3</a></li>
+            <li className="footer-li"><a className='footer-link' href='https://flask.palletsprojects.com/en/2.1.x'>Flask</a></li>
             <li className="footer-li"><a className='footer-link' href='https://www.postgresql.org/docs/'>PostgreSQL</a></li>
 
         </ul>
