@@ -12,7 +12,7 @@
     align-items: center;
     justify-content: flex-start;
     background-color: var(--browse-bg);
-    overflow: visible;
+    overflow-x: clip;
     overflow-y: visible;
     flex-wrap: nowrap;
 }
