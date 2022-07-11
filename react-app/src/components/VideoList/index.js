@@ -1,8 +1,16 @@
 import './VideoList.css';
-
+import './Swiper.css';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+
+import { Navigation, Pagination } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react/swiper-react.js';
+// Styles must use direct files imports
+import 'swiper/swiper.scss'; // core Swiper
+import 'swiper/modules/navigation/navigation.scss'; // Navigation module
+import 'swiper/modules/pagination/pagination.scss'; // Pagination module
+
 import VideoThumbnail from '../VideoThumbnail';
 
 function VideoList({ videos, mylist }) {
@@ -74,24 +82,50 @@ function VideoList({ videos, mylist }) {
                 {!mylist &&
                     genres.map((genre, i) => (
                         <React.Fragment key={`genre-${i}`}>
-                            <div className='video-list-title'>{genre}</div>
-                            <div className='video-list-wrapper'>
+                            <div
+                                className='video-list-title'
+                                key={`genre-div-${i}`}
+                            >
+                                {genre}
+                            </div>
+                            <Swiper
+                                key={`genre-swiper-${i}`}
+                                slidesPerView={5}
+                                spaceBetween={0}
+                                slidesPerGroup={5}
+                                // observer={true}
+                                // observeParents={true}
+                                // observeSlideChildren={true}
+                                // preloadImages={false}
+                                // lazy={{enabled: true, loadOnTransitionStart: true}}
+                                // virtual={true}
+                                // height={160}
+                                loop={true}
+                                // slidesOffsetAfter={100}
+                                // slidesOffsetBefore={100}
+                                loopFillGroupWithBlank={true}
+                                // pagination={{
+                                    // clickable: true,
+                                    // type: 'progressbar',
+                                // }}
+                                navigation={true}
+                                modules={[Pagination, Navigation]}
+                                style={{ overflow: 'visible' }}
+                                className='video-list-wrapper'
+                            >
                                 {Object.values(videos).map((video, i) => (
-                                    <div key={`inner-${genre}-${video.id}`}>
-                                        {video.genre === genre && (
-                                            <div
-                                                className='video-thumb-container'
-                                                // key={video.id}
-                                            >
+                                    // <div key={`${genre}-${i}-${video.id}`}>
+                                        video.genre === genre && (
+                                            <SwiperSlide key={`inner-${genre}-${video.id}`} className='video-thumb-container'>
                                                 <VideoThumbnail
                                                     profile={profile}
                                                     video={video}
                                                 />
-                                            </div>
-                                        )}
-                                    </div>
+                                            </SwiperSlide>
+                                        )
+                                    // </div>
                                 ))}
-                            </div>
+                            </Swiper>
                         </React.Fragment>
                     ))}
             </div>

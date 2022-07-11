@@ -143,7 +143,7 @@ videos = [
         "releaseYear": 2022,
         "title": "Downton Abbey: A New Era",
         "description": 'The Crawley family goes on a grand journey to the South of France to uncover the mystery of the dowager countess\'s newly inherited villa.',
-        "imageUrl": None,
+        "imageUrl": "https://rflix.s3.amazonaws.com/downton-abbey-cover.png",
         "videoUrl": "https://rflix.s3.amazonaws.com/downton-abbey-a-new-era-trailer.mov"
     },
     {
@@ -239,7 +239,7 @@ videos = [
         "releaseYear": 2021,
         "title": "Clara Sola",
         "description": 'In a remote village in Costa Rica, Clara, a 36-year-old woman, takes off on a journey to break free from social and religious conventions and become the master of her sexuality and newfound powers.',
-        "imageUrl": None,
+        "imageUrl": "https://rflix.s3.amazonaws.com/clara-sola-cover.png",
         "videoUrl": "https://rflix.s3.amazonaws.com/clara-sola-trailer.mov"
     },
     {
@@ -263,7 +263,7 @@ videos = [
         "releaseYear": 2021,
         "title": "The Tale of King Crab",
         "description": 'In the 19th century, a wandering drunkard in Italy is cast out of his village for a crime. He is exiled to Tierra del Fuego, where he searches for a mythical treasure, paving his way toward redemption.',
-        "imageUrl": None,
+        "imageUrl": "https://rflix.s3.amazonaws.com/king-crab-cover.png",
         "videoUrl": "https://rflix.s3.amazonaws.com/the-tale-of-king-crab-trailer.mov"
     },
     {
@@ -311,7 +311,7 @@ videos = [
         "releaseYear": 2022,
         "title": "Charlotte",
         "description": 'Charlotte Salomon, a young German-Jewish painter, flees Berlin on the eve of the Second World War and attempts to reinvent herself in the South of France.',
-        "imageUrl": None,
+        "imageUrl": "https://rflix.s3.amazonaws.com/charlotte-cover.png",
         "videoUrl": "https://rflix.s3.amazonaws.com/charlotte-trailer.mov"
     },
     {
@@ -327,7 +327,7 @@ videos = [
         "releaseYear": 2021,
         "title": "Anaïs in Love",
         "description": 'A spirited young woman falls in love with the live-in partner of the man with whom she\'s having an affair.',
-        "imageUrl": None,
+        "imageUrl": "https://rflix.s3.amazonaws.com/anias-cover.png",
         "videoUrl": "https://rflix.s3.amazonaws.com/anais-in-love-trailer.mov"
     },
     {

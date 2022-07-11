@@ -51,7 +51,7 @@ class Video(db.Model, DateMixin):
         video.releaseYear = video_data.get("releaseYear")
         video.title = video_data.get("title")
         video.description = video_data.get("description")
-        video.imageUrl = video_data.get("videoUrl")
+        video.imageUrl = video_data.get("imageUrl")
         video.videoUrl = video_data.get("videoUrl")
 
         return video
