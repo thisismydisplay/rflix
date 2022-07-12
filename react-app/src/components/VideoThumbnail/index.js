@@ -22,7 +22,7 @@ import expandButton from '../../images/expand-down.png';
 
 const variants = {
     open: { opacity: 1, height: '100%' },
-    closed: { opacity: 0, height: '0px' },
+    closed: { opacity: 0, height: '0px', overflow: 'hidden', zIndex: -1 },
 };
 
 function VideoThumbnail({ video, profile, isMyListCarousel = false }) {
@@ -67,7 +67,7 @@ function VideoThumbnail({ video, profile, isMyListCarousel = false }) {
                     className='video-image'
                     animate={isHover ? 'open' : 'closed'}
                     variants={variants}
-                    transition={{ delay: 1.1, ease: 'easeInOut', duration: 0.6 }}
+                    transition={isHover ? { delay: 0.6, ease: 'easeInOut', duration: 0.4 } : { delay: 0, ease: 'easeInOut', duration: 0 }}
                     // exit={{opacity: 0, height: '0px'}}
                 >
                     <div
@@ -188,7 +188,7 @@ function VideoThumbnail({ video, profile, isMyListCarousel = false }) {
                     ></img>
                 </div>
             </div>
-            <div className='thumbnail-description-wrapper' style={isHover ? {display: 'flex'} : {display: 'none'}}>
+            <div className='thumbnail-description-wrapper' style={isHover ? { width: '260px' } : { width: '120px' }}>
             <div className='thumbnail-year-text'>{video.releaseYear}</div>
 
                 <div className='thumbnail-description-text'>
@@ -202,7 +202,7 @@ function VideoThumbnail({ video, profile, isMyListCarousel = false }) {
                 className='video-image'
                 animate={isHover ? 'closed' : 'open'}
                 variants={variants}
-                transition={{ delay: 1.1, ease: 'easeInOut', duration: 0.6 }}
+                transition={isHover ? { delay: 0.6, ease: 'easeInOut', duration: 0.0 } : { delay: 0.6, ease: 'easeInOut', duration: 0.4 }}
                 // exit={{opacity: 0, height: '0px'}}
 
                 src={video.imageUrl}

@@ -6,6 +6,8 @@
 .video-list-wrapper {
     /* padding: 20px; */
     /* height: 240px; */
+    max-height: 135px;
+    height: 135px;
     display: flex;
     flex-grow: 1;
     flex-direction: row;
@@ -37,7 +39,7 @@
 }
 .video-thumb-wrapper:hover {
     z-index: 5;
-    margin: -200px -45px;
+    margin: -200px 5px;
 }
 
 .react-player {
@@ -52,6 +54,7 @@
     justify-content: space-between;
     align-items: space-between;
     position: absolute;
+    top:0;
     z-index: 1;
 }
 .thumbnail-title{
@@ -181,8 +184,8 @@
 }
 
 .thumbnail-description-wrapper {
-    padding: 0px 40px;
-    width: 200px;
+    /* padding: 0px 40px; */
+    /* width: 200px; */
     display: flex;
     flex-direction: column;
     align-items: space-between;
