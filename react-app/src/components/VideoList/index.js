@@ -81,15 +81,15 @@ function VideoList({ videos, mylist }) {
             <div className='browse-genre-container'>
                 {!mylist &&
                     genres.map((genre, i) => (
-                        <React.Fragment key={`genre-${i}`}>
+                        <React.Fragment key={`${genre}-${i}`}>
                             <div
                                 className='video-list-title'
-                                key={`genre-div-${i}`}
+                                key={`${genre}-div-${i}`}
                             >
                                 {genre}
                             </div>
                             <Swiper
-                                key={`genre-swiper-${i}`}
+                                key={`${genre}-swiper-${i}`}
                                 slidesPerView={5}
                                 spaceBetween={0}
                                 slidesPerGroup={5}
