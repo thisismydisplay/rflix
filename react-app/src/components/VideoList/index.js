@@ -59,9 +59,22 @@ function VideoList({ videos, mylist }) {
                     <div className='video-carousel-wrapper'>
                         <div className='video-carousel-wrapper'>
                             <div className='video-list-title'>My List</div>
-                            <div className='video-list-wrapper'>
+                            <Swiper
+                                key={`my-list-browse-swiper-`}
+                                slidesPerView={5}
+                                spaceBetween={5}
+                                slidesPerGroup={5}
+                                navigation={true}
+                                modules={[Pagination, Navigation]}
+                                style={{ overflow: 'visible' }}
+                                pagination={{
+                                clickable: false,
+                                type: 'progressbar',
+                                }}
+                                className='video-list-wrapper'
+                            >
                                 {myListVideos.map((video) => (
-                                    <div
+                                    <SwiperSlide
                                         className='video-thumb-container'
                                         key={`browse-list-${video.id}`}
                                     >
@@ -70,9 +83,9 @@ function VideoList({ videos, mylist }) {
                                             video={video}
                                             isMyListCarousel
                                         />
-                                    </div>
+                                    </SwiperSlide>
                                 ))}
-                            </div>
+                            </Swiper>
                         </div>
                     </div>
                 )}
@@ -91,8 +104,11 @@ function VideoList({ videos, mylist }) {
                             <Swiper
                                 key={`${genre}-swiper-${i}`}
                                 slidesPerView={5}
-                                spaceBetween={0}
+                                spaceBetween={5}
                                 slidesPerGroup={5}
+                                // loop={true}
+                                // loopFillGroupWithBlank={true}
+
                                 // observer={true}
                                 // observeParents={true}
                                 // observeSlideChildren={true}
@@ -100,31 +116,69 @@ function VideoList({ videos, mylist }) {
                                 // lazy={{enabled: true, loadOnTransitionStart: true}}
                                 // virtual={true}
                                 // height={160}
-                                loop={true}
                                 // slidesOffsetAfter={100}
                                 // slidesOffsetBefore={100}
-                                loopFillGroupWithBlank={true}
                                 // pagination={{
-                                    // clickable: true,
-                                    // type: 'progressbar',
+                                // clickable: true,
+                                // type: 'progressbar',
                                 // }}
+                                // breakpoints={{
+                                //     600: {
+                                //       slidesPerView: 2,
+                                //       slidesPerGroup: 2,
+                                //       spaceBetween: 5,
+                                //       centeredSlides: true
+
+                                //     },
+                                //      900: {
+                                //       slidesPerView: 3,
+                                //       slidesPerGroup: 3,
+                                //       spaceBetween: 5,
+                                //        centeredSlides: false
+
+                                //     },
+                                //     1200: {
+                                //       slidesPerView: 4,
+                                //       slidesPerGroup: 4,
+                                //       spaceBetween: 5,
+                                //       centeredSlides: false
+                                //     },
+
+                                //      1500: {
+                                //        slidesPerView: 5,
+                                //        slidesPerGroup: 5,
+                                //        spaceBetween: 5,
+                                //        centeredSlides: false
+                                //      },
+
+                                //     1800: {
+                                //       slidesPerView: 6,
+                                //       slidesPerGroup: 6,
+                                //       spaceBetween: 5,
+                                //       centeredSlides: false
+                                //     }
+                                //   }}
                                 navigation={true}
                                 modules={[Pagination, Navigation]}
                                 style={{ overflow: 'visible' }}
                                 className='video-list-wrapper'
                             >
-                                {Object.values(videos).map((video, i) => (
-                                    // <div key={`${genre}-${i}-${video.id}`}>
+                                {Object.values(videos).map(
+                                    (video, i) =>
+                                        // <div key={`${genre}-${i}-${video.id}`}>
                                         video.genre === genre && (
-                                            <SwiperSlide key={`inner-${genre}-${video.id}`} className='video-thumb-container'>
+                                            <SwiperSlide
+                                                key={`inner-${genre}-${video.id}`}
+                                                className='video-thumb-container'
+                                            >
                                                 <VideoThumbnail
                                                     profile={profile}
                                                     video={video}
                                                 />
                                             </SwiperSlide>
                                         )
-                                    // </div>
-                                ))}
+                                        // </div>
+                                )}
                             </Swiper>
                         </React.Fragment>
                     ))}
