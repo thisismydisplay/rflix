@@ -170,7 +170,7 @@ function BrowsePage() {
                     <ReactPlayer
                         className='react-player-browse'
                         playing
-                        loop={true}
+                        // loop={true}
                         volume={isMuted ? 0 : profile.defaultVolume}
                         width='97vw'
                         height='75vh'
