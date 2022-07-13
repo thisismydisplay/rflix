@@ -2,8 +2,8 @@ import './VideoDetailModal.css';
 import ReactPlayer from 'react-player';
 
 import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { Redirect, useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import {
     addToWatchlistThunk,
     deleteFromWatchlistThunk,

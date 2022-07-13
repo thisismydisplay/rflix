@@ -1,5 +1,5 @@
 import './MyListPage.css';
-import ReactPlayer from 'react-player';
+// import ReactPlayer from 'react-player';
 
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';

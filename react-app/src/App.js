@@ -25,7 +25,7 @@ function App() {
     const store = useStore();
     //   const profiles = useSelector((state) => state.profile.profiles);
     const currentProfile = useSelector((state)=> selectProfile(state.profile))
-    const videos = useSelector((state)=> state.video.videos)
+    // const videos = useSelector((state)=> state.video.videos)
 
     // const userId = sessionUser.id cant do this here bc sessionUser is null
 

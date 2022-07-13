@@ -49,7 +49,6 @@ function BrowsePage() {
     };
 
     const handleExpand = () => {
-        // console.log('expand');
         setShowModal(true);
     };
 

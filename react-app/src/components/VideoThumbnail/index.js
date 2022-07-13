@@ -5,7 +5,7 @@ import ReactPlayer from 'react-player';
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { AnimatePresence, motion } from 'framer-motion/dist/framer-motion';
+import { motion } from 'framer-motion/dist/framer-motion';
 
 import Modal from '../Modal';
 import VideoDetailModal from '../VideoDetailModal';
