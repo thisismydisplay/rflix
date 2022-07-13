@@ -54,9 +54,7 @@ Check out a live version of rflix here: [https://rflix.herokuapp.com](https://rf
 
 
 
-
-https://user-images.githubusercontent.com/66559149/178784317-269695d4-c8cc-4891-93ba-47c5c9ecdf97.mov
-
+![rFlix](https://user-images.githubusercontent.com/66559149/178784900-5a7fd6d5-b3ea-4bca-9e87-8c54795b60a9.gif)
 
 
 
