@@ -53,8 +53,8 @@ Check out a live version of rflix here: [https://rflix.herokuapp.com](https://rf
     `npm start`
 
 
+![rflix-example](https://user-images.githubusercontent.com/66559149/178785367-a26b8c4f-8db4-48f9-8ee6-30ea3650d4ec.gif)
 
-![rFlix](https://user-images.githubusercontent.com/66559149/178784900-5a7fd6d5-b3ea-4bca-9e87-8c54795b60a9.gif)
 
 
 
