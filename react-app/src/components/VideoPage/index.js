@@ -54,18 +54,18 @@ function VideoPage({ profile }) {
 
 
 
-    useEffect(() => {
-        // 👇️ scroll to top on page load
-        if (video) {
-            console.log('scroll')
-            setTimeout(() => {
-                window.scrollTo({
-                    top: 0,
-                    behavior: "smooth"
-                  });
-            }, 300);
-        }
-      }, [video]);
+    // useEffect(() => {
+    //     // 👇️ scroll to top on page load
+    //     if (video) {
+    //         console.log('scroll')
+    //         setTimeout(() => {
+    //             window.scrollTo({
+    //                 top: 0,
+    //                 behavior: "smooth"
+    //               });
+    //         }, 300);
+    //     }
+    //   }, [video]);
     // useEffect(() => {
     //     window.scrollTo(0, 0)
     //   }, [])
