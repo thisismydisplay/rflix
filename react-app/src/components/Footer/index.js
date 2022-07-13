@@ -2,18 +2,19 @@ import React from "react";
 import "./Footer.css";
 
 function Footer() {
+
     return (<div className="footer">
         <ul className="footer-ul">
-            <li className="footer-li"><a className='footer-link' href='https://github.com/thisismydisplay'>Github</a></li>
-            <li className="footer-li"><a className='footer-link' href='https://www.linkedin.com/in/markrockwellosman/'>LinkedIn</a></li>
-            <li className="footer-li"><a className='footer-link' href='https://developer.mozilla.org/en-US/docs/Web/JavaScript'>Javascript</a></li>
-            <li className="footer-li"><a className='footer-link' href='https://developer.mozilla.org/en-US/docs/Web/HTML'>HTML5</a></li>
-            <li className="footer-li"><a className='footer-link' href='https://developer.mozilla.org/en-US/docs/Web/css'>CSS3</a></li>
-            <li className="footer-li"><a className='footer-link' href='https://reactjs.org/docs/getting-started.html'>React</a></li>
-            <li className="footer-li"><a className='footer-link' href='https://redux.js.org/introduction/getting-started'>Redux</a></li>
-            <li className="footer-li"><a className='footer-link' href='https://docs.python.org/3'>Python 3</a></li>
-            <li className="footer-li"><a className='footer-link' href='https://flask.palletsprojects.com/en/2.1.x'>Flask</a></li>
-            <li className="footer-li"><a className='footer-link' href='https://www.postgresql.org/docs/'>PostgreSQL</a></li>
+            <li className="footer-li"><a className='footer-link' href='https://github.com/thisismydisplay' target="_blank" rel="noreferrer noopener">Github</a></li>
+            <li className="footer-li"><a className='footer-link' href='https://www.linkedin.com/in/markrockwellosman/' target="_blank" rel="noreferrer noopener">LinkedIn</a></li>
+            <li className="footer-li"><a className='footer-link' href='https://developer.mozilla.org/en-US/docs/Web/JavaScript' target="_blank" rel="noreferrer noopener">Javascript</a></li>
+            <li className="footer-li"><a className='footer-link' href='https://developer.mozilla.org/en-US/docs/Web/HTML' target="_blank" rel="noreferrer noopener">HTML5</a></li>
+            <li className="footer-li"><a className='footer-link' href='https://developer.mozilla.org/en-US/docs/Web/css' target="_blank" rel="noreferrer noopener">CSS3</a></li>
+            <li className="footer-li"><a className='footer-link' href='https://reactjs.org/docs/getting-started.html' target="_blank" rel="noreferrer noopener">React</a></li>
+            <li className="footer-li"><a className='footer-link' href='https://redux.js.org/introduction/getting-started' target="_blank" rel="noreferrer noopener">Redux</a></li>
+            <li className="footer-li"><a className='footer-link' href='https://docs.python.org/3' target="_blank" rel="noreferrer noopener">Python 3</a></li>
+            <li className="footer-li"><a className='footer-link' href='https://flask.palletsprojects.com/en/2.1.x' target="_blank" rel="noreferrer noopener">Flask</a></li>
+            <li className="footer-li"><a className='footer-link' href='https://www.postgresql.org/docs/' target="_blank" rel="noreferrer noopener">PostgreSQL</a></li>
 
         </ul>
     </div>)
