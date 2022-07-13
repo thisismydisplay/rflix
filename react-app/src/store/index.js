@@ -4,7 +4,8 @@ import profileReducer from './profile'
 // import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 // import thunk from 'redux-thunk';
 import sessionReducer from './session'
-import logger from 'redux-logger'
+// Uncomment for development
+// import logger from 'redux-logger'
 import videoReducer from './video'
 import commentReducer from './comment'
 // const rootReducer = combineReducers({
@@ -18,7 +19,8 @@ export const store = configureStore(
     video: videoReducer,
     comment: commentReducer
   },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
+//   Uncomment for development
+//   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
 }
 )
 

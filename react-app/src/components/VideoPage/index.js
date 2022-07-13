@@ -23,7 +23,10 @@ function VideoPage({ profile }) {
         const navbar = document.getElementById('navbar');
         navbar.setAttribute('style', 'display:none;');
     });
+
+
     const video = useSelector((state) => state.video.videos[videoId]);
+
 
     //comments is an object with key videoId
     const comments = useSelector((state) => state.comment?.comments);
@@ -49,9 +52,23 @@ function VideoPage({ profile }) {
         })();
     }, [dispatch, videoId]);
 
+
+
     useEffect(() => {
-        window.scrollTo(0, 0)
-      }, [])
+        // 👇️ scroll to top on page load
+        if (video) {
+            console.log('scroll')
+            setTimeout(() => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                  });
+            }, 300);
+        }
+      }, [video]);
+    // useEffect(() => {
+    //     window.scrollTo(0, 0)
+    //   }, [])
 
     const [controlsOn, setControlsOn] = useState(false);
     const [firstMove, setFirstMove] = useState(true);
