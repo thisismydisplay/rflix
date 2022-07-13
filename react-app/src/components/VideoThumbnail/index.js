@@ -158,7 +158,20 @@ function VideoThumbnail({ video, profile, isMyListCarousel = false }) {
                                 }}
                             ></img>
                         </div>
-                        <div className='watchlist-btn-div'>
+                        <div
+                            className='watchlist-btn-div'
+                            onClick={
+                                onWatchlist
+                                    ? (e) => {
+                                          e.stopPropagation();
+                                          handleRemove();
+                                      }
+                                    : (e) => {
+                                          e.stopPropagation();
+                                          handleAdd();
+                                      }
+                            }
+                        >
                             <img
                                 src={onWatchlist ? removeButton : addButton}
                                 alt={
@@ -167,17 +180,6 @@ function VideoThumbnail({ video, profile, isMyListCarousel = false }) {
                                         : 'add to watchlist'
                                 }
                                 className='watchlist-btn'
-                                onClick={
-                                    onWatchlist
-                                        ? (e) => {
-                                              e.stopPropagation();
-                                              handleRemove();
-                                          }
-                                        : (e) => {
-                                              e.stopPropagation();
-                                              handleAdd();
-                                          }
-                                }
                             ></img>
                         </div>
                     </div>
@@ -211,14 +213,14 @@ function VideoThumbnail({ video, profile, isMyListCarousel = false }) {
             <motion.img
                 className='video-image'
                 animate={isHover ? 'closed' : 'open'}
+                // animate={'open'}
                 variants={variants}
                 transition={
                     isHover
                         ? { delay: 0.6, ease: 'easeInOut', duration: 0.0 }
                         : { delay: 0.6, ease: 'easeInOut', duration: 0.4 }
                 }
-                // exit={{opacity: 0, height: '0px'}}
-
+                exit={{ opacity: 0, height: '0px' }}
                 src={video.imageUrl}
                 alt=''
             ></motion.img>

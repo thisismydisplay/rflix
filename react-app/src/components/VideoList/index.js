@@ -103,9 +103,9 @@ function VideoList({ videos, mylist }) {
                             </div>
                             <Swiper
                                 key={`${genre}-swiper-${i}`}
-                                slidesPerView={5}
+                                slidesPerView={2}
                                 spaceBetween={5}
-                                slidesPerGroup={5}
+                                slidesPerGroup={1}
                                 // loop={true}
                                 // loopFillGroupWithBlank={true}
 
@@ -122,42 +122,42 @@ function VideoList({ videos, mylist }) {
                                 // clickable: true,
                                 // type: 'progressbar',
                                 // }}
-                                // breakpoints={{
-                                //     600: {
-                                //       slidesPerView: 2,
-                                //       slidesPerGroup: 2,
-                                //       spaceBetween: 5,
-                                //       centeredSlides: true
+                                breakpoints={{
+                                    600: {
+                                      slidesPerView: 2,
+                                      slidesPerGroup: 2,
+                                      spaceBetween: 0,
+                                      centeredSlides: false
 
-                                //     },
-                                //      900: {
-                                //       slidesPerView: 3,
-                                //       slidesPerGroup: 3,
-                                //       spaceBetween: 5,
-                                //        centeredSlides: false
+                                    },
+                                     900: {
+                                      slidesPerView: 3,
+                                      slidesPerGroup: 3,
+                                      spaceBetween: 0,
+                                       centeredSlides: false
 
-                                //     },
-                                //     1200: {
-                                //       slidesPerView: 4,
-                                //       slidesPerGroup: 4,
-                                //       spaceBetween: 5,
-                                //       centeredSlides: false
-                                //     },
+                                    },
+                                    1200: {
+                                      slidesPerView: 4,
+                                      slidesPerGroup: 4,
+                                      spaceBetween: 0,
+                                      centeredSlides: false
+                                    },
 
-                                //      1500: {
-                                //        slidesPerView: 5,
-                                //        slidesPerGroup: 5,
-                                //        spaceBetween: 5,
-                                //        centeredSlides: false
-                                //      },
+                                     1500: {
+                                       slidesPerView: 5,
+                                       slidesPerGroup: 5,
+                                       spaceBetween: 0,
+                                       centeredSlides: false
+                                     },
 
-                                //     1800: {
-                                //       slidesPerView: 6,
-                                //       slidesPerGroup: 6,
-                                //       spaceBetween: 5,
-                                //       centeredSlides: false
-                                //     }
-                                //   }}
+                                    1800: {
+                                      slidesPerView: 6,
+                                      slidesPerGroup: 6,
+                                      spaceBetween: 0,
+                                      centeredSlides: false
+                                    }
+                                  }}
                                 navigation={true}
                                 modules={[Pagination, Navigation]}
                                 style={{ overflow: 'visible' }}

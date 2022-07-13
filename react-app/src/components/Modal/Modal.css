@@ -40,7 +40,16 @@
     left: 0;
     width: 70%;
     min-height: 90%;
-    min-width: 600px;
+    /* min-width: 600px; */
     justify-content: center;
     align-items: flex-start;
+}
+
+
+@media screen and (max-width: 640px) {
+    .modal-inner-content {
+        width: 100%;
+        min-height: 100%;
+
+    }
 }
