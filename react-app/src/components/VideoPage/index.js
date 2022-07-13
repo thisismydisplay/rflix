@@ -1,8 +1,8 @@
 import './VideoPage.css';
 
 import backButton from '../../images/back-btn.png';
-import addButton from '../../images/add-btn.png'
-import removeButton from '../../images/remove-btn.png'
+import addButton from '../../images/add-btn.png';
+import removeButton from '../../images/remove-btn.png';
 import React, { useEffect, useState } from 'react';
 import { useHistory, useLocation, Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -11,22 +11,23 @@ import ReactPlayer from 'react-player';
 import { getComments } from '../../store/comment';
 
 import CommentList from '../CommentList';
-import { addToWatchlistThunk, deleteFromWatchlistThunk } from '../../store/profile';
+import {
+    addToWatchlistThunk,
+    deleteFromWatchlistThunk,
+} from '../../store/profile';
 
 function VideoPage({ profile }) {
     const history = useHistory();
     const dispatch = useDispatch();
     const location = useLocation();
     const videoId = location.pathname.split('/')[2];
-    const onWatchlist = profile?.watchlistVideos.includes(Number(videoId))
+    const onWatchlist = profile?.watchlistVideos.includes(Number(videoId));
     useEffect(() => {
         const navbar = document.getElementById('navbar');
         navbar.setAttribute('style', 'display:none;');
     });
 
-
     const video = useSelector((state) => state.video.videos[videoId]);
-
 
     //comments is an object with key videoId
     const comments = useSelector((state) => state.comment?.comments);
@@ -52,23 +53,9 @@ function VideoPage({ profile }) {
         })();
     }, [dispatch, videoId]);
 
-
-
-    // useEffect(() => {
-    //     // 👇️ scroll to top on page load
-    //     if (video) {
-    //         console.log('scroll')
-    //         setTimeout(() => {
-    //             window.scrollTo({
-    //                 top: 0,
-    //                 behavior: "smooth"
-    //               });
-    //         }, 300);
-    //     }
-    //   }, [video]);
-    // useEffect(() => {
-    //     window.scrollTo(0, 0)
-    //   }, [])
+    useEffect(() => {
+        document.getElementById('root').scrollTo(0, 0);
+    }, []);
 
     const [controlsOn, setControlsOn] = useState(false);
     const [firstMove, setFirstMove] = useState(true);
@@ -93,8 +80,6 @@ function VideoPage({ profile }) {
             // setOnWatchlist(false)
         })();
     };
-
-
 
     const handleMove = () => {
         if (firstMove) {
@@ -127,19 +112,34 @@ function VideoPage({ profile }) {
             </div>
             <div className='video-detail-wrapper'>
                 <div className='video-detail-container'>
-                <div className='video-detail-list-wrapper'>
-                    <p className='video-detail-title'>{video?.title}</p>
-                    <p className='video-detail-year'>{video?.releaseYear}</p>
-                    <p className='video-detail-genre'>{video?.genre}</p>
-
-                </div>
-                <div className='video-detail-description-wrapper'>
-                    <div className='video-detail-description'>{video?.description}</div>
-                    <div className='description-btn-wrapper' onClick={onWatchlist ? handleRemove : handleAdd}>
-                        <img src={onWatchlist ? removeButton : addButton} alt='add to watchlist' className='watchlist-add-remove-btn' />
-                        <span className='watchlist-add-remove-text'> {onWatchlist ? 'Remove from watchlist' : 'Add to watchlist' }</span>
+                    <div className='video-detail-list-wrapper'>
+                        <p className='video-detail-title'>{video?.title}</p>
+                        <p className='video-detail-year'>
+                            {video?.releaseYear}
+                        </p>
+                        <p className='video-detail-genre'>{video?.genre}</p>
                     </div>
-                </div>
+                    <div className='video-detail-description-wrapper'>
+                        <div className='video-detail-description'>
+                            {video?.description}
+                        </div>
+                        <div
+                            className='description-btn-wrapper'
+                            onClick={onWatchlist ? handleRemove : handleAdd}
+                        >
+                            <img
+                                src={onWatchlist ? removeButton : addButton}
+                                alt='add to watchlist'
+                                className='watchlist-add-remove-btn'
+                            />
+                            <span className='watchlist-add-remove-text'>
+                                {' '}
+                                {onWatchlist
+                                    ? 'Remove from watchlist'
+                                    : 'Add to watchlist'}
+                            </span>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div className='comments-wrapper'>
