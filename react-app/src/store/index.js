@@ -1,30 +1,27 @@
-
-import { configureStore } from '@reduxjs/toolkit'
-import profileReducer from './profile'
+import { configureStore } from '@reduxjs/toolkit';
+import profileReducer from './profile';
 // import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 // import thunk from 'redux-thunk';
-import sessionReducer from './session'
+import sessionReducer from './session';
 // Uncomment for development
 // import logger from 'redux-logger'
-import videoReducer from './video'
-import commentReducer from './comment'
+import videoReducer from './video';
+import commentReducer from './comment';
 // const rootReducer = combineReducers({
 //   session,
 // });
-export const store = configureStore(
-  {
-  reducer: {
-    session: sessionReducer,
-    profile: profileReducer,
-    video: videoReducer,
-    comment: commentReducer
-  },
-//   Uncomment for development
-//   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
-}
-)
+export const store = configureStore({
+    reducer: {
+        session: sessionReducer,
+        profile: profileReducer,
+        video: videoReducer,
+        comment: commentReducer,
+    },
+    //   Uncomment for development
+    //   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
+});
 
-
+// IMPLEMENTATION WITHOUT REDUX TOOL KIT ->
 // let enhancer;
 
 // if (process.env.NODE_ENV === 'production') {

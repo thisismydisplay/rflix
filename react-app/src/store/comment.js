@@ -97,15 +97,12 @@ export const deleteComment = (id) => async (dispatch) => {
 
 const initialState = {
     comments: {},
-    // currentCommentId: null
 };
 
 const commentReducer = (state = initialState, action) => {
     switch (action.type) {
         case GET_ALL:
             const commentData = {};
-            //   commentData['currentcomment'] = ...state.currentcomment
-            // commentData['comments'] = {};
 
             for (let comment of action.payload) {
                 commentData[comment.id] = comment;
@@ -122,7 +119,7 @@ const commentReducer = (state = initialState, action) => {
             };
 
         case DELETE:
-            const newState = { ...state, comments: {...state.comments} };
+            const newState = { ...state, comments: { ...state.comments } };
             delete newState['comments'][action.payload];
             return newState;
         default:

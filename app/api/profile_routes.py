@@ -129,9 +129,6 @@ def upload_profile_image(id):
     upload = upload_file_to_s3(image)
 
     if "url" not in upload:
-        # if the dictionary doesn't have a url key
-        # it means that there was an error when we tried to upload
-        # so we send back that error message
         return upload, 400
 
     url = upload["url"]
@@ -154,14 +151,3 @@ def delete_profile(id):
     db.session.delete(profile)
     db.session.commit()
     return {'message': 'Success'}
-
-
-# @profile_routes.route('<int:profileId>/watchlist', methods=['GET'])
-# @login_required
-# def get_watchlist():
-
-#     print('hit route')
-#     profile = Profile.query.get(id)
-#     watchlist = profile.watchlist_videos
-
-#     return {'watchlistVideos': watchlist}

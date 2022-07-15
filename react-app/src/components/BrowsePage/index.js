@@ -52,10 +52,6 @@ function BrowsePage() {
         setShowModal(true);
     };
 
-    // const randomVideoId = getRandomVideoId(1, Object.values(videos).length - 1);
-    // const randomVideo = videos[randomVideoId];
-
-    // const [video, setVideo] = useState(randomVideo)
     useEffect(() => {
         (async () => {
             await dispatch(getVideos());

@@ -11,7 +11,7 @@ function MyListPage() {
     // const profile = useSelector(state=>selectProfile(state.profile))
     const profile = useSelector(
         (state) => state.profile.profiles[state.profile.currentProfileId]
-        );
+    );
 
     //load videos here instead of app
     const dispatch = useDispatch();
@@ -27,19 +27,19 @@ function MyListPage() {
         return null;
     }
 
-
     if (!profile) return <Redirect to='/profile' />;
     return (
         <div className='my-list-wrapper'>
             <div className='my-list-list-wrapper'>
-            <div className='my-list-title'>My List</div>
-            <div className='my-list-description'>See videos you've added to your watchlist.</div>
+                <div className='my-list-title'>My List</div>
+                <div className='my-list-description'>
+                    See videos you've added to your watchlist.
+                </div>
                 <div className='my-video-list'>
-                    <VideoList videos={videos} mylist={true}/>
+                    <VideoList videos={videos} mylist={true} />
                 </div>
             </div>
         </div>
-        // map movies in carousels by genre
     );
 }
 

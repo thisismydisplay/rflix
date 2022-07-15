@@ -38,7 +38,9 @@ const ProfileDeletePage = ({ currentProfile }) => {
                 {errors.length > 0 && (
                     <div className='error-container'>
                         {errors.map((error, ind) => (
-                            <div key={`profile-delete-error-${ind}`}>{error?.split(': ')[1]}</div>
+                            <div key={`profile-delete-error-${ind}`}>
+                                {error?.split(': ')[1]}
+                            </div>
                         ))}
                     </div>
                 )}

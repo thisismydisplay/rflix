@@ -18,7 +18,6 @@ def get_all_videos():
     # user = User.query.get(id)
     # if user.id != current_user.id:
     #     return {'errors': ['Invalid Request: Unauthorized']}, 403
-    print('hit route')
     videos = Video.query.all()
 
     video_dict_list = [video.to_dict() for video in videos]
@@ -34,6 +33,3 @@ def get_all_videos():
 def get_one_video(id):
     video = Video.query.get(id)
     return video.to_dict()
-
-
-

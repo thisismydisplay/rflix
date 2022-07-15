@@ -66,46 +66,44 @@ function VideoList({ videos, mylist }) {
                                 slidesPerGroup={1}
                                 breakpoints={{
                                     600: {
-                                      slidesPerView: 2,
-                                      slidesPerGroup: 2,
-                                      spaceBetween: 0,
-                                      centeredSlides: false
-
+                                        slidesPerView: 2,
+                                        slidesPerGroup: 2,
+                                        spaceBetween: 0,
+                                        centeredSlides: false,
                                     },
-                                     900: {
-                                      slidesPerView: 3,
-                                      slidesPerGroup: 3,
-                                      spaceBetween: 0,
-                                       centeredSlides: false
-
+                                    900: {
+                                        slidesPerView: 3,
+                                        slidesPerGroup: 3,
+                                        spaceBetween: 0,
+                                        centeredSlides: false,
                                     },
                                     1200: {
-                                      slidesPerView: 4,
-                                      slidesPerGroup: 4,
-                                      spaceBetween: 0,
-                                      centeredSlides: false
+                                        slidesPerView: 4,
+                                        slidesPerGroup: 4,
+                                        spaceBetween: 0,
+                                        centeredSlides: false,
                                     },
 
-                                     1500: {
-                                       slidesPerView: 5,
-                                       slidesPerGroup: 5,
-                                       spaceBetween: 0,
-                                       centeredSlides: false
-                                     },
+                                    1500: {
+                                        slidesPerView: 5,
+                                        slidesPerGroup: 5,
+                                        spaceBetween: 0,
+                                        centeredSlides: false,
+                                    },
 
                                     1800: {
-                                      slidesPerView: 6,
-                                      slidesPerGroup: 6,
-                                      spaceBetween: 0,
-                                      centeredSlides: false
-                                    }
-                                  }}
+                                        slidesPerView: 6,
+                                        slidesPerGroup: 6,
+                                        spaceBetween: 0,
+                                        centeredSlides: false,
+                                    },
+                                }}
                                 navigation={true}
                                 modules={[Pagination, Navigation]}
                                 style={{ overflow: 'visible' }}
                                 pagination={{
-                                clickable: false,
-                                type: 'progressbar',
+                                    clickable: false,
+                                    type: 'progressbar',
                                 }}
                                 className='video-list-wrapper'
                             >
@@ -142,58 +140,40 @@ function VideoList({ videos, mylist }) {
                                 slidesPerView={2}
                                 spaceBetween={5}
                                 slidesPerGroup={1}
-                                // loop={true}
-                                // loopFillGroupWithBlank={true}
-
-                                // observer={true}
-                                // observeParents={true}
-                                // observeSlideChildren={true}
-                                // preloadImages={false}
-                                // lazy={{enabled: true, loadOnTransitionStart: true}}
-                                // virtual={true}
-                                // height={160}
-                                // slidesOffsetAfter={100}
-                                // slidesOffsetBefore={100}
-                                // pagination={{
-                                // clickable: true,
-                                // type: 'progressbar',
-                                // }}
                                 breakpoints={{
                                     600: {
-                                      slidesPerView: 2,
-                                      slidesPerGroup: 2,
-                                      spaceBetween: 0,
-                                      centeredSlides: false
-
+                                        slidesPerView: 2,
+                                        slidesPerGroup: 2,
+                                        spaceBetween: 0,
+                                        centeredSlides: false,
                                     },
-                                     900: {
-                                      slidesPerView: 3,
-                                      slidesPerGroup: 3,
-                                      spaceBetween: 0,
-                                       centeredSlides: false
-
+                                    900: {
+                                        slidesPerView: 3,
+                                        slidesPerGroup: 3,
+                                        spaceBetween: 0,
+                                        centeredSlides: false,
                                     },
                                     1200: {
-                                      slidesPerView: 4,
-                                      slidesPerGroup: 4,
-                                      spaceBetween: 0,
-                                      centeredSlides: false
+                                        slidesPerView: 4,
+                                        slidesPerGroup: 4,
+                                        spaceBetween: 0,
+                                        centeredSlides: false,
                                     },
 
-                                     1500: {
-                                       slidesPerView: 5,
-                                       slidesPerGroup: 5,
-                                       spaceBetween: 0,
-                                       centeredSlides: false
-                                     },
+                                    1500: {
+                                        slidesPerView: 5,
+                                        slidesPerGroup: 5,
+                                        spaceBetween: 0,
+                                        centeredSlides: false,
+                                    },
 
                                     1800: {
-                                      slidesPerView: 6,
-                                      slidesPerGroup: 6,
-                                      spaceBetween: 0,
-                                      centeredSlides: false
-                                    }
-                                  }}
+                                        slidesPerView: 6,
+                                        slidesPerGroup: 6,
+                                        spaceBetween: 0,
+                                        centeredSlides: false,
+                                    },
+                                }}
                                 navigation={true}
                                 modules={[Pagination, Navigation]}
                                 style={{ overflow: 'visible' }}
@@ -201,7 +181,6 @@ function VideoList({ videos, mylist }) {
                             >
                                 {Object.values(videos).map(
                                     (video, i) =>
-                                        // <div key={`${genre}-${i}-${video.id}`}>
                                         video.genre === genre && (
                                             <SwiperSlide
                                                 key={`inner-${genre}-${video.id}`}
@@ -213,7 +192,6 @@ function VideoList({ videos, mylist }) {
                                                 />
                                             </SwiperSlide>
                                         )
-                                        // </div>
                                 )}
                             </Swiper>
                         </React.Fragment>

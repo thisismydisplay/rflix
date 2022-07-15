@@ -10,7 +10,6 @@ export const selectProfile = (state) => {
 const GET_ALL = 'profiles/GET_ALL';
 const GET_ONE = 'profiles/GET_ONE';
 const ADD_ONE = 'profiles/ADD_ONE';
-// const UPDATE_IMAGE = 'profiles/UPDATE_IMAGE'
 const DELETE = 'profiles/DELETE';
 
 //action creators
@@ -20,11 +19,6 @@ const getAll = (profiles) => ({
     payload: profiles,
 });
 
-// use addOne for all updates
-// const updateImage = (url, profileId) => ({
-//     type: UPDATE_IMAGE,
-//     payload: {url, profileId},
-// })
 const getOne = (profile) => ({
     type: GET_ONE,
     payload: profile,
@@ -158,17 +152,6 @@ const deleteFromWatchlist = (deletedWatchlist) => ({
     payload: deletedWatchlist,
 });
 
-// export const getProfileWatchlist = (profileId) => async (dispatch) => {
-//     // getState is a function that can be passed to a thunk that returns the current store
-//     const res = await fetch(`/api/watchlists/${profileId}`);
-
-//     if (res.ok) {
-//         const list = await res.json();
-//         dispatch(getAll(list.profiles));
-//         return res;
-//     } else throw res;
-// };
-
 export const addToWatchlistThunk = (profileId, videoId) => async (dispatch) => {
     const res = await fetch(`/api/watchlists/${profileId}/add/${videoId}`, {
         method: 'POST',
@@ -215,8 +198,6 @@ const profileReducer = (state = initialState, action) => {
     switch (action.type) {
         case GET_ALL:
             const profileData = {};
-            //   profileData['currentProfile'] = ...state.currentProfile
-            // profileData['profiles'] = {};
 
             for (let profile of action.payload) {
                 profileData[profile.id] = profile;
@@ -232,8 +213,6 @@ const profileReducer = (state = initialState, action) => {
                 currentProfileId: action.payload.current_profile_id,
             };
 
-        // case UPDATE:
-        //     return {...state, [action.profile.id]: action.profile};
         case ADD_ONE:
             return {
                 ...state,
@@ -261,14 +240,7 @@ const profileReducer = (state = initialState, action) => {
                     watchlistVideos: newWatchlistVideos,
                 },
             };
-        // case UPDATE_IMAGE:
-        //     return {
-        //         ...state,
-        //         profiles: {
-        //             ...state.profiles,
-        //             [action.payload.profileId]:
-        //         }
-        //     }
+
         case SET_CURRENT:
             return {
                 ...state,
@@ -286,22 +258,40 @@ const profileReducer = (state = initialState, action) => {
             delete newState['profiles'][action.payload];
             return newState;
         case DELETE_FROM_WATCHLIST:
-            const newWState = {  ...state,
+            const newWState = {
+                ...state,
                 profiles: {
                     ...state.profiles,
                     [action.payload.profileId]: {
                         ...state.profiles[action.payload.profileId],
-                        watchlistVideos: [...state.profiles[action.payload.profileId]['watchlistVideos']]
+                        watchlistVideos: [
+                            ...state.profiles[action.payload.profileId][
+                                'watchlistVideos'
+                            ],
+                        ],
                     },
                 },
                 [action.payload.profileId]: {
                     ...state.profiles[action.payload.profileId],
-                    watchlistVideos: [...state.profiles[action.payload.profileId]['watchlistVideos']]
-                } };
-            const watchlistArr = newWState['profiles'][action.payload.profileId]['watchlistVideos']
-            const idx = watchlistArr.indexOf(action.payload.videoId)
-            newWState['profiles'][action.payload.profileId]['watchlistVideos'].splice(idx, 1);
-            newWState[action.payload.profileId]['watchlistVideos'].splice(idx, 1);
+                    watchlistVideos: [
+                        ...state.profiles[action.payload.profileId][
+                            'watchlistVideos'
+                        ],
+                    ],
+                },
+            };
+            const watchlistArr =
+                newWState['profiles'][action.payload.profileId][
+                    'watchlistVideos'
+                ];
+            const idx = watchlistArr.indexOf(action.payload.videoId);
+            newWState['profiles'][action.payload.profileId][
+                'watchlistVideos'
+            ].splice(idx, 1);
+            newWState[action.payload.profileId]['watchlistVideos'].splice(
+                idx,
+                1
+            );
             return newWState;
 
         default:

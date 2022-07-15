@@ -32,19 +32,6 @@ function VideoPage({ profile }) {
     //comments is an object with key videoId
     const comments = useSelector((state) => state.comment?.comments);
 
-    //OR
-    // const video = useSelector((state)=>state.video.currentVideo)
-    // const [videoLoaded, setVideoLoaded] = useState(false)
-    // const video = useEffect(()=> {
-    //     (async () => {
-    //         await dispatch(getVideo(videoId));
-    //         //await dispatch(getComments(videoId));
-    //         setVideoLoaded(true);
-    //         // setCommentsLoaded(true);
-
-    //     })();
-    // }, [dispatch, videoId])
-
     const [commentsLoaded, setCommentsLoaded] = useState(false);
     useEffect(() => {
         (async () => {

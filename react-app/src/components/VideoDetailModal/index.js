@@ -15,9 +15,14 @@ import addButton from '../../images/add-btn-modal.png';
 import removeButton from '../../images/remove-btn.png';
 import cancelButton from '../../images/cancel-btn-white.png';
 
-function VideoDetailModal({ video, profile, hideModal, onMyListRemove = () => {} }) {
+function VideoDetailModal({
+    video,
+    profile,
+    hideModal,
+    onMyListRemove = () => {},
+}) {
     const [isMuted, setIsMuted] = useState(true);
-    const onWatchlist = profile?.watchlistVideos.includes(Number(video.id))
+    const onWatchlist = profile?.watchlistVideos.includes(Number(video.id));
     const dispatch = useDispatch();
     const history = useHistory();
     const handleClick = () => {
@@ -31,7 +36,7 @@ function VideoDetailModal({ video, profile, hideModal, onMyListRemove = () => {}
     };
     const handleRemove = () => {
         (async () => {
-            onMyListRemove()
+            onMyListRemove();
             await dispatch(deleteFromWatchlistThunk(profile.id, video.id));
             // setOnWatchlist(false);
         })();
@@ -45,13 +50,7 @@ function VideoDetailModal({ video, profile, hideModal, onMyListRemove = () => {}
             className='video-detail-modal-div'
             onClick={(e) => e.stopPropagation()}
         >
-            <div
-                className='video-modal-wrapper'
-                // onMouseEnter={() => setIsHover(true)}
-                // onMouseLeave={() => setIsHover(false)}
-                // key={video.id}
-                onClick={handleClick}
-            >
+            <div className='video-modal-wrapper' onClick={handleClick}>
                 <div
                     className='video-detail-overlay'
                     style={{ height: '100%', width: '100%' }}
@@ -120,7 +119,6 @@ function VideoDetailModal({ video, profile, hideModal, onMyListRemove = () => {}
                                                   }
                                         }
                                     ></img>
-                                    {/* <span className='modal-play-text'>Add to Watchlist</span> */}
                                 </div>
                             </div>
                             <img
@@ -153,64 +151,6 @@ function VideoDetailModal({ video, profile, hideModal, onMyListRemove = () => {}
             </div>
         </section>
     );
-    // const genres = [
-    //     'Nature',
-    //     'Cartoons',
-    //     'Comedy',
-    //     'Drama',
-    //     'Thriller',
-    //     'Action & Adventure',
-    // ];
-    // const profile = useSelector(
-    //     (state) => state.profile.profiles[state.profile.currentProfileId]
-    // );
-    // const myListVideos = Object.values(videos).filter((video) =>
-    //     profile.watchlistVideos.includes(video.id)
-    // );
-    // if (!profile) return <Redirect to='/profile' />;
-    // return (
-    //     <>
-    //         {mylist && (
-    //             <>
-    //                 {myListVideos.map((video) => (
-    //                         <div
-    //                             className='video-thumb-container'
-    //                             key={video.id}
-    //                         >
-    //                             <VideoThumbnail
-    //                                 profile={profile}
-    //                                 video={video}
-    //                             />
-    //                         </div>
-    //                 ))}
-    //             </>
-    //         )}
-    //         {!mylist &&
-    //             genres.map((genre, i) => (
-    //                 <div className='video-carousel-wrapper' key={i}>
-    //                     <div className='video-list-title'>{genre}</div>
-    //                     <div className='video-list-wrapper'>
-    //                         {Object.values(videos).map((video) => (
-    //                             <div key={video.id}>
-    //                                 {video.genre === genre && (
-    //                                     <div
-    //                                         className='video-thumb-container'
-    //                                         // key={video.id}
-    //                                     >
-    //                                         <VideoThumbnail
-    //                                             profile={profile}
-    //                                             video={video}
-    //                                         />
-    //                                     </div>
-    //                                 )}
-    //                             </div>
-    //                         ))}
-    //                     </div>
-    //                 </div>
-    //             ))}
-    //     </>
-    //     // map movies in carousels by genre
-    // );
 }
 
 export default VideoDetailModal;

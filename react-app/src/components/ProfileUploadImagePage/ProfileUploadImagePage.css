@@ -1,52 +1,51 @@
-
 .profile-page-div {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  width: 100%;
-  background-position: 50%;
-  background-size: cover;
-  background-color: var(--profile-select-bg);
-  color: var(--modal-text-grey);
-  }
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    background-position: 50%;
+    background-size: cover;
+    background-color: var(--profile-select-bg);
+    color: var(--modal-text-grey);
+}
 .delete-text {
     width: 300px;
     flex-wrap: wrap;
 }
 
-
-.manage-profile-btn-div, .profile-watching-text {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.manage-profile-btn-div,
+.profile-watching-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .manage-profile-btn {
-  border: var(--modal-text-grey) 2px solid;
-  border-radius: 5px;
+    border: var(--modal-text-grey) 2px solid;
+    border-radius: 5px;
 }
 .manage-profile-btn:hover {
-  border: white 2px solid;
-  color: white;
-  border-radius: 5px;
-  padding: 20px;
+    border: white 2px solid;
+    color: white;
+    border-radius: 5px;
+    padding: 20px;
 }
 .profile-navlink-browse:hover {
-  border: white 2px solid;
-  color: white;
-  border-radius: 5px;
+    border: white 2px solid;
+    color: white;
+    border-radius: 5px;
 }
 .profile-add-text {
     justify-content: flex-start;
-  color: white;
-  font-size: 48px;
+    color: white;
+    font-size: 48px;
 }
 .profile-add-subtext {
     justify-content: flex-start;
-  color: var(--modal-text-grey);
-  font-size: 24px;
+    color: var(--modal-text-grey);
+    font-size: 24px;
 }
 
 .profile-select-image-upload {
@@ -70,38 +69,36 @@
 .profile-select-div {
     padding: 0px;
     margin: 20px;
-
 }
 
 .add-profile-btn-div {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 .add-profile-btn-div:hover {
-color:white;
+    color: white;
 }
 
-.add-profile-btn, .add-profile-text {
-
-  display: flex;
-
+.add-profile-btn,
+.add-profile-text {
+    display: flex;
 }
 
 .add-profile-btn {
-  justify-content: center;
-  align-items: center;
-  font-size: 100px;
-  color: var(--modal-text-grey);
-  padding: 20px;
-  height: 160px;
-  width: 160px;
-  border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    font-size: 100px;
+    color: var(--modal-text-grey);
+    padding: 20px;
+    height: 160px;
+    width: 160px;
+    border-radius: 50%;
 }
 
 .add-profile-btn:hover {
-  background-color: var(--modal-text-grey);
-  color: white;
-  cursor: pointer;
+    background-color: var(--modal-text-grey);
+    color: white;
+    cursor: pointer;
 }
 
 .form-buttons {
@@ -110,7 +107,8 @@ color:white;
     padding: 5px;
 }
 
-.continue-btn, .cancel-btn {
+.continue-btn,
+.cancel-btn {
     border-radius: 5px;
 
     padding: 8px 16px;
@@ -128,10 +126,9 @@ color:white;
     border: white 2px solid;
     color: white;
     cursor: pointer;
-  }
+}
 .continue-btn:hover {
     background-color: var(--signin-red);
     color: white;
     cursor: pointer;
-  }
-
+}

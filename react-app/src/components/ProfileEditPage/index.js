@@ -76,7 +76,9 @@ const ProfileEditPage = ({ currentProfile }) => {
                 {errors.length > 0 && (
                     <div className='error-container'>
                         {errors.map((error, ind) => (
-                            <div key={`profile-edit-error-${ind}`}>{error?.split(': ')[1]}</div>
+                            <div key={`profile-edit-error-${ind}`}>
+                                {error?.split(': ')[1]}
+                            </div>
                         ))}
                     </div>
                 )}

@@ -46,7 +46,9 @@ const ProfileAddPage = ({ user }) => {
                 {errors.length > 0 && (
                     <div className='error-container'>
                         {errors.map((error, ind) => (
-                            <div key={`profile-add-error-${ind}`}>{error?.split(': ')[1]}</div>
+                            <div key={`profile-add-error-${ind}`}>
+                                {error?.split(': ')[1]}
+                            </div>
                         ))}
                     </div>
                 )}

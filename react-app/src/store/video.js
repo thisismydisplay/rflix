@@ -1,7 +1,6 @@
 //helper functions
 
 const GET_ALL = 'videos/GET_ALL';
-// const SET_CURRENT = 'videos/SET_CURRENT';
 const GET_ONE = 'videos/GET_ONE';
 
 //action creators
@@ -44,17 +43,19 @@ const videoReducer = (state = initialState, action) => {
     switch (action.type) {
         case GET_ALL:
             const videoData = {};
-            //   profileData['currentProfile'] = ...state.currentProfile
-            // profileData['profiles'] = {};
 
             for (let video of action.payload) {
                 videoData[video.id] = video;
             }
-            return { ...state, videos: videoData, currentVideo: {...state.currentVideo} };
+            return {
+                ...state,
+                videos: videoData,
+                currentVideo: { ...state.currentVideo },
+            };
         case GET_ONE:
             return {
                 ...state,
-                currentVideo: {...action.payload},
+                currentVideo: { ...action.payload },
             };
         default:
             return state;

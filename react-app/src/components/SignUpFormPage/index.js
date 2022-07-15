@@ -54,7 +54,9 @@ const SignUpFormPage = () => {
                     <form onSubmit={onSignUp} className='login-form'>
                         <div className='error-container'>
                             {errors.map((error, ind) => (
-                                <div key={`signup-form-error-${ind}`}>{error}</div>
+                                <div key={`signup-form-error-${ind}`}>
+                                    {error}
+                                </div>
                             ))}
                         </div>
                         <p className='sign-in-stream-text'>

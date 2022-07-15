@@ -38,10 +38,7 @@ const LoginFormPage = () => {
     }
 
     return (
-        <div
-            className='login-page-wrapper'
-        >
-
+        <div className='login-page-wrapper'>
             <div className='login-form-container'>
                 <div className='login-form-wrapper'>
                     <div className='login-wrapper-bg'>
@@ -119,7 +116,9 @@ const LoginFormPage = () => {
                             </div>
                         </div>
                         <div className='new-sign-up-div'>
-                            <span className='new-to-rflix-text'>New to rflix? </span>
+                            <span className='new-to-rflix-text'>
+                                New to rflix?{' '}
+                            </span>
                             <NavLink className='sign-up-now-text' to='/signup'>
                                 Sign up now.
                             </NavLink>

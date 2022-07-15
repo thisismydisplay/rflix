@@ -8,14 +8,6 @@ watchlist_routes = Blueprint('watchlists', __name__)
 
 
 
-# # GET watchlist videos by profileId
-# @watchlist_routes.route('/<int:profileId>')
-# @login_required
-# def get_watchlist_videos(profileId):
-#     watchlists = Watchlist.query.filter(Watchlist.profileId==profileId).all()
-#     videoIds = [watchlist.videoId for watchlist in watchlists]
-#     return {'watchlistVideos': videoIds}
-
 # ADD to watchlist
 @watchlist_routes.route('<int:profileId>/add/<videoId>', methods=["POST"])
 @login_required

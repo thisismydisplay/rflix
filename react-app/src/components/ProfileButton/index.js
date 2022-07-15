@@ -1,7 +1,7 @@
 import './ProfileButton.css';
 
 import LogoutButton from '../auth/LogoutButton';
-import editBtn from '../../images/edit-profile-btn.png'
+import editBtn from '../../images/edit-profile-btn.png';
 
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
@@ -66,7 +66,6 @@ function ProfileButton() {
                                                 style={{
                                                     backgroundImage: `url(${profile.profileImageUrl})`,
                                                 }}
-
                                             ></div>
                                             <div className='nav-profile-text'>
                                                 {profile.name}

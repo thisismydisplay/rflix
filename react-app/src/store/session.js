@@ -87,7 +87,7 @@ export const signUp = (email, password) => async (dispatch) => {
         body: JSON.stringify({
             email,
             password,
-            rememberMe: false
+            rememberMe: false,
         }),
     });
 
@@ -106,13 +106,13 @@ export const signUp = (email, password) => async (dispatch) => {
 };
 
 export const setCurrentProfile = (id) => async (dispatch) => {
-    const res = await fetch(`/api/auth/profile`,{
+    const res = await fetch(`/api/auth/profile`, {
         method: 'PATCH',
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            current_profile_id: id
+            current_profile_id: id,
         }),
     });
 
@@ -123,7 +123,6 @@ export const setCurrentProfile = (id) => async (dispatch) => {
     } else throw res;
 };
 
-
 // RTK implementation
 export default createReducer(initialState, (builder) => {
     builder.addCase(SET_USER, (state, action) => {
@@ -131,10 +130,10 @@ export default createReducer(initialState, (builder) => {
     });
     builder.addCase(REMOVE_USER, (state) => {
         state.user = null;
-
     });
 });
 
+// WITHOUT RTK
 // export default function reducer(state = initialState, action) {
 //   switch (action.type) {
 //     case SET_USER:
