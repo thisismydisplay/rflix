@@ -66,6 +66,8 @@ function VideoThumbnail({ video, profile, isMyListCarousel = false }) {
             <motion.div
                 className='video-image'
                 animate={isHover ? 'open' : 'closed'}
+                // style={ isHover ? { opacity: 1, height: 'auto' } : { opacity: 0, height: '0px', overflow: 'hidden', zIndex: -1 } }
+
                 variants={variants}
                 transition={
                     isHover
@@ -204,6 +206,7 @@ function VideoThumbnail({ video, profile, isMyListCarousel = false }) {
             <motion.img
                 className='video-image'
                 animate={isHover ? 'closed' : 'open'}
+                // style={ isHover ? { opacity: 0, height: '0px', overflow: 'hidden', zIndex: -1 } : { opacity: 1, height: 'auto' }}
                 variants={variants}
                 transition={
                     isHover
