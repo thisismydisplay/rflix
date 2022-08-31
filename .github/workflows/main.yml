@@ -1,55 +1,83 @@
+
+# This is a basic workflow to help you get started with Actions
+
 name: Deploy
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
 on:
   push:
     branches:
       - main
 
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  BuildAndDeploy:
-    runs-on: ubuntu-20.04
+  deploy:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
     steps:
-    - uses: actions/checkout@v3
-    # https://github.com/actions/setup-node
-    - uses: actions/setup-node@v3
-      with:
-        node-version: '16'
-        cache: 'npm'
-        cache-dependency-path: react-app/package-lock.json
-    - name: Build React App
-      working-directory: react-app
-      # CI=false allows the build to ignore any warnings when building
-      run: npm install && CI=false npm run build
-      # run: npm install && CI=false NODE_ENV=production npm run build
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
 
-    # https://github.com/actions/setup-python
-    # If a student sees this, they could speed up their builds
-    # by moving install from docker to cached GH action runner
-    # Have fun (after you have a passing project!) :)
-    - uses: actions/setup-python@v3
-      with:
-        python-version: '3.9'
-        cache: 'pip'
-    - run: pip install pipenv
+      # Runs a single command using the runners shell
+      - name: Deploy to rflix.thisismydisplay.com
+        run: ./deploy.sh
+        env:
+          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
 
-    - name: Update requirements.txt for container install
-      run: pipenv requirements > requirements.txt
+# name: Deploy
+# on:
+#   push:
+#     branches:
+#       - main
 
-    - name: Login to Heroku Container registry
-      env:
-        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-      run: heroku container:login
+# jobs:
+#   BuildAndDeploy:
+#     runs-on: ubuntu-20.04
+#     steps:
+#     - uses: actions/checkout@v3
+#     # https://github.com/actions/setup-node
+#     - uses: actions/setup-node@v3
+#       with:
+#         node-version: '16'
+#         cache: 'npm'
+#         cache-dependency-path: react-app/package-lock.json
+#     - name: Build React App
+#       working-directory: react-app
+#       # CI=false allows the build to ignore any warnings when building
+#       run: npm install && CI=false npm run build
+#       # run: npm install && CI=false NODE_ENV=production npm run build
 
-    - name: Build Container and push
-      env:
-        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-      run: heroku container:push -a ${{ secrets.HEROKU_APP_NAME }} web
+#     # https://github.com/actions/setup-python
+#     # If a student sees this, they could speed up their builds
+#     # by moving install from docker to cached GH action runner
+#     # Have fun (after you have a passing project!) :)
+#     - uses: actions/setup-python@v3
+#       with:
+#         python-version: '3.9'
+#         cache: 'pip'
+#     - run: pip install pipenv
 
-    - name: Release
-      env:
-        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-      run: heroku container:release -a ${{ secrets.HEROKU_APP_NAME }} web
+#     - name: Update requirements.txt for container install
+#       run: pipenv requirements > requirements.txt
 
-    - name: Run DB Migration
-      env:
-          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-      run: heroku run -a ${{ secrets.HEROKU_APP_NAME }} flask db upgrade
+#     - name: Login to Heroku Container registry
+#       env:
+#         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+#       run: heroku container:login
+
+#     - name: Build Container and push
+#       env:
+#         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+#       run: heroku container:push -a ${{ secrets.HEROKU_APP_NAME }} web
+
+#     - name: Release
+#       env:
+#         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+#       run: heroku container:release -a ${{ secrets.HEROKU_APP_NAME }} web
+
+#     - name: Run DB Migration
+#       env:
+#           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+#       run: heroku run -a ${{ secrets.HEROKU_APP_NAME }} flask db upgrade
