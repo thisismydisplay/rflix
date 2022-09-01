@@ -1,0 +1,21 @@
+version: "3.8"
+services:
+  caddy:
+    image: caddy:2.5.2-alpine
+    environment:
+      MY_EMAIL: ${MY_EMAIL}
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - "caddy_data:/data/"
+      - "caddy_config:/config/"
+      - "./Caddyfile:/etc/caddy/Caddyfile:ro"
+  app:
+    image: rflix:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+volumes:
+  caddy_data:
+  caddy_config:
