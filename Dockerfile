@@ -31,6 +31,7 @@ COPY /react-app/build/* app/static/
 # Run the next two python install commands with PIP
 # install -r requirements.txt
 # install psycopg2
+RUN pip install pipenv && pipenv requirements > requirements.txt
 RUN pip install -r requirements.txt
 RUN pip install psycopg2
 
@@ -39,7 +40,7 @@ RUN pip install psycopg2
 # closing command to gunicorn app:app
 
 ## gunicorn app folder : app instance
-CMD gunicorn app:app
+CMD gunicorn --bind=0.0.0.0:5000 app:app
 
 ## NOTE: gunicorn is a WSGI (web server gateway interface)
 ## WSGI serves flask, so flask can run in production because flask

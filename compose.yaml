@@ -13,6 +13,13 @@ services:
       - "./Caddyfile:/etc/caddy/Caddyfile:ro"
   app:
     image: rflix:latest
+    init: true
+    environment:
+      DATABASE_URL: ${DATABASE_URL}
+      SECRET_KEY: ${SECRET_KEY}
+      S3_BUCKET: ${S3_BUCKET}
+      S3_KEY: ${S3_KEY}
+      S3_SECRET: ${S3_SECRET}
     build:
       context: .
       dockerfile: Dockerfile
@@ -24,6 +31,16 @@ services:
       POSTGRES_DB: ${POSTGRES_DB}
     volumes:
       - "db_data:/var/lib/postgresql/data"
+  node_build:
+    image: node:16.17-alpine
+    working_dir: /app/rflix/react-app
+    command: npm install && CI=false npm run build
+    volumes:
+      - "./:/app/rflix"
+    # giving node_build a profile makes it so that it won't run by default with docker compose up
+    profiles:
+      - build
 volumes:
   caddy_data:
   caddy_config:
+  db_data:

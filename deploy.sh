@@ -18,12 +18,8 @@ ssh ubuntu@rflix.thisismydisplay.com '
     git checkout main
     git reset --hard origin/main
 
-    cd /app/rflix/react-app
-    npm install && CI=false npm run build
-    curl https://get.docker.com/ | sudo sh
-    # sudo groupadd docker
-    sudo usermod -aG docker ubuntu
-    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-    nvm install 16.16.0
-    nvm alias default 16.16.0
+    cd /app/rflix
+    docker compose run --rm node_build
+    docker compose run --rm app flask db migrate
+    docker compose up -d --force-recreate --remove-orphans
 '
