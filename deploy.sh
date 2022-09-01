@@ -20,6 +20,7 @@ ssh ubuntu@rflix.thisismydisplay.com '
     git reset --hard origin/main
 
     cd /app/rflix
+    docker compose build
     docker compose run --rm node_build
     docker compose run --rm app flask db migrate
     docker compose up -d --force-recreate --remove-orphans
