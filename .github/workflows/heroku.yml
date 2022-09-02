@@ -1,11 +1,11 @@
-name: Deploy
+name: HerokuDeploy
 on:
   push:
     branches:
       - main
 
 jobs:
-  BuildAndDeploy:
+  HerokuBuildAndDeploy:
     runs-on: ubuntu-20.04
     steps:
     - uses: actions/checkout@v3
