@@ -1,4 +1,5 @@
 #!/bin/bash
+# Better debugging with euxo pipefail
 set -euxo pipefail
 
 # Borrowed from
